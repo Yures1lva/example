@@ -10,13 +10,13 @@ class _Page2State extends State<Page2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgrounColor,
+      backgroundColor: primaryColor,
       appBar: AppBar(
         title: Text("Nike esportes", style: titulo1),
         centerTitle: false,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            color: primaryColor,
+            color: backgrounColor,
           ),
         ),
       ),

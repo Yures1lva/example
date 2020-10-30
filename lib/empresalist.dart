@@ -5,10 +5,10 @@ class Empresalist {
   Empresalist({this.id, this.name, this.description, this.image});
 }
 
-List<Empresalist> products = [
+List<Empresalist> empresalist = [
   Empresalist(
     id: 1,
-    name: "NIke",
+    name: "Nike",
     image: "assets/images/nikeicon.png",
     description: "O melhor para seu esporte",
   ),

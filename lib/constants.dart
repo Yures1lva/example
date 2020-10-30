@@ -4,7 +4,7 @@ const backgrounColor = Color(0xff0a8754);
 const primaryColor = Color(0xffbfd7ea);
 const secondaryColor = Colors.white,
     titulo1 = TextStyle(
-      fontSize: 15,
+      fontSize: 20,
       fontWeight: FontWeight.bold,
       color: Color(0xff102027),
     );
@@ -18,5 +18,5 @@ const subtitulo = TextStyle(
 const textonormal = TextStyle(
   fontWeight: FontWeight.bold,
   color: Colors.grey,
-  fontSize: 10,
+  fontSize: 12,
 );

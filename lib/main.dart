@@ -14,7 +14,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'BusqueEmpresas',
       theme: ThemeData(
+        // We set Poppins as our default font
         primaryColor: primaryColor,
+        accentColor: primaryColor,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Listadeempresas(),
     );

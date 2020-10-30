@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:exampleflutter/search_page.dart';
+import 'package:exampleflutter/constants.dart';
 
 class Page2 extends StatefulWidget {
   @override
@@ -10,20 +10,13 @@ class _Page2State extends State<Page2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffbfd7ea),
+      backgroundColor: backgrounColor,
       appBar: AppBar(
-        title: Text(
-          "Nike esportes",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-            color: Colors.white,
-          ),
-        ),
-        centerTitle: true,
+        title: Text("Nike esportes", style: titulo1),
+        centerTitle: false,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            color: Color(0xff0a8754),
+            color: primaryColor,
           ),
         ),
       ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+double bordas = 5;
+
 const backgrounColor = Color(0xff0a8754);
 const primaryColor = Color(0xffbfd7ea);
 const secondaryColor = Colors.white,
@@ -17,6 +19,13 @@ const subtitulo = TextStyle(
 
 const textonormal = TextStyle(
   fontWeight: FontWeight.bold,
-  color: Colors.grey,
+  color: Colors.black45,
   fontSize: 12,
+);
+
+//elevção de um Container
+const elevation = BoxShadow(
+  offset: Offset(0, 15),
+  blurRadius: 27,
+  color: Colors.black12, // Black color with 12% opacity
 );

@@ -20,29 +20,39 @@ class _ListadeempresasState extends State<Listadeempresas> {
       backgroundColor: primaryColor,
       appBar: AppBar(
         elevation: 0,
+        leading: IconButton(
+          padding: EdgeInsets.only(
+            left: 20,
+          ),
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: iconColor,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         centerTitle: false,
         title: Text(
-          'Empresas',
+          "Empresa",
           style: titulo1,
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(
-              Icons.apartment,
-              color: iconColor,
-            ),
-            onPressed: () {},
-          ),
+              icon: Icon(
+                Icons.apartment,
+                color: iconColor,
+              ),
+              onPressed: null)
         ],
       ),
       body: Column(
         children: <Widget>[
-//barra de pesquisa.....................................................................................
           SeachWidget(
             onChanged: (value) {},
           ),
 //lista de na vertical.......................................................................................
-          /* Container(
+          Container(
             margin: EdgeInsets.symmetric(vertical: symetricPad / 2),
             height: 35,
             child: ListView.builder(
@@ -75,45 +85,47 @@ class _ListadeempresasState extends State<Listadeempresas> {
                       ),
                     )),
           ),
-*/
+
           Divider(
             height: 20,
             color: Colors.transparent,
           ),
-//desgn do body...............................................................................
+//desIgn do body...............................................................................
           Expanded(
-              child: Stack(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(top: 70),
-                decoration: BoxDecoration(
-                    color: backgrounColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(22),
-                      topRight: Radius.circular(22),
-                    )),
-              ),
-              ListView.builder(
-                itemCount: empresalist.length,
-                itemBuilder: (context, index) => ProductCard(
-                  itemIndex: index,
-                  product: empresalist[index],
-                  press: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PageEmpresas()));
-                  },
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(top: 70),
+                  decoration: BoxDecoration(
+                      color: backgrounColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(22),
+                        topRight: Radius.circular(22),
+                      )),
                 ),
-              ),
-            ],
-          ))
+                ListView.builder(
+                  itemCount: empresalist.length,
+                  itemBuilder: (context, index) => ProductCard(
+                    itemIndex: index,
+                    product: empresalist[index],
+                    press: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PageEmpresas()));
+                    },
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
   }
 }
 
+//barra de pesquisa.....................................................................................
 class SeachWidget extends StatelessWidget {
   const SeachWidget({
     Key key,

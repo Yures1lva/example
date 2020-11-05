@@ -31,8 +31,8 @@ class _PageEmpresasState extends State<PageEmpresas> {
           }),
       centerTitle: false,
       title: Text(
-        "Voltar".toUpperCase(),
-        style: subtitulo,
+        "Voltar",
+        style: titulo1,
       ),
       actions: <Widget>[
         IconButton(

@@ -1,5 +1,5 @@
+import 'package:exampleflutter/loginPage.dart';
 import 'package:flutter/material.dart';
-import 'package:exampleflutter/listadeempresas.dart';
 import 'package:exampleflutter/constants.dart';
 
 void main() {
@@ -15,11 +15,12 @@ class MyApp extends StatelessWidget {
       title: 'BusqueEmpresas',
       theme: ThemeData(
         // We set Poppins as our default font
+        secondaryHeaderColor: Colors.black,
         primaryColor: primaryColor,
         accentColor: primaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Listadeempresas(),
+      home: LoginPage(),
     );
   }
 }

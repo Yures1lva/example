@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 
 double bordas = 5;
 
+//paleta de cores.......................
 const backgrounColor = Colors.white;
 const primaryColor = Color(0xff0a8754);
 const secondaryColor = Color(0xff91aec1);
+const buttonColor = Color(0xff91aec1);
 const iconColor = Colors.black,
+
+//esquema de escrita...................
     titulo1 = TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w600,
-      //fontFamily: ,
       color: Colors.black,
     );
 
@@ -25,28 +28,34 @@ const textonormal = TextStyle(
   fontSize: 12,
 );
 
-//elevção de um Container
+const textButton = TextStyle(
+  fontWeight: FontWeight.bold,
+  color: iconColor,
+  fontSize: 15,
+);
+
+//elevção de um Container.................................
 const elevation = BoxShadow(
   offset: Offset(0, 15),
   blurRadius: 27,
   color: Colors.black12, // Black color with 12% opacity
 );
 
+//alocação dos widgets
 const double symetricPad = 20;
-const double star = 15;
 
+//icones das estrelas............
+const double star = 15;
 const starIcon1 = Icon(
   Icons.star,
   size: star,
   color: iconColor,
 );
-
 const starIcon2 = Icon(
   Icons.star_half,
   size: star,
   color: iconColor,
 );
-
 const starIcon3 = Icon(
   Icons.star_border_purple500_sharp,
   size: star,

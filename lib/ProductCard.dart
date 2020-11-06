@@ -93,13 +93,7 @@ class ProductCard extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             Row(
-                              children: <Widget>[
-                                starStyle1,
-                                starStyle1,
-                                starStyle1,
-                                starStyle2,
-                                starStyle3,
-                              ],
+                              children: StarList(5.0),
                             )
                           ],
                         ),
@@ -111,5 +105,18 @@ class ProductCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<Widget> StarList(double estrela) {
+    int i;
+
+    List listaDeEstrelas;
+
+    for (var i = 0; i < estrela; i++) {
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+
+    return listaDeEstrelas;
   }
 }

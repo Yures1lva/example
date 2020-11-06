@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:exampleflutter/constants.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:exampleflutter/listadeempresas.dart';
 
 class Empresalist {
   final int id;
   final String name, description, image;
+  final double avaliacao;
 
-  Empresalist({
-    this.id,
-    this.name,
-    this.description,
-    this.image,
-  });
+  Empresalist(
+      {this.id, this.name, this.description, this.image, this.avaliacao});
 }
 
 final List<Empresalist> empresalist = [
@@ -20,10 +18,11 @@ final List<Empresalist> empresalist = [
     name: "Atacadão",
     image: 'images/atacadaoicon.png',
     description: "Temos grandes ofertas e encartes da loja Atacadão em Marabá,",
+    avaliacao: 4,
   ),
   Empresalist(
       id: 5,
-      name: "Avan",
+      name: "Havan",
       image: "images/avanicon.png",
       description:
           "Ofertas imperdíveis. Tudo pra você, sua família e sua casa"),

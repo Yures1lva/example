@@ -1,17 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:exampleflutter/constants.dart';
+import 'package:flutter/cupertino.dart';
+
 class Empresalist {
   final int id;
   final String name, description, image;
 
-  Empresalist({this.id, this.name, this.description, this.image});
+  Empresalist({
+    this.id,
+    this.name,
+    this.description,
+    this.image,
+  });
 }
 
-List<Empresalist> empresalist = [
+final List<Empresalist> empresalist = [
   Empresalist(
-      id: 3,
-      name: "Atacadão",
-      image: 'images/atacadaoicon.png',
-      description:
-          "Temos grandes ofertas e encartes da loja Atacadão em Marabá,"),
+    id: 3,
+    name: "Atacadão",
+    image: 'images/atacadaoicon.png',
+    description: "Temos grandes ofertas e encartes da loja Atacadão em Marabá,",
+  ),
   Empresalist(
       id: 5,
       name: "Avan",

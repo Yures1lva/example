@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: <Widget>[
                       Text(
                         "Entre no FastShope \ne realize suas compras \nlocais pelo app",
-                        style: subtitulo,
+                        style: textonormal2,
                       ),
                       Text(
                         "imagem",
@@ -73,13 +73,14 @@ class _LoginPageState extends State<LoginPage> {
                   height: 50,
                   alignment: Alignment.centerLeft,
                   decoration: BoxDecoration(
-                    color: secondaryColor,
+                    color: buttonColor,
                     borderRadius: BorderRadius.all(
                       Radius.circular(bordas),
                     ),
                   ),
                   child: SizedBox.expand(
                     child: FlatButton(
+                      // color: buttonColor,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[

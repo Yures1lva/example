@@ -99,8 +99,8 @@ class _ListadeempresasState extends State<Listadeempresas> {
                   decoration: BoxDecoration(
                       color: backgrounColor,
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(22),
-                        topRight: Radius.circular(22),
+                        topLeft: Radius.circular(16),
+                        topRight: Radius.circular(16),
                       )),
                 ),
                 ListView.builder(
@@ -154,7 +154,7 @@ class SeachWidget extends StatelessWidget {
               color: iconColor,
             ),
             hintText: "Pesquisar Empresa",
-            hintStyle: subtitulo),
+            hintStyle: textonormal2),
       ),
     );
   }

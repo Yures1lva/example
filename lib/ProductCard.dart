@@ -22,7 +22,7 @@ class ProductCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(
           horizontal: symetricPad, vertical: symetricPad / 2),
-      height: 160,
+      height: 150,
       child: InkWell(
         onTap: press,
         child: Stack(
@@ -31,14 +31,14 @@ class ProductCard extends StatelessWidget {
             Container(
               height: 136,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(22),
+                  borderRadius: BorderRadius.circular(16),
                   color: secondaryColor),
               child: Container(
                 margin: EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [elevation],
-                    borderRadius: BorderRadius.circular(22)),
+                    borderRadius: BorderRadius.circular(16)),
               ),
             ),
             VerticalDivider(
@@ -88,21 +88,17 @@ class ProductCard extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: secondaryColor,
                             borderRadius: BorderRadius.only(
-                                bottomRight: Radius.circular(22),
-                                topLeft: Radius.circular(22))),
+                                bottomRight: Radius.circular(20),
+                                topLeft: Radius.circular(20))),
                         child: Column(
                           children: <Widget>[
                             Row(
                               children: <Widget>[
-                                StarIcon1(),
-                                StarIcon1(),
-                                StarIcon1(),
-                                Padding(
-                                    padding: EdgeInsets.all(0.0),
-                                    child: starIcon2),
-                                Padding(
-                                    padding: EdgeInsets.all(0.0),
-                                    child: starIcon3),
+                                starStyle1,
+                                starStyle1,
+                                starStyle1,
+                                starStyle2,
+                                starStyle3,
                               ],
                             )
                           ],
@@ -115,16 +111,5 @@ class ProductCard extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class StarIcon1 extends StatelessWidget {
-  const StarIcon1({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.all(0.0), child: starIcon1);
   }
 }

@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
 
+class Constants extends StatefulWidget {
+  @override
+  _ConstantsState createState() => _ConstantsState();
+}
+
+class _ConstantsState extends State<Constants> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+  }
+}
+
 double bordas = 5;
 
 //paleta de cores.......................
 const backgrounColor = Colors.white;
 const primaryColor = Color(0xff0a8754);
 const secondaryColor = Color(0xff91aec1);
-const buttonColor = Color(0xff91aec1);
-const iconColor = Colors.black,
+const buttonColor = primaryColor;
+const iconColor = Colors.white,
 
 //esquema de escrita...................
     titulo1 = TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w600,
-      color: Colors.black,
+      color: Colors.white,
     );
 
 const subtitulo = TextStyle(
@@ -24,8 +36,14 @@ const subtitulo = TextStyle(
 
 const textonormal = TextStyle(
   fontWeight: FontWeight.w500,
-  color: Colors.black,
+  color: Colors.white,
   fontSize: 12,
+);
+
+const textonormal2 = TextStyle(
+  fontWeight: FontWeight.w500,
+  color: Colors.white,
+  fontSize: 15,
 );
 
 const textButton = TextStyle(
@@ -45,6 +63,11 @@ const elevation = BoxShadow(
 const double symetricPad = 20;
 
 //icones das estrelas............
+
+const starStyle1 = Padding(padding: EdgeInsets.all(0.0), child: starIcon1);
+const starStyle2 = Padding(padding: EdgeInsets.all(0.0), child: starIcon2);
+const starStyle3 = Padding(padding: EdgeInsets.all(0.0), child: starIcon3);
+
 const double star = 15;
 const starIcon1 = Icon(
   Icons.star,

@@ -93,7 +93,7 @@ class ProductCard extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             Row(
-                              children: StarList(5.0),
+                              children: StarList(product.avaliacao),
                             )
                           ],
                         ),
@@ -108,15 +108,49 @@ class ProductCard extends StatelessWidget {
   }
 
   List<Widget> StarList(double estrela) {
-    int i;
+    List<Widget> listaDeEstrelas = new List();
 
-    List listaDeEstrelas;
+    if (estrela == 2) {
+      for (var i = 0; i < estrela; i++) {
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle2);
+        listaDeEstrelas.add(starStyle3);
+        listaDeEstrelas.add(starStyle3);
 
-    for (var i = 0; i < estrela; i++) {
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
+        return listaDeEstrelas;
+      }
+    } else if (estrela == 3) {
+      for (var i = 0; i < estrela; i++) {
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle3);
+        listaDeEstrelas.add(starStyle3);
 
-    return listaDeEstrelas;
+        return listaDeEstrelas;
+      }
+    } else if (estrela == 4) {
+      for (var i = 0; i < estrela; i++) {
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle3);
+
+        return listaDeEstrelas;
+      }
+    } else if (estrela == 5) {
+      for (var i = 0; i < estrela; i++) {
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle1);
+        listaDeEstrelas.add(starStyle1);
+
+        return listaDeEstrelas;
+      }
+    }
+    ;
   }
 }

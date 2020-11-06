@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:exampleflutter/constants.dart';
-import 'package:exampleflutter/listadeempresas.dart';
+import 'package:exampleflutter/homePage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
         elevation: 0,
         centerTitle: false,
         title: Text(
-          'FastShope',
+          'Entre no FastShope',
           style: titulo1,
         ),
         actions: <Widget>[
@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: SizedBox.expand(
                     child: FlatButton(
-                      // color: buttonColor,
+                      color: buttonColor,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -99,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Listadeempresas()));
+                                builder: (context) => HomePage()));
                       },
                     ),
                   ),

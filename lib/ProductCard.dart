@@ -56,7 +56,7 @@ class ProductCard extends StatelessWidget {
                   horizontal: symetricPad,
                 ),
                 height: 120,
-                // width: 200,
+                width: 160,
                 child: Image.asset(product.image, fit: BoxFit.cover),
               ),
             ),

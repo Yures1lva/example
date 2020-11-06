@@ -28,6 +28,12 @@ const iconColor = Colors.white,
       color: Colors.white,
     );
 
+const titulo2 = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w400,
+  color: Colors.black,
+);
+
 const subtitulo = TextStyle(
   fontWeight: FontWeight.w600,
   color: Colors.black,

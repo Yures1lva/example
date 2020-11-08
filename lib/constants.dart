@@ -82,27 +82,26 @@ const starIcon3 = Icon(
 //widget de busca..........................................................
 final ValueChanged onChanged = (value) {};
 
-Container search_box(String hintText, BoxDecoration decoracao) {
-  return Container(
-    margin: EdgeInsets.all(20.0),
-    padding: EdgeInsets.symmetric(
-      horizontal: symetricPad,
-      vertical: 2,
-    ),
-    decoration: decoracao,
-    child: TextField(
-      onChanged: onChanged,
-      style: TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-        enabledBorder: InputBorder.none,
-        focusedBorder: InputBorder.none,
-        icon: Icon(
-          Icons.search,
-          color: iconColor,
-        ),
-        hintText: hintText,
-        hintStyle: textonormal2,
+// ignore: non_constant_identifier_names
+Container search_box(String hintText, BoxDecoration decoracao) => Container(
+      margin: EdgeInsets.all(20.0),
+      padding: EdgeInsets.symmetric(
+        horizontal: symetricPad,
+        vertical: 2,
       ),
-    ),
-  );
-}
+      decoration: decoracao,
+      child: TextField(
+        onChanged: onChanged,
+        style: TextStyle(color: Colors.white),
+        decoration: InputDecoration(
+          enabledBorder: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          icon: Icon(
+            Icons.search,
+            color: iconColor,
+          ),
+          hintText: hintText,
+          hintStyle: textonormal2,
+        ),
+      ),
+    );

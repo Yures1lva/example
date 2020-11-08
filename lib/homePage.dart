@@ -1,7 +1,7 @@
 import 'package:exampleflutter/listadeempresas.dart';
 import 'package:flutter/material.dart';
 import 'package:exampleflutter/constants.dart';
-//import 'package:exampleflutter/search_box.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,13 +15,21 @@ class _HomePageState extends State<HomePage> {
   _HomePageState();
 
   int _current = 0;
-  List indexImages = [
+  List imgList = [
     'images/promonike1.png',
     'images/promonike2.png',
     'images/promonike3.png',
     'images/promohavan1.png',
     'images/promohavan2.png',
   ];
+
+  List<T> map<T>(List list, Function handler) {
+    List<T> result = [];
+    for (var i = 0; i < list.length; i++) {
+      result.add(handler(i, list[i]));
+    }
+    return result;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,86 +64,92 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(5),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(
-                left: 20.0,
-                right: 20,
-                top: 5,
+            CarouselSlider(
+              options: CarouselOptions(
+                height: 350.0,
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 2),
+                autoPlayAnimationDuration: Duration(milliseconds: 1500),
+                autoPlayCurve: Curves.easeInOut, //Curves.easeOutQuad,
+                enlargeCenterPage: true,
+                scrollDirection: Axis.horizontal,
               ),
-              padding: EdgeInsets.symmetric(
-                horizontal: 0,
-              ),
-              height: 300,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: secondaryColor,
-              ),
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                      top: 20,
-                      bottom: 0,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: symetricPad,
-                    ),
-                    height: 280,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(5),
-                        topRight: Radius.circular(5),
-                        bottomLeft: Radius.circular(2.5),
-                        bottomRight: Radius.circular(2.5),
-                      ),
-                      color: primaryColor,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                      top: 280,
-                      bottom: 0,
-                    ),
-                    //  padding: EdgeInsets.symmetric( horizontal: symetricPad,),
-                    height: 20,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(5),
-                        topRight: Radius.circular(5),
-                        bottomLeft: Radius.circular(2.5),
-                        bottomRight: Radius.circular(2.5),
-                      ),
-                      color: Colors.black, //primaryColor,
-                    ),
-
-                    /*Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "alo",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                         Container(
-                          padding: EdgeInsets.only(
-                            top: 281,
+              items: imgList.map((imgUrl) {
+                onPageChanged:
+                funcionIndex();
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Column(children: <Widget>[
+                      Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 1,
                           ),
-                          height: 10,
                           decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(5)),
-                        ),
-                      ],
-                    ),*/
+                            borderRadius: BorderRadius.circular(5),
+                            //color: secondaryColor,
+                          ),
+                          child: imageBuilder(imgUrl)),
+                    ]);
+                  },
+                );
+              }).toList(),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: map<Widget>(imgList, (index, url) {
+                return Container(
+                  width: 10.0,
+                  height: 10.0,
+                  margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _current == index ? primaryColor : secondaryColor,
                   ),
-                ],
-              ),
+                );
+              }),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void funcionIndex() {
+    (index) {
+      setState(() {
+        _current = index;
+      });
+    };
+  }
+
+  Container imageBuilder(String image) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 1,
+      ),
+      height: 300,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        color: secondaryColor,
+      ),
+      child: Container(
+        margin: EdgeInsets.only(
+          left: 20,
+          right: 20,
+          top: 20,
+          bottom: 3,
+        ),
+        padding: EdgeInsets.symmetric(horizontal: symetricPad),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(5),
+              topRight: Radius.circular(5),
+              bottomLeft: Radius.circular(2.5),
+              bottomRight: Radius.circular(2.5),
+            ),
+            image:
+                DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
       ),
     );
   }
@@ -152,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                   height: 130,
                   width: double.infinity,
                   padding: EdgeInsets.only(
-                    top: 90,
+                    top: 80,
                     left: 30,
                   ),
                   child: Text(
@@ -286,3 +300,90 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+/*
+            Container(
+              margin: EdgeInsets.only(
+                left: 20.0,
+                right: 20,
+                top: 5,
+              ),
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
+              height: 300,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: secondaryColor,
+              ),
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(
+                      top: 20,
+                      bottom: 0,
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: symetricPad,
+                    ),
+                    height: 280,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(5),
+                        topRight: Radius.circular(5),
+                        bottomLeft: Radius.circular(2.5),
+                        bottomRight: Radius.circular(2.5),
+                      ),
+                      color: primaryColor,
+                    ),
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      // crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                      left: 10,
+                      right: 10,
+                      top: 280,
+                      bottom: 0,
+                    ),
+                    //  padding: EdgeInsets.symmetric( horizontal: symetricPad,),
+                    height: 20,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(5),
+                        topRight: Radius.circular(5),
+                        bottomLeft: Radius.circular(2.5),
+                        bottomRight: Radius.circular(2.5),
+                      ),
+                      color: Colors.black, //primaryColor,
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "alo",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                         Container(
+                          padding: EdgeInsets.only(
+                            top: 281,
+                          ),
+                          height: 10,
+                          decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),*/

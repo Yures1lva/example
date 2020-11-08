@@ -18,7 +18,7 @@ final List<Empresalist> empresalist = [
   Empresalist(
       id: 5,
       name: "Havan",
-      image: "images/avanicon.png",
+      image: "images/havanicon.png",
       description: "Ofertas imperdíveis. Tudo pra você, sua família e sua casa",
       avaliacao: 2),
   Empresalist(

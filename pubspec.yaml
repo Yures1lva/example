@@ -25,13 +25,14 @@ dependencies:
   #search_widget: <latest version>
   flutter:
     sdk: flutter
-    carousel_slider: ^1.3.0
+    
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
 
+  carousel_slider: ^2.3.1
   
 
 dev_dependencies:

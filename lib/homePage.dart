@@ -8,12 +8,17 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-const Color colorIconDrawn = secondaryColor;
+//tema padrão da pag
+const cor1 = primaryColor;
+const cor2 = secondaryColor;
+const corfundo = backgrounColor;
+const Color colorIconDrawn = cor1;
 //const onpressed = () {Navigator.push(context,MaterialPageRoute(builder: (context) => Listadeempresas()));};
 
 class _HomePageState extends State<HomePage> {
   _HomePageState();
 
+  CarouselSlider carouselSlider;
   int _current = 0;
   List imgList = [
     'images/promonike1.png',
@@ -37,6 +42,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: backgrounColor,
       drawer: buildDrawer(context),
       appBar: AppBar(
+        backgroundColor: cor1,
         elevation: 0,
         centerTitle: false,
         title: Text(
@@ -60,23 +66,26 @@ class _HomePageState extends State<HomePage> {
             search_box(
               "Buscar Empresa",
               BoxDecoration(
-                color: Color(0xff91aec1), //.withOpacity(0.4),
+                color: cor2, //.withOpacity(0.4),
                 borderRadius: BorderRadius.circular(5),
               ),
             ),
-            CarouselSlider(
+            carouselSlider = CarouselSlider(
               options: CarouselOptions(
-                height: 350.0,
+                height: 330.0,
                 autoPlay: true,
-                autoPlayInterval: Duration(seconds: 2),
+                autoPlayInterval: Duration(seconds: 3),
                 autoPlayAnimationDuration: Duration(milliseconds: 1500),
                 autoPlayCurve: Curves.easeInOut, //Curves.easeOutQuad,
                 enlargeCenterPage: true,
                 scrollDirection: Axis.horizontal,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                },
               ),
               items: imgList.map((imgUrl) {
-                onPageChanged:
-                funcionIndex();
                 return Builder(
                   builder: (BuildContext context) {
                     return Column(children: <Widget>[
@@ -86,7 +95,6 @@ class _HomePageState extends State<HomePage> {
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            //color: secondaryColor,
                           ),
                           child: imageBuilder(imgUrl)),
                     ]);
@@ -100,10 +108,10 @@ class _HomePageState extends State<HomePage> {
                 return Container(
                   width: 10.0,
                   height: 10.0,
-                  margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                  margin: EdgeInsets.symmetric(horizontal: 3.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: _current == index ? primaryColor : secondaryColor,
+                    color: _current == index ? cor1 : cor2,
                   ),
                 );
               }),
@@ -114,24 +122,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void funcionIndex() {
-    (index) {
-      setState(() {
-        _current = index;
-      });
-    };
-  }
-
   Container imageBuilder(String image) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 1,
-      ),
-      height: 300,
-      width: double.infinity,
+      height: 280,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: secondaryColor,
+        color: cor2,
       ),
       child: Container(
         margin: EdgeInsets.only(
@@ -162,7 +158,7 @@ class _HomePageState extends State<HomePage> {
             child: Stack(
               children: <Widget>[
                 Container(
-                  color: secondaryColor,
+                  color: cor1,
                   height: 130,
                   width: double.infinity,
                   padding: EdgeInsets.only(
@@ -171,7 +167,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Text(
                     "Olá Yure",
-                    style: titulo2,
+                    style: titulo1,
                   ),
                 ),
                 buildContainer(
@@ -254,9 +250,9 @@ class _HomePageState extends State<HomePage> {
 
   Divider buildDivider(double indexH) {
     return Divider(
-      color: secondaryColor,
+      color: cor1,
       height: indexH, //sempre + 120
-      thickness: 2,
+      thickness: 1,
       indent: 20,
       endIndent: 20,
     );
@@ -272,10 +268,10 @@ class _HomePageState extends State<HomePage> {
       margin: EdgeInsets.only(right: 0, left: 0, top: indexP),
       height: 60,
       alignment: Alignment.centerLeft,
-      decoration: BoxDecoration(color: Colors.white),
+      decoration: BoxDecoration(color: corfundo),
       child: SizedBox.expand(
         child: FlatButton(
-          color: Colors.white,
+          color: corfundo,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -300,90 +296,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-/*
-            Container(
-              margin: EdgeInsets.only(
-                left: 20.0,
-                right: 20,
-                top: 5,
-              ),
-              padding: EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              height: 300,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: secondaryColor,
-              ),
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: 20,
-                      bottom: 0,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: symetricPad,
-                    ),
-                    height: 280,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(5),
-                        topRight: Radius.circular(5),
-                        bottomLeft: Radius.circular(2.5),
-                        bottomRight: Radius.circular(2.5),
-                      ),
-                      color: primaryColor,
-                    ),
-                    child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      // crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                      top: 280,
-                      bottom: 0,
-                    ),
-                    //  padding: EdgeInsets.symmetric( horizontal: symetricPad,),
-                    height: 20,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(5),
-                        topRight: Radius.circular(5),
-                        bottomLeft: Radius.circular(2.5),
-                        bottomRight: Radius.circular(2.5),
-                      ),
-                      color: Colors.black, //primaryColor,
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "alo",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                         Container(
-                          padding: EdgeInsets.only(
-                            top: 281,
-                          ),
-                          height: 10,
-                          decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(5)),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),*/

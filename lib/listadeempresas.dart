@@ -48,12 +48,17 @@ class _ListadeempresasState extends State<Listadeempresas> {
       ),
       body: Column(
         children: <Widget>[
-          SeachWidget(
-            onChanged: (value) {},
+          search_box(
+            "Buscar Empresa ou Produto",
+            BoxDecoration(
+              color: Color(0xff91aec1), //.withOpacity(0.4),
+              borderRadius: BorderRadius.circular(5),
+            ),
           ),
 //lista de na vertical.......................................................................................
           Container(
-            margin: EdgeInsets.symmetric(vertical: symetricPad / 2),
+            margin:
+                EdgeInsets.symmetric(vertical: symetricPad / 2, horizontal: 1),
             height: 35,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -120,41 +125,6 @@ class _ListadeempresasState extends State<Listadeempresas> {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-//barra de pesquisa.....................................................................................
-class SeachWidget extends StatelessWidget {
-  const SeachWidget({
-    Key key,
-    this.onChanged,
-  }) : super(key: key);
-
-  final ValueChanged onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(20.0),
-      padding: EdgeInsets.symmetric(
-        horizontal: symetricPad,
-        vertical: 2,
-      ),
-      decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.4),
-          borderRadius: BorderRadius.circular(5)),
-      child: TextField(
-        decoration: InputDecoration(
-            enabledBorder: InputBorder.none,
-            focusedBorder: InputBorder.none,
-            icon: Icon(
-              Icons.search,
-              color: iconColor,
-            ),
-            hintText: "Pesquisar Empresa",
-            hintStyle: textonormal2),
       ),
     );
   }

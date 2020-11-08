@@ -1,17 +1,5 @@
 import 'package:flutter/material.dart';
 
-class Constants extends StatefulWidget {
-  @override
-  _ConstantsState createState() => _ConstantsState();
-}
-
-class _ConstantsState extends State<Constants> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
-
 double bordas = 5;
 
 //paleta de cores.......................
@@ -91,26 +79,30 @@ const starIcon3 = Icon(
   color: iconColor,
 );
 
-/*class Staravaliacao {
-  int id = 0;
-  final starIcon = Icon(
-    Icons.star_border_purple500_sharp,
-    size: star,
-    color: backgrounColor,
+//widget de busca..........................................................
+final ValueChanged onChanged = (value) {};
+
+Container search_box(String hintText, BoxDecoration decoracao) {
+  return Container(
+    margin: EdgeInsets.all(20.0),
+    padding: EdgeInsets.symmetric(
+      horizontal: symetricPad,
+      vertical: 2,
+    ),
+    decoration: decoracao,
+    child: TextField(
+      onChanged: onChanged,
+      style: TextStyle(color: Colors.white),
+      decoration: InputDecoration(
+        enabledBorder: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        icon: Icon(
+          Icons.search,
+          color: iconColor,
+        ),
+        hintText: hintText,
+        hintStyle: textonormal2,
+      ),
+    ),
   );
-
-  Staravaliacao({
-    this.id,
-  });
-  void arroz() {
-    if (id == 1) {
-      return starIcon;
-    }
-  }
-
-  List<Staravaliacao> staravaliacao = [
-    Staravaliacao(
-      id: 1,
-    )
-  ];
-}*/
+}

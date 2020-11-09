@@ -20,9 +20,11 @@ class ProductCard extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Container(
-      margin: EdgeInsets.symmetric(
-          horizontal: symetricPad, vertical: symetricPad / 2),
+      margin: EdgeInsets.symmetric(horizontal: 1, vertical: symetricPad / 2),
       height: 150,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
@@ -48,23 +50,26 @@ class ProductCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16)),
                     ),
                   ),
-                  /*VerticalDivider(
-                    color: primaryColor,
-                    width: 3,
-                    thickness: 1.5,
-                    indent: 41,
-                    endIndent: 20,
-                  ),*/
                   Positioned(
-                    left: 0,
-                    bottom: 8,
+                    left: 18,
+                    bottom: 15,
                     child: Container(
                       padding: EdgeInsets.symmetric(
                         horizontal: symetricPad,
                       ),
-                      height: 120,
-                      width: 160,
-                      child: Image.asset(product.image, fit: BoxFit.cover),
+                      height: 100,
+                      width: 140,
+                      child: Material(
+                        elevation: 0.5,
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        //type: MaterialType.transparency,
+                        child: Image(
+                          image: AssetImage(product.image),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
                     ),
                   ),
                   Positioned(

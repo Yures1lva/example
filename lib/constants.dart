@@ -18,7 +18,7 @@ const iconColor = Colors.white,
 
 const titulo2 = TextStyle(
   fontSize: 20,
-  fontWeight: FontWeight.w400,
+  fontWeight: FontWeight.w600,
   color: Colors.black,
 );
 

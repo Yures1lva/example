@@ -9,10 +9,12 @@ class HomePage extends StatefulWidget {
 }
 
 //tema padrão da pag
+const texto1 = titulo1;
+const texto2 = titulo2;
 const cor1 = primaryColor;
 const cor2 = secondaryColor;
 const corfundo = backgrounColor;
-const Color colorIconDrawn = cor1;
+const Color colorIconDrawn = Colors.white;
 //const onpressed = () {Navigator.push(context,MaterialPageRoute(builder: (context) => Listadeempresas()));};
 
 class _HomePageState extends State<HomePage> {
@@ -39,7 +41,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgrounColor,
+      backgroundColor: corfundo,
       drawer: buildDrawer(context),
       appBar: AppBar(
         backgroundColor: cor1,
@@ -66,18 +68,38 @@ class _HomePageState extends State<HomePage> {
             search_box(
               "Buscar Empresa",
               BoxDecoration(
-                color: cor2, //.withOpacity(0.4),
+                color: cor2,
                 borderRadius: BorderRadius.circular(5),
               ),
             ),
+//..........comço do desing de promções..........................
+            Container(
+              height: 22,
+              margin: EdgeInsets.only(right: 44, left: 44),
+              width: double.infinity,
+              padding: EdgeInsets.only(left: 0, bottom: 0),
+              child: Text(
+                "Promoções",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: cor2,
+                ),
+              ),
+            ),
+            Divider(
+              height: 4,
+              color: Colors.transparent,
+            ),
             carouselSlider = CarouselSlider(
               options: CarouselOptions(
-                height: 330.0,
+                height: 300.0,
+                enableInfiniteScroll: true,
                 autoPlay: true,
-                autoPlayInterval: Duration(seconds: 3),
-                autoPlayAnimationDuration: Duration(milliseconds: 1500),
+                autoPlayInterval: Duration(seconds: 5),
+                autoPlayAnimationDuration: Duration(milliseconds: 1700),
                 autoPlayCurve: Curves.easeInOut, //Curves.easeOutQuad,
-                enlargeCenterPage: true,
+                //enlargeCenterPage: true,
                 scrollDirection: Axis.horizontal,
                 onPageChanged: (index, reason) {
                   setState(() {
@@ -89,14 +111,7 @@ class _HomePageState extends State<HomePage> {
                 return Builder(
                   builder: (BuildContext context) {
                     return Column(children: <Widget>[
-                      Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 1,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: imageBuilder(imgUrl)),
+                      imageBuilder(imgUrl),
                     ]);
                   },
                 );
@@ -108,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                 return Container(
                   width: 10.0,
                   height: 10.0,
-                  margin: EdgeInsets.symmetric(horizontal: 3.0),
+                  margin: EdgeInsets.only(left: 3, right: 3, top: 5.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: _current == index ? cor1 : cor2,
@@ -116,36 +131,167 @@ class _HomePageState extends State<HomePage> {
                 );
               }),
             ),
+//..........fim do desing de promções..........................
+            Divider(
+              height: 20,
+              color: Colors.transparent,
+            ),
+            WidgetName("Ver Empresas"),
+            Containerdesiner1(300, 120, 135),
+            WidgetName("Seus Pedidos"),
+            Containerdesiner1(80, 20, 130),
+            WidgetName("Esportes"),
+            Containerdesiner1(150, 55, 130),
+            WidgetName("Tecnologia"),
+            Containerdesiner1(150, 55, 130),
+            WidgetName("Cozinha"),
+            Containerdesiner1(150, 55, 130),
+            Divider(
+              height: 20,
+              color: Colors.transparent,
+            ),
           ],
         ),
       ),
     );
   }
 
+  Container WidgetName(String name) {
+    return Container(
+      height: 22,
+      margin: EdgeInsets.only(left: 22, bottom: 3),
+      width: double.infinity,
+      child: Text(
+        name,
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: cor2,
+        ),
+      ),
+    );
+  }
+
+  Container Containerdesiner1(double height, double hTamanho, double wTamanho) {
+    return Container(
+      height: height,
+      decoration: BoxDecoration(
+        color: cor1,
+        borderRadius: BorderRadius.circular(5),
+      ),
+      margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+      child: Container(
+        height: 200,
+        margin: EdgeInsets.only(top: 3, left: 3, right: 3, bottom: 3),
+        decoration: BoxDecoration(
+          color: corfundo,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: Container(
+          height: 30,
+          width: double.infinity,
+          padding: EdgeInsets.only(
+            top: 10,
+            left: 27,
+            right: 27,
+          ),
+          decoration: BoxDecoration(
+            color: corfundo,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(5),
+              topLeft: Radius.circular(5),
+            ),
+          ),
+          child: Column(
+            children: childrenWidget(hTamanho, wTamanho),
+          ),
+        ),
+      ),
+    );
+  }
+
+  List<Widget> childrenWidget(double hTamanho, double wTamanho) {
+    return <Widget>[
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+            height: hTamanho,
+            width: wTamanho,
+            decoration: BoxDecoration(
+              color: Colors.blueGrey,
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+          Container(
+            height: hTamanho,
+            width: wTamanho,
+            decoration: BoxDecoration(
+              color: Colors.blueGrey,
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        height: 15,
+        color: Colors.transparent,
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+            height: hTamanho,
+            width: wTamanho,
+            decoration: BoxDecoration(
+              color: Colors.blueGrey,
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+          Container(
+            height: hTamanho,
+            width: wTamanho,
+            decoration: BoxDecoration(
+              color: Colors.blueGrey,
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+        ],
+      ),
+    ];
+  }
+
   Container imageBuilder(String image) {
     return Container(
-      height: 280,
+      margin: EdgeInsets.symmetric(horizontal: 5),
+      height: 290,
+      width: 500,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: cor2,
       ),
       child: Container(
         margin: EdgeInsets.only(
-          left: 20,
-          right: 20,
-          top: 20,
+          left: 3,
+          right: 3,
+          top: 3,
           bottom: 3,
         ),
-        padding: EdgeInsets.symmetric(horizontal: symetricPad),
+        //padding: EdgeInsets.symmetric(horizontal: symetricPad),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(5),
-              topRight: Radius.circular(5),
-              bottomLeft: Radius.circular(2.5),
-              bottomRight: Radius.circular(2.5),
-            ),
-            image:
-                DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
+          color: Colors.transparent,
+        ),
+        child: Material(
+          elevation: 2,
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(5),
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          //type: MaterialType.transparency,
+          child: Image(
+            image: AssetImage(image),
+            fit: BoxFit.fill,
+          ),
+        ),
       ),
     );
   }

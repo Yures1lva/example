@@ -12,7 +12,7 @@ final List<Empresalist> empresalist = [
     id: 3,
     name: "Atacadão",
     image: 'images/atacadaoicon.png',
-    description: "Temos grandes ofertas e encartes da loja Atacadão em Marabá,",
+    description: "Temos grandes ofertas e encartes da loja Atacadão",
     avaliacao: 3,
   ),
   Empresalist(

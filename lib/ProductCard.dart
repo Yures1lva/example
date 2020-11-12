@@ -20,8 +20,8 @@ class ProductCard extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 1, vertical: symetricPad / 2),
-      height: 150,
+      padding: paddingPadrao,
+      height: 130,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
       ),
@@ -29,40 +29,33 @@ class ProductCard extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: <Widget>[
           Container(
-            color: Colors.transparent,
-            margin: EdgeInsets.symmetric(
-                horizontal: symetricPad, vertical: symetricPad / 2),
-            height: 150,
             child: InkWell(
               onTap: press,
               child: Stack(
                 children: <Widget>[
                   Container(
-                    height: 136,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(8),
                         color: secondaryColor),
                     child: Container(
-                      margin: EdgeInsets.only(left: 10),
+                      margin: EdgeInsets.only(left: 4),
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          boxShadow: [elevation],
-                          borderRadius: BorderRadius.circular(16)),
+                          //boxShadow: [elevation],
+                          borderRadius: BorderRadius.circular(8)),
                     ),
                   ),
                   Positioned(
-                    left: 18,
-                    bottom: 15,
+                    left: 15,
+                    bottom: 5,
                     child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: symetricPad,
-                      ),
+                      padding: EdgeInsets.only(bottom: 10, top: 10),
                       height: 100,
                       width: 140,
                       child: Material(
-                        elevation: 0.5,
+                        elevation: 0.0,
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(8),
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         //type: MaterialType.transparency,
                         child: Image(
@@ -76,18 +69,16 @@ class ProductCard extends StatelessWidget {
                       bottom: 0,
                       right: 0,
                       child: SizedBox(
-                        height: 150,
+                        height: 80,
                         width: size.width - 200,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: symetricPad, vertical: 42),
-                              child: Text(
-                                product.description,
-                                style: subtitulo,
-                              ),
+                                  horizontal: 10, vertical: 0),
+                              child: Text(product.description,
+                                  style: textonormal2),
                             ),
                             Spacer(),
                             Container(
@@ -100,8 +91,8 @@ class ProductCard extends StatelessWidget {
                               decoration: BoxDecoration(
                                   color: secondaryColor,
                                   borderRadius: BorderRadius.only(
-                                      bottomRight: Radius.circular(20),
-                                      topLeft: Radius.circular(26))),
+                                      bottomRight: Radius.circular(8),
+                                      topLeft: Radius.circular(8))),
                               child: Column(
                                 children: <Widget>[
                                   Row(

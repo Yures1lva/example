@@ -48,18 +48,23 @@ class _ListadeempresasState extends State<Listadeempresas> {
       ),
       body: Column(
         children: <Widget>[
-          search_box(
-            "Buscar Empresa ou Produto",
-            BoxDecoration(
-              color: secondaryColor, //.withOpacity(0.4),
-              borderRadius: BorderRadius.circular(5),
+          Container(
+            padding: paddingPadrao,
+            child: search_box(
+              "Buscar Empresa ou Produto",
+              BoxDecoration(
+                color: secondaryColor, //.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(5),
+              ),
             ),
           ),
 //lista de na vertical.......................................................................................
           Container(
-            margin:
-                EdgeInsets.symmetric(vertical: symetricPad / 2, horizontal: 1),
-            height: 35,
+            padding: paddingPadrao,
+            height: 55,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(bordas),
+            ),
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categoria.length,
@@ -73,10 +78,9 @@ class _ListadeempresasState extends State<Listadeempresas> {
                         alignment: Alignment
                             .center, //alinhando os widgets presentes no container
                         margin: EdgeInsets.only(
-                            left: 20.0,
-                            right: index == categoria.length - 1
-                                ? symetricPad
-                                : 0),
+                          right: 10.0,
+                          // right: index == categoria.length ? symetricPad : 0
+                        ),
                         padding: EdgeInsets.symmetric(horizontal: symetricPad),
                         decoration: BoxDecoration(
                             color: index == selectedIndex

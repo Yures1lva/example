@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:exampleflutter/constants.dart';
 import 'package:exampleflutter/homePage.dart';
 
+import 'PageEmpresas.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -11,7 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: backgrounColor,
       appBar: AppBar(
         elevation: 0,
         centerTitle: false,
@@ -32,78 +34,67 @@ class _LoginPageState extends State<LoginPage> {
       ),
       body: Column(
         children: <Widget>[
-          Expanded(
-            child: Stack(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: 75),
-                  decoration: BoxDecoration(
-                    color: backgrounColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(22),
-                      topRight: Radius.circular(22),
+          Container(
+            child: SingleChildScrollView(
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      padding: paddingPadrao,
+                      height: 80,
+                      color: primaryColor,
                     ),
-                  ),
-                ),
-                Container(
-                  margin:
-                      EdgeInsets.only(top: 22, left: 20, right: 20, bottom: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "Entre no FastShope e \nrealize suas compras \nlocais pelo app",
-                        style: textonormal2,
-                        textAlign: TextAlign.left,
+                    Container(
+                      padding: paddingPadrao,
+                      decoration: BoxDecoration(
+                        color: primaryColor,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        ),
                       ),
-                      Text(
-                        "imagem",
-                        style: textButton,
-                        textAlign: TextAlign.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            "Entre no FastShope e \nrealize suas compras \nlocais pelo app",
+                            style: titulo1,
+                            textAlign: TextAlign.left,
+                          ),
+                          Text(
+                            "imagem",
+                            style: titulo1,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 22, left: 20, right: 20),
-                ),
-                Divider(height: 20, color: Colors.transparent),
-                Container(
-                  margin: EdgeInsets.only(right: 20, left: 20, top: 600),
-                  height: 50,
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    color: buttonColor,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(bordas),
                     ),
-                  ),
-                  child: FlatButton(
-                    height: 50,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(bordas),
+                    Divider(
+                      height: 400,
+                      color: Colors.transparent,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
+                    Container(
+                      padding: paddingPadrao,
+                      child: butaoPadroa(
+                        context,
+                        "Entrar",
+                        buttonColor,
+                        iconColor,
                         Icon(
                           Icons.open_in_new,
                           color: iconColor,
                         ),
-                        Text(
-                          "ENTRAR",
-                          style: textButton,
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
+                        () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                        },
+                      ),
                     ),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
-                    },
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ],

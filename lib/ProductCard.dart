@@ -124,6 +124,7 @@ class ProductCard extends StatelessWidget {
 
   // ignore: non_constant_identifier_names
   // ignore: missing_return
+  //logica de avalição
   List<Widget> StarList(double estrela) {
     List<Widget> listaDeEstrelas = new List();
 

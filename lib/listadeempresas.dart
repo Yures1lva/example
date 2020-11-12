@@ -51,7 +51,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
           search_box(
             "Buscar Empresa ou Produto",
             BoxDecoration(
-              color: Color(0xff91aec1), //.withOpacity(0.4),
+              color: secondaryColor, //.withOpacity(0.4),
               borderRadius: BorderRadius.circular(5),
             ),
           ),

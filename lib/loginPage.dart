@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Stack(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(top: 70),
+                  margin: EdgeInsets.only(top: 75),
                   decoration: BoxDecoration(
                     color: backgrounColor,
                     borderRadius: BorderRadius.only(
@@ -46,15 +46,15 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(
-                    top: 22,
-                  ),
+                  margin:
+                      EdgeInsets.only(top: 22, left: 20, right: 20, bottom: 20),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        "Entre no FastShope \ne realize suas compras \nlocais pelo app",
+                        "Entre no FastShope e \nrealize suas compras \nlocais pelo app",
                         style: textonormal2,
+                        textAlign: TextAlign.left,
                       ),
                       Text(
                         "imagem",
@@ -78,30 +78,29 @@ class _LoginPageState extends State<LoginPage> {
                       Radius.circular(bordas),
                     ),
                   ),
-                  child: SizedBox.expand(
-                    child: FlatButton(
-                      color: buttonColor,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Icon(
-                            Icons.open_in_new,
-                            color: iconColor,
-                          ),
-                          Text(
-                            "ENTRAR",
-                            style: textButton,
-                            textAlign: TextAlign.left,
-                          ),
-                        ],
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));
-                      },
+                  child: FlatButton(
+                    height: 50,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(bordas),
                     ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Icon(
+                          Icons.open_in_new,
+                          color: iconColor,
+                        ),
+                        Text(
+                          "ENTRAR",
+                          style: textButton,
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    },
                   ),
                 ),
               ],

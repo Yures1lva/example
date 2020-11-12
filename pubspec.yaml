@@ -25,6 +25,7 @@ dependencies:
   #search_widget: <latest version>
   flutter:
     sdk: flutter
+    url_launcher: ^5.7.10
     
 
 

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 double bordas = 5;
 
 //paleta de cores.......................
-const backgrounColor = Colors.white;
+const backgrounColor = Color(0xffe0e0e0);
 const primaryColor = Color(0xff0a8754);
-const secondaryColor = Color(0xff91aec1);
+const secondaryColor = Color(0xff508ca4);
+const cor4 = Color(0xffbfd7ea);
 const buttonColor = primaryColor;
 const iconColor = Colors.white,
 
@@ -54,7 +55,7 @@ const elevation = BoxShadow(
 );
 
 //alocação dos widgets
-const double symetricPad = 20;
+const double symetricPad = 30;
 
 //icones das estrelas............
 
@@ -84,7 +85,7 @@ final ValueChanged onChanged = (value) {};
 
 // ignore: non_constant_identifier_names
 Container search_box(String hintText, BoxDecoration decoracao) => Container(
-      margin: EdgeInsets.all(20.0),
+      margin: EdgeInsets.only(left: 30.0, right: 30, top: 10, bottom: 10),
       padding: EdgeInsets.symmetric(
         horizontal: symetricPad,
         vertical: 2,

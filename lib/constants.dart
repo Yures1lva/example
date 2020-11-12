@@ -1,4 +1,7 @@
+import 'package:exampleflutter/loginPage.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'homePage.dart';
 
 double bordas = 5;
 
@@ -45,8 +48,8 @@ const textonormal2 = TextStyle(
 
 //elevção de um Container.................................
 const elevation = BoxShadow(
-  offset: Offset(0, 15),
-  blurRadius: 27,
+  offset: Offset(10, 5),
+  blurRadius: 57,
   color: Colors.black12, // Black color with 12% opacity
 );
 
@@ -136,6 +139,189 @@ Container butaoPadroa(BuildContext context, String name, Color corBotao,
         ],
       ),
       onPressed: pressione,
+    ),
+  );
+}
+
+Drawer BuildDrawer(BuildContext context, Color cortheme) {
+  _launchURL() async {
+    const url = "https://flutter.dev";
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  return Drawer(
+    child: Container(
+      color: backgrounColor,
+      child: Column(
+        children: <Widget>[
+          Container(
+            color: cortheme,
+            height: 130,
+            width: double.infinity,
+            padding: EdgeInsets.only(
+              top: 100,
+              left: 30,
+            ),
+            child: Text(
+              "Olá Yure",
+              style: titulo1,
+            ),
+          ),
+          Container(
+            padding: paddingPadrao,
+            child: Column(
+              children: <Widget>[
+                butaoPadroa(
+                  context,
+                  "Início",
+                  backgrounColor2,
+                  cortheme,
+                  Icon(
+                    Icons.home,
+                    color: cortheme,
+                  ),
+                  () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                ),
+                butaoPadroa(
+                  context,
+                  "Perfil",
+                  backgrounColor2,
+                  cortheme,
+                  Icon(
+                    Icons.person,
+                    color: cortheme,
+                  ),
+                  () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                ),
+                butaoPadroa(
+                  context,
+                  "Favoritos",
+                  backgrounColor2,
+                  cortheme,
+                  Icon(
+                    Icons.favorite,
+                    color: cortheme,
+                  ),
+                  () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                ),
+                butaoPadroa(
+                  context,
+                  "Mais vendidos",
+                  backgrounColor2,
+                  cortheme,
+                  Icon(
+                    Icons.bar_chart,
+                    color: cortheme,
+                  ),
+                  () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                ),
+                butaoPadroa(
+                  context,
+                  "Compras",
+                  backgrounColor2,
+                  cortheme,
+                  Icon(
+                    Icons.shopping_bag,
+                    color: cortheme,
+                  ),
+                  () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                ),
+                butaoPadroa(
+                  context,
+                  "Configurações",
+                  backgrounColor2,
+                  cortheme,
+                  Icon(
+                    Icons.settings,
+                    color: cortheme,
+                  ),
+                  () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                ),
+                butaoPadroa(
+                  context,
+                  "Sair",
+                  backgrounColor2,
+                  cortheme,
+                  Icon(
+                    Icons.close,
+                    color: cortheme,
+                  ),
+                  () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginPage()));
+                  },
+                ),
+                Divider(
+                  height: 199,
+                  color: Colors.transparent,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        "SNST software",
+                        style: TextStyle(color: cortheme),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        if (await canLaunch("url")) {
+                          await launch("url");
+                        }
+                      },
+                      child: Row(
+                        children: <Widget>[
+                          Text(
+                            "visite nosso website",
+                            style: TextStyle(color: cortheme),
+                          ),
+                          Icon(
+                            Icons.public_outlined,
+                            color: cortheme,
+                            size: 15,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          )
+          // Divider(
+          //   color: cor1,
+          //   height: 0,
+          //   thickness: 1,
+          //   indent: 20,
+          //   endIndent: 20,
+          // )
+        ],
+      ),
     ),
   );
 }

@@ -122,62 +122,37 @@ class _ListadeempresasState extends State<Listadeempresas> {
                         color: Colors.transparent,
                         height: 20,
                       ),
-                      CardEmpresa(
-                        size,
-                        // listadeEmpresa.image[1],
-                        // listadeEmpresa.description[0]
-                        'images/atacadaoicon.png',
-                        "Temos grandes ofertas e encartes da loja Atacadão",
-                        3,
-                      ),
+                      CardEmpresa(size, empresalist[1].image,
+                          empresalist[1].description, empresalist[1].avaliacao),
                       Divider(
                         color: Colors.transparent,
                         height: 20,
                       ),
-                      CardEmpresa(
-                        size,
-                        // listadeEmpresa.image[1],
-                        // listadeEmpresa.description[0]
-                        'images/atacadaoicon.png',
-                        "Temos grandes ofertas e encartes da loja Atacadão",
-                        3,
-                      ),
+                      CardEmpresa(size, empresalist[2].image,
+                          empresalist[2].description, empresalist[2].avaliacao),
                       Divider(
                         color: Colors.transparent,
                         height: 20,
                       ),
-                      CardEmpresa(
-                        size,
-                        // listadeEmpresa.image[1],
-                        // listadeEmpresa.description[0]
-                        'images/atacadaoicon.png',
-                        "Temos grandes ofertas e encartes da loja Atacadão",
-                        3,
-                      ),
+                      CardEmpresa(size, empresalist[3].image,
+                          empresalist[3].description, empresalist[3].avaliacao),
                       Divider(
                         color: Colors.transparent,
                         height: 20,
                       ),
-                      CardEmpresa(
-                        size,
-                        // listadeEmpresa.image[1],
-                        // listadeEmpresa.description[0]
-                        'images/atacadaoicon.png',
-                        "Temos grandes ofertas e encartes da loja Atacadão",
-                        3,
-                      ),
+                      CardEmpresa(size, empresalist[4].image,
+                          empresalist[4].description, empresalist[4].avaliacao),
                       Divider(
                         color: Colors.transparent,
                         height: 20,
                       ),
-                      CardEmpresa(
-                        size,
-                        // listadeEmpresa.image[1],
-                        // listadeEmpresa.description[0]
-                        'images/atacadaoicon.png',
-                        "Temos grandes ofertas e encartes da loja Atacadão",
-                        3,
+                      CardEmpresa(size, empresalist[5].image,
+                          empresalist[5].description, empresalist[5].avaliacao),
+                      Divider(
+                        color: Colors.transparent,
+                        height: 20,
                       ),
+                      GerarContainer(),
                       Divider(
                         color: Colors.transparent,
                         height: 20,
@@ -201,11 +176,19 @@ class _ListadeempresasState extends State<Listadeempresas> {
         ));
   }
 
+  Container GerarContainer() {
+    Size size = MediaQuery.of(context).size;
+    for (int i = 0; i < empresalist.length; i++) {
+      return CardEmpresa(size, empresalist[i].image, empresalist[i].description,
+          empresalist[i].avaliacao);
+    }
+    ;
+  }
+
   Container CardEmpresa(
       Size size, String image, String descricao, double avaliacao) {
     return Container(
-      //padding: paddingPadrao,
-      height: 100,
+      height: 85,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
       ),
@@ -231,7 +214,8 @@ class _ListadeempresasState extends State<Listadeempresas> {
                   ),
                   Positioned(
                     left: 15,
-                    bottom: 5,
+                    bottom: 0,
+                    top: 0,
                     child: Container(
                       padding: EdgeInsets.only(bottom: 10, top: 10),
                       height: 100,
@@ -249,40 +233,46 @@ class _ListadeempresasState extends State<Listadeempresas> {
                       ),
                     ),
                   ),
+                  //posição da descrição.........................................
+                  Positioned(
+                    bottom: 0,
+                    right: 20,
+                    child: SizedBox(
+                      height: 80,
+                      width: size.width - 200,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 0, vertical: 0),
+                            child: Text(descricao, style: textonormal2),
+                          ),
+                          Spacer(),
+                        ],
+                      ),
+                    ),
+                  ),
+                  //posição da avaliação.......................................
                   Positioned(
                       bottom: 0,
                       right: 0,
-                      child: SizedBox(
-                        height: 80,
-                        width: size.width - 200,
+                      child: Container(
+                        height: 20,
+                        width: 90,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 7, vertical: 2.5
+                                // vertical: symetricPad * 2,
+                                ),
+                        decoration: BoxDecoration(
+                            color: secondaryColor,
+                            borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(8),
+                                topLeft: Radius.circular(8))),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 0),
-                              child: Text(descricao, style: textonormal2),
-                            ),
-                            Spacer(),
-                            Container(
-                              height: 20,
-                              width: 90,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 7, vertical: 2.5
-                                  // vertical: symetricPad * 2,
-                                  ),
-                              decoration: BoxDecoration(
-                                  color: secondaryColor,
-                                  borderRadius: BorderRadius.only(
-                                      bottomRight: Radius.circular(8),
-                                      topLeft: Radius.circular(8))),
-                              child: Column(
-                                children: <Widget>[
-                                  Row(
-                                    children: StarList(avaliacao),
-                                  )
-                                ],
-                              ),
+                            Row(
+                              children: StarList(avaliacao),
                             )
                           ],
                         ),

@@ -1,4 +1,5 @@
 import 'package:exampleflutter/loginPage.dart';
+import 'package:exampleflutter/perfilPage.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'homePage.dart';
@@ -200,7 +201,7 @@ Drawer BuildDrawer(BuildContext context, Color cortheme) {
                   ),
                   () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
+                        MaterialPageRoute(builder: (context) => PerfilPage()));
                   },
                 ),
                 butaoPadroa(

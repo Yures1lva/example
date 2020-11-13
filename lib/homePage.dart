@@ -445,8 +445,8 @@ Container Containerdesiner1(double hTamanho, double wTamanho, String img1,
 
 Container WidgetName(String name) {
   return Container(
-    padding: EdgeInsets.only(left: 10, top: 4),
-    height: 22,
+    padding: EdgeInsets.only(left: 10, top: 7),
+    height: 25,
     width: double.infinity,
     decoration: BoxDecoration(
       color: Colors.white,

@@ -13,7 +13,8 @@ class Listadeempresas extends StatefulWidget {
 }
 
 class _ListadeempresasState extends State<Listadeempresas> {
-  Empresalist listadeEmpresa = new Empresalist();
+  Empresalist empresa = new Empresalist();
+
   int selectedIndex = 0;
   List categoria = [
     "Esportes",
@@ -103,32 +104,83 @@ class _ListadeempresasState extends State<Listadeempresas> {
                 ),
 
                 Container(
-                  height: 800,
+                  // height: 800,
                   width: double.maxFinite,
                   padding: paddingPadrao,
                   decoration: BoxDecoration(
                     color: backgrounColor,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(22),
-                      topRight: Radius.circular(22),
+                      topLeft: Radius.circular(19),
+                      topRight: Radius.circular(19),
                       bottomLeft: Radius.circular(bordas),
                       bottomRight: Radius.circular(bordas),
                     ),
                   ),
                   child: Column(
                     children: <Widget>[
+                      Divider(
+                        color: Colors.transparent,
+                        height: 20,
+                      ),
                       CardEmpresa(
                         size,
-                        listadeEmpresa.image[0],
-                        listadeEmpresa.description[0]
-                        // 'images/atacadaoicon.png',
-                        // "Temos grandes ofertas e encartes da loja Atacadão",
-                        ,
+                        // listadeEmpresa.image[1],
+                        // listadeEmpresa.description[0]
+                        'images/atacadaoicon.png',
+                        "Temos grandes ofertas e encartes da loja Atacadão",
                         3,
                       ),
                       Divider(
                         color: Colors.transparent,
-                        height: 480,
+                        height: 20,
+                      ),
+                      CardEmpresa(
+                        size,
+                        // listadeEmpresa.image[1],
+                        // listadeEmpresa.description[0]
+                        'images/atacadaoicon.png',
+                        "Temos grandes ofertas e encartes da loja Atacadão",
+                        3,
+                      ),
+                      Divider(
+                        color: Colors.transparent,
+                        height: 20,
+                      ),
+                      CardEmpresa(
+                        size,
+                        // listadeEmpresa.image[1],
+                        // listadeEmpresa.description[0]
+                        'images/atacadaoicon.png',
+                        "Temos grandes ofertas e encartes da loja Atacadão",
+                        3,
+                      ),
+                      Divider(
+                        color: Colors.transparent,
+                        height: 20,
+                      ),
+                      CardEmpresa(
+                        size,
+                        // listadeEmpresa.image[1],
+                        // listadeEmpresa.description[0]
+                        'images/atacadaoicon.png',
+                        "Temos grandes ofertas e encartes da loja Atacadão",
+                        3,
+                      ),
+                      Divider(
+                        color: Colors.transparent,
+                        height: 20,
+                      ),
+                      CardEmpresa(
+                        size,
+                        // listadeEmpresa.image[1],
+                        // listadeEmpresa.description[0]
+                        'images/atacadaoicon.png',
+                        "Temos grandes ofertas e encartes da loja Atacadão",
+                        3,
+                      ),
+                      Divider(
+                        color: Colors.transparent,
+                        height: 20,
                       ),
                       WidgetName("Favoritos"),
                       Containerdesiner2(

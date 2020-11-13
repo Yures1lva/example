@@ -1,4 +1,3 @@
-import 'package:exampleflutter/ProductCard.dart';
 import 'package:exampleflutter/empresalist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -6,11 +5,15 @@ import 'package:exampleflutter/constants.dart';
 import 'package:exampleflutter/homePage.dart';
 
 class Listadeempresas extends StatefulWidget {
+  const Listadeempresas({
+    Key key,
+  }) : super(key: key);
   @override
   _ListadeempresasState createState() => _ListadeempresasState();
 }
 
 class _ListadeempresasState extends State<Listadeempresas> {
+  Empresalist listadeEmpresa = new Empresalist();
   int selectedIndex = 0;
   List categoria = [
     "Esportes",
@@ -21,6 +24,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: Colors.white,
         drawer: BuildDrawer(context, secondaryColor),
@@ -97,11 +101,13 @@ class _ListadeempresasState extends State<Listadeempresas> {
                   height: 50,
                   color: Colors.transparent,
                 ),
+
                 Container(
                   height: 800,
+                  width: double.maxFinite,
                   padding: paddingPadrao,
                   decoration: BoxDecoration(
-                    color: primaryColor,
+                    color: backgrounColor,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(22),
                       topRight: Radius.circular(22),
@@ -111,9 +117,18 @@ class _ListadeempresasState extends State<Listadeempresas> {
                   ),
                   child: Column(
                     children: <Widget>[
+                      CardEmpresa(
+                        size,
+                        listadeEmpresa.image[0],
+                        listadeEmpresa.description[0]
+                        // 'images/atacadaoicon.png',
+                        // "Temos grandes ofertas e encartes da loja Atacadão",
+                        ,
+                        3,
+                      ),
                       Divider(
                         color: Colors.transparent,
-                        height: 565,
+                        height: 480,
                       ),
                       WidgetName("Favoritos"),
                       Containerdesiner2(
@@ -125,45 +140,174 @@ class _ListadeempresasState extends State<Listadeempresas> {
                                   builder: (context) => Listadeempresas()));
                         },
                       ),
-                      BottomText(
-                        context,
-                        "Ver categoria",
-                        () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Listadeempresas()));
-                        },
-                      ),
                     ],
                   ),
                 ),
-
-                // Buildcontainer3(),
-                // ListView.builder(
-                //   itemCount: empresalist.length,
-                //   itemBuilder: (context, index) => ProductCard(
-                //     itemIndex: index,
-                //     product: empresalist[index],
-                //     press: () {
-                //       Navigator.push(context,
-                //           MaterialPageRoute(builder: (context) => PageEmpresas()));
-                //     },
-                //   ),
-                // ),
               ],
             ),
           ),
         ));
   }
+
+  Container CardEmpresa(
+      Size size, String image, String descricao, double avaliacao) {
+    return Container(
+      //padding: paddingPadrao,
+      height: 100,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: <Widget>[
+          Container(
+            child: InkWell(
+              onTap: null, //press,
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: secondaryColor),
+                    child: Container(
+                      margin: EdgeInsets.only(left: 4),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [elevation],
+                          borderRadius: BorderRadius.circular(8)),
+                    ),
+                  ),
+                  Positioned(
+                    left: 15,
+                    bottom: 5,
+                    child: Container(
+                      padding: EdgeInsets.only(bottom: 10, top: 10),
+                      height: 100,
+                      width: 130,
+                      child: Material(
+                        elevation: 0.0,
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        //type: MaterialType.transparency,
+                        child: Image(
+                          image: AssetImage(image),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: SizedBox(
+                        height: 80,
+                        width: size.width - 200,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 0),
+                              child: Text(descricao, style: textonormal2),
+                            ),
+                            Spacer(),
+                            Container(
+                              height: 20,
+                              width: 90,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 7, vertical: 2.5
+                                  // vertical: symetricPad * 2,
+                                  ),
+                              decoration: BoxDecoration(
+                                  color: secondaryColor,
+                                  borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(8),
+                                      topLeft: Radius.circular(8))),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: StarList(avaliacao),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ))
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
-Container Buildcontainer3() {
-  for (int i = 0; i < empresalist.length; i++) {
-    ProductCard(
-      // itemIndex: i,
-      product: empresalist[i],
-    );
+List<Widget> StarList(double estrela) {
+  List<Widget> listaDeEstrelas = new List();
+
+  if (estrela == 1) {
+    for (var i = 0; i < estrela; i++) {
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle3);
+      listaDeEstrelas.add(starStyle3);
+      listaDeEstrelas.add(starStyle3);
+      listaDeEstrelas.add(starStyle3);
+
+      return listaDeEstrelas;
+    }
+  } else if (estrela == 2) {
+    for (var i = 0; i < estrela; i++) {
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle3);
+      listaDeEstrelas.add(starStyle3);
+      listaDeEstrelas.add(starStyle3);
+
+      return listaDeEstrelas;
+    }
+  } else if (estrela == 3) {
+    for (var i = 0; i < estrela; i++) {
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle3);
+      listaDeEstrelas.add(starStyle3);
+
+      return listaDeEstrelas;
+    }
+  } else if (estrela == 4) {
+    for (var i = 0; i < estrela; i++) {
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle3);
+
+      return listaDeEstrelas;
+    }
+  } else if (estrela == 4.5) {
+    for (var i = 0; i < estrela; i++) {
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle2);
+
+      return listaDeEstrelas;
+    }
+  } else if (estrela == 5) {
+    for (var i = 0; i < estrela; i++) {
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+      listaDeEstrelas.add(starStyle1);
+
+      return listaDeEstrelas;
+    }
   }
   ;
 }

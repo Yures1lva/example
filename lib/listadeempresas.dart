@@ -16,179 +16,147 @@ class _ListadeempresasState extends State<Listadeempresas> {
   Empresalist empresa = new Empresalist();
 
   int selectedIndex = 0;
-  List categoria = [
-    "Esportes",
-    "Tecnologia",
-    "Cozinha",
-    "Roupas",
-  ];
+
+  List categoria = ["Todas", "Esportes", "Tecnologia", "Comida", "Moda", "Bar"];
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Colors.white,
-        drawer: BuildDrawer(context, secondaryColor),
-        appBar: AppBar(
-          backgroundColor: secondaryColor,
-          elevation: 0,
-          centerTitle: false,
-          title: Text(
-            "Empresas",
-            style: titulo1,
-          ),
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(
-                  Icons.apartment,
-                  color: iconColor,
-                ),
-                onPressed: null)
-          ],
+      backgroundColor: Colors.white,
+      drawer: BuildDrawer(context, secondaryColor),
+      appBar: AppBar(
+        backgroundColor: secondaryColor,
+        elevation: 0,
+        centerTitle: false,
+        title: Text(
+          "Empresas",
+          style: titulo1,
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding: paddingPadrao,
-                  child: search_box(
-                    "Buscar Empresa ou Produto",
-                    BoxDecoration(
-                      color: primaryColor, //.withOpacity(0.4),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.apartment,
+                color: iconColor,
+              ),
+              onPressed: null)
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Container(
+                padding: paddingPadrao,
+                child: search_box(
+                  "Buscar Empresa ou Produto",
+                  BoxDecoration(
+                    color: primaryColor, //.withOpacity(0.4),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                 ),
-//lista de na vertical.......................................................................................
-                Container(
-                  padding: paddingPadrao,
-                  height: 55,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(bordas),
-                  ),
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: categoria.length,
-                      itemBuilder: (context, index) => GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedIndex = index;
-                              });
-                            },
-                            child: Container(
-                              alignment: Alignment
-                                  .center, //alinhando os widgets presentes no container
-                              margin: EdgeInsets.only(
-                                right: 10.0,
-                                // right: index == categoria.length ? symetricPad : 0
-                              ),
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: symetricPad),
-                              decoration: BoxDecoration(
-                                  color: index == selectedIndex
-                                      ? secondaryColor
-                                      : primaryColor, //Colors.white.withOpacity(0.4),
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: Text(
-                                categoria[index],
-                                style: textonormal,
-                              ),
+              ),
+              //lista de na vertical.............................................
+              Container(
+                padding: paddingPadrao,
+                height: 55,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(bordas),
+                ),
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: categoria.length,
+                    itemBuilder: (context, index) => GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                          child: Container(
+                            width: 90,
+                            alignment: Alignment
+                                .center, //alinhando os widgets presentes no container
+                            margin: EdgeInsets.only(
+                              right: 10.0,
                             ),
-                          )),
-                ),
+                            decoration: BoxDecoration(
+                                color: index == selectedIndex
+                                    ? secondaryColor
+                                    : primaryColor, //Colors.white.withOpacity(0.4),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Text(
+                              categoria[index],
+                              style: textonormal,
+                            ),
+                          ),
+                        )),
+              ),
 
-                Divider(
-                  height: 50,
-                  color: Colors.transparent,
-                ),
+              Divider(
+                height: 10,
+                color: Colors.transparent,
+              ),
 
-                Container(
-                  // height: 800,
-                  width: double.maxFinite,
-                  padding: paddingPadrao,
-                  decoration: BoxDecoration(
-                    color: backgrounColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(19),
-                      topRight: Radius.circular(19),
-                      bottomLeft: Radius.circular(bordas),
-                      bottomRight: Radius.circular(bordas),
+              Container(
+                // height: 800,
+                width: double.maxFinite,
+                padding: paddingPadrao,
+                decoration: BoxDecoration(
+                  color: backgrounColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(19),
+                    topRight: Radius.circular(19),
+                    bottomLeft: Radius.circular(bordas),
+                    bottomRight: Radius.circular(bordas),
+                  ),
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      child: Column(
+                        children: GerarContainer(),
+                      ),
                     ),
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Divider(
-                        color: Colors.transparent,
-                        height: 20,
-                      ),
-                      CardEmpresa(size, empresalist[1].image,
-                          empresalist[1].description, empresalist[1].avaliacao),
-                      Divider(
-                        color: Colors.transparent,
-                        height: 20,
-                      ),
-                      CardEmpresa(size, empresalist[2].image,
-                          empresalist[2].description, empresalist[2].avaliacao),
-                      Divider(
-                        color: Colors.transparent,
-                        height: 20,
-                      ),
-                      CardEmpresa(size, empresalist[3].image,
-                          empresalist[3].description, empresalist[3].avaliacao),
-                      Divider(
-                        color: Colors.transparent,
-                        height: 20,
-                      ),
-                      CardEmpresa(size, empresalist[4].image,
-                          empresalist[4].description, empresalist[4].avaliacao),
-                      Divider(
-                        color: Colors.transparent,
-                        height: 20,
-                      ),
-                      CardEmpresa(size, empresalist[5].image,
-                          empresalist[5].description, empresalist[5].avaliacao),
-                      Divider(
-                        color: Colors.transparent,
-                        height: 20,
-                      ),
-                      GerarContainer(),
-                      Divider(
-                        color: Colors.transparent,
-                        height: 20,
-                      ),
-                      WidgetName("Favoritos"),
-                      Containerdesiner2(
-                        'images/promonike2.png',
-                        () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Listadeempresas()));
-                        },
-                      ),
-                    ],
-                  ),
+                    Divider(
+                      color: Colors.transparent,
+                      height: 7,
+                    ),
+                    WidgetName("Favoritos"),
+                    Containerdesiner2(
+                      'images/promonike2.png',
+                      () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Listadeempresas()));
+                      },
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 
-  Container GerarContainer() {
+  List<Widget> GerarContainer() {
     Size size = MediaQuery.of(context).size;
+    List<Widget> listaDeEmpresas = new List();
     for (int i = 0; i < empresalist.length; i++) {
-      return CardEmpresa(size, empresalist[i].image, empresalist[i].description,
-          empresalist[i].avaliacao);
+      listaDeEmpresas.add(CardEmpresa(size, empresalist[i].image,
+          empresalist[i].description, empresalist[i].avaliacao));
     }
     ;
+    return listaDeEmpresas;
   }
 
   Container CardEmpresa(
       Size size, String image, String descricao, double avaliacao) {
     return Container(
-      height: 85,
+      height: 90,
+      margin: EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
       ),
@@ -235,7 +203,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
                   ),
                   //posição da descrição.........................................
                   Positioned(
-                    bottom: 0,
+                    top: 10,
                     right: 20,
                     child: SizedBox(
                       height: 80,
@@ -245,7 +213,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 0, vertical: 0),
+                                horizontal: 0, vertical: 12),
                             child: Text(descricao, style: textonormal2),
                           ),
                           Spacer(),
@@ -253,7 +221,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
                       ),
                     ),
                   ),
-                  //posição da avaliação.......................................
+                  //posição da avaliação.........................................
                   Positioned(
                       bottom: 0,
                       right: 0,

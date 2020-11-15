@@ -1,3 +1,4 @@
+import 'package:exampleflutter/homePage.dart';
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
@@ -22,11 +23,10 @@ class _PerfilPageState extends State<PerfilPage> {
           actions: <Widget>[
             IconButton(
               icon: Icon(
-                Icons.search,
+                Icons.edit,
                 color: iconColor,
               ),
-              onPressed: null,
-              //onPressed: () {},
+              onPressed: () {},
             ),
           ],
         ),
@@ -37,7 +37,10 @@ class _PerfilPageState extends State<PerfilPage> {
                 Container(
                   height: 400,
                   width: double.maxFinite,
-                  padding: paddingPadrao,
+                  padding: EdgeInsets.only(
+                    left: 10,
+                    right: 10,
+                  ),
                   decoration: BoxDecoration(
                     color: primaryColor,
                     borderRadius: BorderRadius.only(
@@ -46,7 +49,7 @@ class _PerfilPageState extends State<PerfilPage> {
                     ),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    //crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Divider(
                         color: Colors.transparent,
@@ -71,6 +74,14 @@ class _PerfilPageState extends State<PerfilPage> {
                           fontSize: 25,
                         ),
                       ),
+                      Divider(
+                        height: 40,
+                        color: Colors.transparent,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [],
+                      ),
                     ],
                   ),
                 ),
@@ -84,17 +95,50 @@ class _PerfilPageState extends State<PerfilPage> {
                           color: Colors.transparent,
                           height: 50,
                         ),
-                        buildRow(),
-                        Divider(
-                          color: Colors.transparent,
-                          height: 50,
+                        buildRow(
+                          Icon(
+                            Icons.account_circle_outlined,
+                            color: primaryColor,
+                            size: 50,
+                          ),
+                          "Mudar\nUsername",
+                          Icon(
+                            Icons.supervised_user_circle,
+                            color: primaryColor,
+                            size: 50,
+                          ),
+                          "Víncular\nContas",
+                          Icon(
+                            Icons.camera,
+                            color: primaryColor,
+                            size: 50,
+                          ),
+                          "Mudar\nFoto",
                         ),
-                        buildRow(),
                         Divider(
-                          color: Colors.transparent,
                           height: 50,
+                          color: Colors.transparent,
                         ),
-                        buildRow(),
+                        buildRow(
+                          Icon(
+                            Icons.help,
+                            color: primaryColor,
+                            size: 50,
+                          ),
+                          "Ajuda",
+                          Icon(
+                            Icons.local_atm,
+                            color: primaryColor,
+                            size: 50,
+                          ),
+                          "Mudar\nEndereço",
+                          Icon(
+                            Icons.point_of_sale_rounded,
+                            color: primaryColor,
+                            size: 50,
+                          ),
+                          "Sair ou\nMudar Conta",
+                        ),
                         Divider(
                           color: Colors.transparent,
                           height: 50,
@@ -109,66 +153,65 @@ class _PerfilPageState extends State<PerfilPage> {
         ));
   }
 
-  Row buildRow() {
+  Row buildRow(Icon icon1, String nome1, Icon icon2, String nome2, Icon icon3,
+      String nome3) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        VerticalDivider(
-          width: 2,
-          color: Colors.transparent,
-        ),
-        Container(
-          width: 70,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(bordas),
-          ),
-          // padding: EdgeInsets.only(left: 50, top: 40),
-          child: Column(
-            children: <Widget>[
-              Icon(
-                Icons.account_circle_outlined,
-                color: primaryColor,
-                size: 50,
-              ),
-              Divider(
-                color: Colors.transparent,
-                height: 5,
-              ),
-              Text(
-                "Conta",
-                style: TextStyle(
-                  color: primaryColor,
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ),
-        ),
         // VerticalDivider(
-        //   width: 50,
+        //   width: 2,
         //   color: Colors.transparent,
         // ),
         Container(
-          width: 70,
+          // width: 160,
+          padding: EdgeInsets.symmetric(horizontal: 2),
+          // margin: EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(bordas),
+            color: corfundo,
+            borderRadius: BorderRadius.circular(100),
           ),
           // padding: EdgeInsets.only(left: 50, top: 40),
           child: Column(
             children: <Widget>[
-              Icon(
-                Icons.account_circle_outlined,
-                color: primaryColor,
-                size: 50,
+              FlatButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(110),
+                ),
+                onPressed: () {},
+                child: Column(
+                  children: <Widget>[
+                    icon1,
+                    Divider(
+                      color: Colors.transparent,
+                      height: 5,
+                    ),
+                    Text(
+                      nome1,
+                      style: TextStyle(
+                        color: primaryColor,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
               ),
+            ],
+          ),
+        ),
+        FlatButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
+          onPressed: () {},
+          child: Column(
+            children: <Widget>[
+              icon2,
               Divider(
                 color: Colors.transparent,
                 height: 5,
               ),
               Text(
-                "Conta",
+                nome2,
                 style: TextStyle(
                   color: primaryColor,
                   fontSize: 18,
@@ -177,30 +220,20 @@ class _PerfilPageState extends State<PerfilPage> {
             ],
           ),
         ),
-        // VerticalDivider(
-        //   width: 50,
-        //   color: Colors.transparent,
-        // ),
-        Container(
-          width: 70,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(bordas),
+        FlatButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
           ),
-          // padding: EdgeInsets.only(left: 50, top: 40),
+          onPressed: () {},
           child: Column(
             children: <Widget>[
-              Icon(
-                Icons.account_circle_outlined,
-                color: primaryColor,
-                size: 50,
-              ),
+              icon3,
               Divider(
                 color: Colors.transparent,
                 height: 5,
               ),
               Text(
-                "Conta",
+                nome3,
                 style: TextStyle(
                   color: primaryColor,
                   fontSize: 18,
@@ -208,10 +241,6 @@ class _PerfilPageState extends State<PerfilPage> {
               ),
             ],
           ),
-        ),
-        VerticalDivider(
-          width: 2,
-          color: Colors.transparent,
         ),
       ],
     );

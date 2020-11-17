@@ -69,6 +69,7 @@ flutter:
        - images/promonike3.png
        - images/promohavan1.png
        - images/promohavan2.png
+       - images/perfil.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

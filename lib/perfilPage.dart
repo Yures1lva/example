@@ -1,6 +1,5 @@
 import 'package:exampleflutter/homePage.dart';
 import 'package:flutter/material.dart';
-
 import 'constants.dart';
 
 class PerfilPage extends StatefulWidget {
@@ -14,6 +13,7 @@ class _PerfilPageState extends State<PerfilPage> {
     return Scaffold(
         backgroundColor: backgrounColor,
         appBar: AppBar(
+          // leadingWidth: 20,
           elevation: 0,
           centerTitle: true,
           title: Text(
@@ -53,7 +53,7 @@ class _PerfilPageState extends State<PerfilPage> {
                     children: <Widget>[
                       Divider(
                         color: Colors.transparent,
-                        height: 60,
+                        height: 30,
                       ),
                       Container(
                         height: 200,
@@ -61,14 +61,19 @@ class _PerfilPageState extends State<PerfilPage> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(100),
+                          // image: DecorationImage(
+                          //   image: "images/nikeicon.png",
+                          //   fit: BoxFit.fill,
+                          // ),
                         ),
+                        //  child: Image(image: AssetImage("images/nikeicon.png"),),
                       ),
                       Divider(
                         color: Colors.transparent,
                         height: 40,
                       ),
                       Text(
-                        "Nome do Consagrado",
+                        "Nome de Usuário",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 25,
@@ -99,50 +104,104 @@ class _PerfilPageState extends State<PerfilPage> {
                           Icon(
                             Icons.account_circle_outlined,
                             color: primaryColor,
-                            size: 50,
+                            size: 30,
                           ),
-                          "Mudar\nUsername",
-                          Icon(
-                            Icons.supervised_user_circle,
-                            color: primaryColor,
-                            size: 50,
-                          ),
-                          "Víncular\nContas",
-                          Icon(
-                            Icons.camera,
-                            color: primaryColor,
-                            size: 50,
-                          ),
-                          "Mudar\nFoto",
-                        ),
-                        Divider(
-                          height: 50,
-                          color: Colors.transparent,
+                          "Mudar Username",
+                          () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          },
                         ),
                         buildRow(
                           Icon(
-                            Icons.help,
+                            Icons.photo_camera_outlined,
                             color: primaryColor,
-                            size: 50,
+                            size: 30,
                           ),
-                          "Ajuda",
+                          "Mudar Foto de Perfil",
+                          () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          },
+                        ),
+                        buildRow(
                           Icon(
-                            Icons.local_atm,
+                            Icons.email_outlined,
                             color: primaryColor,
-                            size: 50,
+                            size: 30,
                           ),
-                          "Mudar\nEndereço",
+                          "Edidar  Email",
+                          () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          },
+                        ),
+                        buildRow(
                           Icon(
-                            Icons.point_of_sale_rounded,
+                            Icons.edit_location_outlined,
                             color: primaryColor,
-                            size: 50,
+                            size: 30,
                           ),
-                          "Sair ou\nMudar Conta",
+                          "Editar Meus Endereços",
+                          () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          },
+                        ),
+                        buildRow(
+                          Icon(
+                            Icons.shopping_bag_outlined,
+                            color: primaryColor,
+                            size: 30,
+                          ),
+                          "Minhas Compras",
+                          () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          },
+                        ),
+                        buildRow(
+                          Icon(
+                            Icons.account_tree_outlined,
+                            color: primaryColor,
+                            size: 30,
+                          ),
+                          "Vínculo de Conta",
+                          () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          },
+                        ),
+                        buildRow(
+                          Icon(
+                            Icons.close,
+                            color: primaryColor,
+                            size: 30,
+                          ),
+                          "Sair da Conta",
+                          () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          },
                         ),
                         Divider(
                           color: Colors.transparent,
-                          height: 50,
-                        ),
+                          height: 20,
+                        )
                       ],
                     ),
                   ),
@@ -153,96 +212,25 @@ class _PerfilPageState extends State<PerfilPage> {
         ));
   }
 
-  Row buildRow(Icon icon1, String nome1, Icon icon2, String nome2, Icon icon3,
-      String nome3) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
-        // VerticalDivider(
-        //   width: 2,
-        //   color: Colors.transparent,
-        // ),
-        Container(
-          // width: 160,
-          padding: EdgeInsets.symmetric(horizontal: 2),
-          // margin: EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-            color: corfundo,
-            borderRadius: BorderRadius.circular(100),
-          ),
-          // padding: EdgeInsets.only(left: 50, top: 40),
-          child: Column(
-            children: <Widget>[
-              FlatButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(110),
-                ),
-                onPressed: () {},
-                child: Column(
-                  children: <Widget>[
-                    icon1,
-                    Divider(
-                      color: Colors.transparent,
-                      height: 5,
-                    ),
-                    Text(
-                      nome1,
-                      style: TextStyle(
-                        color: primaryColor,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+  Container buildRow(
+    Icon icon1,
+    String nome1,
+    Function navigator,
+  ) {
+    return Container(
+        padding: EdgeInsets.only(
+          left: 20,
+          right: 20,
         ),
-        FlatButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100),
+        child: Column(children: <Widget>[
+          butaoPadroa(
+            context,
+            nome1,
+            backgrounColor2,
+            primaryColor,
+            icon1,
+            navigator,
           ),
-          onPressed: () {},
-          child: Column(
-            children: <Widget>[
-              icon2,
-              Divider(
-                color: Colors.transparent,
-                height: 5,
-              ),
-              Text(
-                nome2,
-                style: TextStyle(
-                  color: primaryColor,
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ),
-        ),
-        FlatButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100),
-          ),
-          onPressed: () {},
-          child: Column(
-            children: <Widget>[
-              icon3,
-              Divider(
-                color: Colors.transparent,
-                height: 5,
-              ),
-              Text(
-                nome3,
-                style: TextStyle(
-                  color: primaryColor,
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
+        ]));
   }
 }

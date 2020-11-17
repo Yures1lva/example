@@ -110,7 +110,7 @@ Container search_box(String hintText, BoxDecoration decoracao) => Container(
 Container butaoPadroa(BuildContext context, String name, Color corBotao,
     Color cornome, Icon iconButton, Function pressione) {
   return Container(
-    margin: EdgeInsets.only(bottom: 10, top: 10),
+    margin: EdgeInsets.only(bottom: 5, top: 5),
     height: 50,
     alignment: Alignment.centerLeft,
     decoration: BoxDecoration(

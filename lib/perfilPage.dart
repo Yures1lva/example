@@ -26,7 +26,7 @@ class _PerfilPageState extends State<PerfilPage> {
                 Icons.edit,
                 color: iconColor,
               ),
-              onPressed: () {},
+              onPressed: null,
             ),
           ],
         ),
@@ -35,7 +35,7 @@ class _PerfilPageState extends State<PerfilPage> {
             child: Column(
               children: <Widget>[
                 Container(
-                  height: 400,
+                  height: 330,
                   width: double.maxFinite,
                   padding: EdgeInsets.only(
                     left: 10,
@@ -51,20 +51,15 @@ class _PerfilPageState extends State<PerfilPage> {
                   child: Column(
                     //crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Divider(
-                        color: Colors.transparent,
-                        height: 30,
-                      ),
                       Container(
                         height: 200,
                         width: 200,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(100),
-                          // image: DecorationImage(
-                          //   image: "images/nikeicon.png",
-                          //   fit: BoxFit.fill,
-                          // ),
+                          image: DecorationImage(
+                            image: AssetImage("images/perfil.jpg"),
+                          ),
                         ),
                         //  child: Image(image: AssetImage("images/nikeicon.png"),),
                       ),
@@ -79,14 +74,6 @@ class _PerfilPageState extends State<PerfilPage> {
                           fontSize: 25,
                         ),
                       ),
-                      Divider(
-                        height: 40,
-                        color: Colors.transparent,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [],
-                      ),
                     ],
                   ),
                 ),
@@ -98,7 +85,7 @@ class _PerfilPageState extends State<PerfilPage> {
                       children: <Widget>[
                         Divider(
                           color: Colors.transparent,
-                          height: 50,
+                          height: 10,
                         ),
                         buildRow(
                           Icon(

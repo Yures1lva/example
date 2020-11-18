@@ -1,3 +1,4 @@
+import 'package:exampleflutter/FavoritePage.dart';
 import 'package:exampleflutter/loginPage.dart';
 import 'package:exampleflutter/perfilPage.dart';
 import 'package:flutter/material.dart';
@@ -214,8 +215,10 @@ Drawer BuildDrawer(BuildContext context, Color cortheme) {
                     color: cortheme,
                   ),
                   () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FavoritePage()));
                   },
                 ),
                 butaoPadroa(
@@ -275,7 +278,7 @@ Drawer BuildDrawer(BuildContext context, Color cortheme) {
                   },
                 ),
                 Divider(
-                  height: 199,
+                  height: 268,
                   color: Colors.transparent,
                 ),
                 Row(

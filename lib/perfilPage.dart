@@ -13,21 +13,19 @@ class _PerfilPageState extends State<PerfilPage> {
     return Scaffold(
         backgroundColor: backgrounColor,
         appBar: AppBar(
-          // leadingWidth: 20,
           elevation: 0,
-          centerTitle: true,
+          centerTitle: false,
           title: Text(
-            "Perfil",
-            style: TextStyle(color: Colors.white, fontSize: 30),
+            "Voltar",
+            style: titulo1,
           ),
           actions: <Widget>[
             IconButton(
-              icon: Icon(
-                Icons.edit,
-                color: iconColor,
-              ),
-              onPressed: null,
-            ),
+                icon: Icon(
+                  Icons.account_circle_outlined,
+                  color: iconColor,
+                ),
+                onPressed: null)
           ],
         ),
         body: SingleChildScrollView(
@@ -35,7 +33,7 @@ class _PerfilPageState extends State<PerfilPage> {
             child: Column(
               children: <Widget>[
                 Container(
-                  height: 330,
+                  height: 280,
                   width: double.maxFinite,
                   padding: EdgeInsets.only(
                     left: 10,
@@ -67,12 +65,35 @@ class _PerfilPageState extends State<PerfilPage> {
                         color: Colors.transparent,
                         height: 40,
                       ),
-                      Text(
-                        "Nome de Usuário",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                        ),
+                      Row(
+                        children: [
+                          InkWell(
+                            child: Text(
+                              "Nome de Usuário",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                              ),
+                            ),
+                          ),
+                          VerticalDivider(
+                            color: Colors.transparent,
+                            width: 5,
+                          ),
+                          Icon(
+                            Icons.edit_outlined,
+                            size: 15,
+                            color: Colors.white,
+                          ),
+                          VerticalDivider(
+                            color: Colors.transparent,
+                            width: 5,
+                          ),
+                          Text(
+                            "Editar",
+                            style: TextStyle(color: Colors.white, fontSize: 15),
+                          )
+                        ],
                       ),
                     ],
                   ),
@@ -86,48 +107,6 @@ class _PerfilPageState extends State<PerfilPage> {
                         Divider(
                           color: Colors.transparent,
                           height: 10,
-                        ),
-                        buildRow(
-                          Icon(
-                            Icons.account_circle_outlined,
-                            color: primaryColor,
-                            size: 30,
-                          ),
-                          "Mudar Username",
-                          () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()));
-                          },
-                        ),
-                        buildRow(
-                          Icon(
-                            Icons.photo_camera_outlined,
-                            color: primaryColor,
-                            size: 30,
-                          ),
-                          "Mudar Foto de Perfil",
-                          () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()));
-                          },
-                        ),
-                        buildRow(
-                          Icon(
-                            Icons.email_outlined,
-                            color: primaryColor,
-                            size: 30,
-                          ),
-                          "Edidar  Email",
-                          () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()));
-                          },
                         ),
                         buildRow(
                           Icon(
@@ -199,6 +178,7 @@ class _PerfilPageState extends State<PerfilPage> {
         ));
   }
 
+//nestedScrollView
   Container buildRow(
     Icon icon1,
     String nome1,

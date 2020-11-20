@@ -67,7 +67,7 @@ final List<Empresalist> empresalist = [
     id: 1,
     name: "Nike",
     image: 'images/nikeicon.png',
-    description: "O melhor para seu esporte",
+    description: "O melhor da moda para você e seu esporte",
     avaliacao: 5,
     categoriaempresa: "esporte e moda",
   ),

@@ -59,41 +59,94 @@ class _PerfilPageState extends State<PerfilPage> {
                             image: AssetImage("images/perfil.jpg"),
                           ),
                         ),
-                        //  child: Image(image: AssetImage("images/nikeicon.png"),),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              height: 20,
+                              width: double.maxFinite,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 7, vertical: 2.5
+                                  // vertical: symetricPad * 2,
+                                  ),
+                              decoration: BoxDecoration(
+                                color: primaryColor,
+                                // borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: InkWell(
+                                onTap: () {},
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    VerticalDivider(
+                                      color: Colors.transparent,
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "Editar",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.edit_outlined,
+                                      size: 15,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Divider(
                         color: Colors.transparent,
                         height: 40,
                       ),
-                      Row(
-                        children: [
-                          InkWell(
-                            child: Text(
+                      Container(
+                        padding: EdgeInsets.only(
+                          left: 20,
+                          right: 20,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
                               "Nome de Usuário",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 25,
                               ),
                             ),
-                          ),
-                          VerticalDivider(
-                            color: Colors.transparent,
-                            width: 5,
-                          ),
-                          Icon(
-                            Icons.edit_outlined,
-                            size: 15,
-                            color: Colors.white,
-                          ),
-                          VerticalDivider(
-                            color: Colors.transparent,
-                            width: 5,
-                          ),
-                          Text(
-                            "Editar",
-                            style: TextStyle(color: Colors.white, fontSize: 15),
-                          )
-                        ],
+                            VerticalDivider(
+                              color: Colors.transparent,
+                              width: 5,
+                            ),
+                            VerticalDivider(
+                              color: Colors.transparent,
+                              width: 5,
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Text(
+                                    "Editar",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 15),
+                                  ),
+                                  Icon(
+                                    Icons.edit_outlined,
+                                    size: 15,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -115,6 +168,21 @@ class _PerfilPageState extends State<PerfilPage> {
                             size: 30,
                           ),
                           "Editar Meus Endereços",
+                          () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          },
+                        ),
+                        buildRow(
+                          Icon(
+                            Icons
+                                .credit_card_outlined, //card_membership_outlined,
+                            color: primaryColor,
+                            size: 30,
+                          ),
+                          "Formas de Pagamento",
                           () {
                             Navigator.push(
                                 context,

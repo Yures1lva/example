@@ -1,8 +1,11 @@
-import 'package:exampleflutter/PageEmpresas.dart';
+// import 'package:exampleflutter/PageEmpresas.dart';
 import 'package:exampleflutter/listadeempresas.dart';
 import 'package:flutter/material.dart';
 import 'package:exampleflutter/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:exampleflutter/PageEmpresas.dart';
+
+import 'empresalist.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,6 +33,8 @@ class _HomePageState extends State<HomePage> {
     'images/promohavan1.png',
     'images/promohavan2.png',
   ];
+
+  //Size size = MediaQuery.of(context).size;
 
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
@@ -108,7 +113,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: backgrounColor2,
+                  color: Colors.white,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(bordas),
                     bottomRight: Radius.circular(bordas),
@@ -138,7 +143,6 @@ class _HomePageState extends State<HomePage> {
               //..........fim do desing de promções..........................
 
               Container(
-                height: 1200,
                 color: corfundo,
                 margin: EdgeInsets.only(top: 20),
                 child: Column(
@@ -148,54 +152,64 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.transparent,
                     ),
                     WidgetName("Empresas"),
-                    Containerdesiner1(
-                      130, //height interno
-                      170, //widdh interno
-                      //imagens
-                      "images/nikeicon.png",
-                      "images/havanicon.png",
-                      "images/atacadaoicon.png",
-                      "images/centauroicon.png",
-                      //press na imagem 1
-                      () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PageEmpresas()));
-                      },
+                    Container(
+                      // height: 290,
+                      width: double.maxFinite,
+                      padding: paddingPadrao,
+                      // margin: EdgeInsets.all(4),
+                      // decoration: BoxDecoration(
+                      //   borderRadius: BorderRadius.circular(5),
+                      color: Colors.white,
+                      //),
+                      child: Column(
+                        children: <Widget>[
+                          Divider(
+                            height: 5,
+                            color: Colors.transparent,
+                          ),
+                          CardEmpresa(
+                            empresalist[0].image,
+                            empresalist[0].description,
+                            empresalist[0].avaliacao,
+                            () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PageEmpresas()));
+                            },
+                          ),
+                          CardEmpresa(
+                            empresalist[1].image,
+                            empresalist[1].description,
+                            empresalist[1].avaliacao,
+                            () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PageEmpresas()));
+                            },
+                          ),
+                          CardEmpresa(
+                            empresalist[2].image,
+                            empresalist[2].description,
+                            empresalist[2].avaliacao,
+                            () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => PageEmpresas()));
+                            },
+                          ),
+                          Divider(
+                            height: 5,
+                            color: Colors.transparent,
+                          ),
+                        ],
+                      ),
                     ),
                     BottomText(
                       context,
-                      "Ver todas as empresas",
-                      () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Listadeempresas()));
-                      },
-                    ),
-                    Divider(
-                      height: 20,
-                      color: Colors.transparent,
-                    ),
-                    WidgetName("Esportes"),
-                    Containerdesiner1(
-                      55,
-                      170,
-                      "images/nikeicon.png",
-                      "images/nikeicon.png",
-                      "images/havanicon.png",
-                      "images/havanicon.png",
-                      () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PageEmpresas()));
-                      },
-                    ),
-                    BottomText(
-                      context,
-                      "Ver categoria",
+                      "Ver todas as Empresas",
                       () {
                         Navigator.push(
                             context,
@@ -208,23 +222,10 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.transparent,
                     ),
                     WidgetName("Tecnologia"),
-                    Containerdesiner1(
-                      55,
-                      170,
-                      "images/nikeicon.png",
-                      "images/nikeicon.png",
-                      "images/havanicon.png",
-                      "images/havanicon.png",
-                      () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PageEmpresas()));
-                      },
-                    ),
+                    Containerdesiner1(3),
                     BottomText(
                       context,
-                      "Ver categoria",
+                      "Ver todos de Tecnologia",
                       () {
                         Navigator.push(
                             context,
@@ -236,24 +237,11 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                       color: Colors.transparent,
                     ),
-                    WidgetName("Cozinha"),
-                    Containerdesiner1(
-                      55,
-                      170,
-                      "images/nikeicon.png",
-                      "images/nikeicon.png",
-                      "images/havanicon.png",
-                      "images/havanicon.png",
-                      () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PageEmpresas()));
-                      },
-                    ),
+                    WidgetName("Esporte"),
+                    Containerdesiner1(3),
                     BottomText(
                       context,
-                      "Ver categoria",
+                      "Ver todos de Esportes",
                       () {
                         Navigator.push(
                             context,
@@ -274,6 +262,10 @@ class _HomePageState extends State<HomePage> {
                             MaterialPageRoute(
                                 builder: (context) => Listadeempresas()));
                       },
+                    ),
+                    Divider(
+                      color: Colors.transparent,
+                      height: 20,
                     )
                   ],
                 ),
@@ -283,8 +275,11 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
+  } //fim do body
 
+//constants..................................................................................
+
+//imagens das promoções
   Container imageBuilder(String image) {
     return Container(
       height: 290,
@@ -317,12 +312,13 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+//texto em baixo
 InkWell BottomText(BuildContext context, String nome, Function pressione) =>
     InkWell(
       child: Container(
         alignment: Alignment.bottomRight,
-        padding: EdgeInsets.only(right: 10, top: 4, bottom: 5),
-        height: 27,
+        padding: EdgeInsets.only(right: 10, top: 4, bottom: 8),
+        height: 30,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -331,122 +327,176 @@ InkWell BottomText(BuildContext context, String nome, Function pressione) =>
             bottomLeft: Radius.circular(bordas),
           ),
         ),
-        child: Text(
-          nome,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
-            color: cor1,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              nome,
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+                color: primaryColor,
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              color: primaryColor,
+              size: 13,
+            )
+          ],
         ),
       ),
       onTap: pressione,
     );
 
-Container Containerdesiner1(double hTamanho, double wTamanho, String img1,
-    String img2, String img3, String img4, Function press) {
+List<Widget> ListContainer(int tamanho) {
+  List<Widget> listaempresa = List();
+
+  Container StyleContainer(Color corContainer) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 5),
+      height: 150,
+      width: double.maxFinite,
+      decoration: BoxDecoration(
+        color: corContainer,
+        borderRadius: BorderRadius.circular(bordas),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(
+              bottom: 5,
+              top: 5,
+            ),
+            margin: EdgeInsets.only(left: 5),
+            height: 150,
+            width: 150,
+            child: Material(
+              elevation: 0.0,
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              //type: MaterialType.transparency,
+              child: Image(
+                image: AssetImage("Image/promonike1.png"),
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          VerticalDivider(
+            width: 10,
+            color: Colors.transparent,
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 5, bottom: 5),
+            padding: EdgeInsets.only(left: 5),
+            height: double.maxFinite,
+            width: 150,
+            color: primaryColor,
+            //alignment: Alignment.centerRight,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  width: double.maxFinite,
+                  child: Text(
+                    "nome do produto",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                Divider(
+                  height: 5,
+                  color: Colors.transparent,
+                ),
+                Text(
+                  "Descrição bla ",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                  ),
+                ),
+                Divider(
+                  height: 10,
+                  color: Colors.transparent,
+                ),
+                Text(
+                  "Nike",
+                  style: TextStyle(color: Colors.white, fontSize: 15),
+                ),
+                Divider(
+                  height: 15,
+                  color: Colors.transparent,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "RS",
+                      style: TextStyle(color: Colors.white, fontSize: 25),
+                    ),
+                    VerticalDivider(
+                      width: 5,
+                      color: Colors.transparent,
+                    ),
+                    Text(
+                      "35",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    Text(
+                      ",90 ",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                    Text(
+                      "ou 3x cartão",
+                      textAlign: TextAlign.end,
+                      style: TextStyle(color: Colors.white, fontSize: 10),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  for (int i = 0; i < tamanho; i++) {
+    listaempresa.add(StyleContainer(cor1));
+  }
+  ;
+
+  return listaempresa;
+}
+
+Container Containerdesiner1(int tam) {
   Color corMaior = Colors.white;
+
   return Container(
+    width: double.maxFinite,
     padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
     decoration: BoxDecoration(
-      color: corMaior,
       // borderRadius: BorderRadius.only(
       //   bottomLeft: Radius.circular(bordas),
       //   bottomRight: Radius.circular(bordas),
       // ),
+      // borderRadius: BorderRadius.circular(bordas),
+      color: corMaior,
     ),
     child: Column(
-      children: <Widget>[
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            //imagem com navigator
-            InkWell(
-              highlightColor: corfundo,
-              splashColor: corfundo,
-              child: Container(
-                width: wTamanho,
-                height: hTamanho,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  image: DecorationImage(
-                    image: AssetImage(img1),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              onTap: press,
-            ),
-
-            InkWell(
-              highlightColor: corfundo,
-              splashColor: corfundo,
-              child: Container(
-                width: wTamanho,
-                height: hTamanho,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  image: DecorationImage(
-                    image: AssetImage(img2),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              onTap: press,
-            ),
-          ],
-        ),
-        Divider(height: 10, color: Colors.transparent),
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            //imagem com navigator
-            InkWell(
-              highlightColor: corfundo,
-              splashColor: corfundo,
-              child: Container(
-                width: wTamanho,
-                height: hTamanho,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  image: DecorationImage(
-                    image: AssetImage(img3),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              onTap: press,
-            ),
-
-            InkWell(
-              highlightColor: corfundo,
-              splashColor: corfundo,
-              child: Container(
-                width: wTamanho,
-                height: hTamanho,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  image: DecorationImage(
-                    image: AssetImage(img4),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              onTap: press,
-            ),
-          ],
-        ),
-      ],
+      children: ListContainer(tam),
     ),
   );
 }
 
 Container WidgetName(String name) {
   return Container(
-    padding: EdgeInsets.only(left: 10, top: 7),
-    height: 25,
+    padding: EdgeInsets.only(left: 10, top: 7, bottom: 0),
+    height: 30,
     width: double.infinity,
     decoration: BoxDecoration(
       color: Colors.white,
@@ -512,13 +562,23 @@ Container Containerdesiner2(String imag1, Function tap) {
   return Container(
     decoration: BoxDecoration(
       color: Colors.white,
+      borderRadius: BorderRadius.only(
+        bottomRight: Radius.circular(bordas),
+        bottomLeft: Radius.circular(bordas),
+      ),
     ),
     child: Column(
       children: <Widget>[
         InkWell(
           onTap: tap,
           child: Container(
-            color: Colors.white,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(bordas),
+                bottomLeft: Radius.circular(bordas),
+              ),
+            ),
             height: 160,
             padding: EdgeInsets.all(10),
             child: ListView(

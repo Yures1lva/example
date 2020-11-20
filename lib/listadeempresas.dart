@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:exampleflutter/constants.dart';
 import 'package:exampleflutter/homePage.dart';
+import 'package:exampleflutter/PageEmpresas.dart';
 
 class Listadeempresas extends StatefulWidget {
   const Listadeempresas({
@@ -21,7 +22,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       drawer: BuildDrawer(context, secondaryColor),
@@ -59,7 +60,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
               //lista de na vertical.............................................
               Container(
                 padding: paddingPadrao,
-                height: 55,
+                height: 35,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(bordas),
                 ),
@@ -112,6 +113,10 @@ class _ListadeempresasState extends State<Listadeempresas> {
                 ),
                 child: Column(
                   children: <Widget>[
+                    Divider(
+                      color: Colors.transparent,
+                      height: 7,
+                    ),
                     Container(
                       child: Column(
                         children: GerarContainer(),
@@ -142,182 +147,20 @@ class _ListadeempresasState extends State<Listadeempresas> {
   }
 
   List<Widget> GerarContainer() {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     List<Widget> listaDeEmpresas = new List();
     for (int i = 0; i < empresalist.length; i++) {
-      listaDeEmpresas.add(CardEmpresa(size, empresalist[i].image,
-          empresalist[i].description, empresalist[i].avaliacao));
+      listaDeEmpresas.add(CardEmpresa(
+        empresalist[i].image,
+        empresalist[i].description,
+        empresalist[i].avaliacao,
+        () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => PageEmpresas()));
+        },
+      ));
     }
     ;
     return listaDeEmpresas;
   }
-
-  Container CardEmpresa(
-      Size size, String image, String descricao, double avaliacao) {
-    return Container(
-      height: 90,
-      margin: EdgeInsets.symmetric(vertical: 5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: <Widget>[
-          Container(
-            child: InkWell(
-              onTap: null, //press,
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: secondaryColor),
-                    child: Container(
-                      margin: EdgeInsets.only(left: 4),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [elevation],
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                  ),
-                  Positioned(
-                    left: 15,
-                    bottom: 0,
-                    top: 0,
-                    child: Container(
-                      padding: EdgeInsets.only(bottom: 10, top: 10),
-                      height: 100,
-                      width: 130,
-                      child: Material(
-                        elevation: 0.0,
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        //type: MaterialType.transparency,
-                        child: Image(
-                          image: AssetImage(image),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                  ),
-                  //posição da descrição.........................................
-                  Positioned(
-                    top: 10,
-                    right: 20,
-                    child: SizedBox(
-                      height: 80,
-                      width: size.width - 200,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 0, vertical: 12),
-                            child: Text(descricao, style: textonormal2),
-                          ),
-                          Spacer(),
-                        ],
-                      ),
-                    ),
-                  ),
-                  //posição da avaliação.........................................
-                  Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        height: 20,
-                        width: 90,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 7, vertical: 2.5
-                                // vertical: symetricPad * 2,
-                                ),
-                        decoration: BoxDecoration(
-                            color: secondaryColor,
-                            borderRadius: BorderRadius.only(
-                                bottomRight: Radius.circular(8),
-                                topLeft: Radius.circular(8))),
-                        child: Column(
-                          children: <Widget>[
-                            Row(
-                              children: StarList(avaliacao),
-                            )
-                          ],
-                        ),
-                      ))
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-List<Widget> StarList(double estrela) {
-  List<Widget> listaDeEstrelas = new List();
-
-  if (estrela == 1) {
-    for (var i = 0; i < estrela; i++) {
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle3);
-      listaDeEstrelas.add(starStyle3);
-      listaDeEstrelas.add(starStyle3);
-      listaDeEstrelas.add(starStyle3);
-
-      return listaDeEstrelas;
-    }
-  } else if (estrela == 2) {
-    for (var i = 0; i < estrela; i++) {
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle3);
-      listaDeEstrelas.add(starStyle3);
-      listaDeEstrelas.add(starStyle3);
-
-      return listaDeEstrelas;
-    }
-  } else if (estrela == 3) {
-    for (var i = 0; i < estrela; i++) {
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle3);
-      listaDeEstrelas.add(starStyle3);
-
-      return listaDeEstrelas;
-    }
-  } else if (estrela == 4) {
-    for (var i = 0; i < estrela; i++) {
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle3);
-
-      return listaDeEstrelas;
-    }
-  } else if (estrela == 4.5) {
-    for (var i = 0; i < estrela; i++) {
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle2);
-
-      return listaDeEstrelas;
-    }
-  } else if (estrela == 5) {
-    for (var i = 0; i < estrela; i++) {
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-      listaDeEstrelas.add(starStyle1);
-
-      return listaDeEstrelas;
-    }
-  }
-  ;
 }

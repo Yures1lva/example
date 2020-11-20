@@ -1,3 +1,4 @@
+import 'package:exampleflutter/perfilPage.dart';
 import 'package:flutter/material.dart';
 import 'package:exampleflutter/constants.dart';
 
@@ -22,14 +23,11 @@ class _ConfigPageState extends State<ConfigPage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            styleContainer(
+            container1(
               "Difinições do App", //nome do container
-              3, //quantidade de opções -1
-              "Notificações",
-              "",
-              "",
-              "",
             ),
+            //container2("Privacidade"),
+            container3("Suporte"),
             // styleContainer("mia jeba"),
             // styleContainer("suporte"),
             Divider(
@@ -42,19 +40,9 @@ class _ConfigPageState extends State<ConfigPage> {
     );
   }
 
-  Container styleContainer(
+  Container container1(
     String name,
-    int qtd,
-    String name1,
-    String name2,
-    String name3,
-    String name4,
   ) {
-    List<Widget> listapika = new List<Widget>();
-
-    // for (int i = 0; i < 5; i++) {
-    //   listapika.add(rowStyle(""));
-    // }
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,48 +76,108 @@ class _ConfigPageState extends State<ConfigPage> {
             child: Column(
               //ainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                //rowStyle("comi"),
-
-                Container(
-                  child: Column(children: rowStyle("nome1", qtd)),
+                rowStyle(
+                  "Perfil",
+                  () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => PerfilPage()));
+                  },
                 ),
-                Container(
-                  height: 40,
-                  padding: EdgeInsets.only(
-                    left: 10,
-                    right: 10,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      InkWell(
-                        onTap: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              "nome1",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: primaryColor,
-                              ),
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              color: primaryColor,
-                              size: 20,
-                            ),
-                          ],
+                Divider(
+                  //height: 10,
+                  thickness: 2,
+                  color: backgrounColor,
+                ),
+                rowStyle(
+                  "Notificações",
+                  () {
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10),
+                        ),
+                        side: BorderSide(color: primaryColor),
+                      ),
+                      context: context,
+                      builder: (context) => SingleChildScrollView(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.7,
+                          width: double.maxFinite,
+                          padding: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).viewInsets.bottom),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                padding: EdgeInsets.only(top: 5, left: 20),
+                                height: 40,
+                                width: double.maxFinite,
+                                child: Text(
+                                  "Notificações",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: primaryColor,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                      // Divider(
-                      //   //height: 10,
-                      //   thickness: 2,
-                      //   color: backgrounColor,
-                      // ),
-                    ],
-                  ),
-                )
+                    );
+                    //   Navigator.push(context,
+                    //       MaterialPageRoute(builder: (context) => PerfilPage()));
+                  },
+                ),
+                Divider(
+                  //height: 10,
+                  thickness: 2,
+                  color: backgrounColor,
+                ),
+                rowStyle(
+                  "Tema", null,
+                  // () {
+                  //   Navigator.push(context,
+                  //       MaterialPageRoute(builder: (context) => HomePage()));
+                  // },),
+                ),
+                Divider(
+                  //height: 10,
+                  thickness: 2,
+                  color: backgrounColor,
+                ),
+                rowStyle(
+                  "Proteção do app", null,
+                  // () {
+                  //   Navigator.push(context,
+                  //       MaterialPageRoute(builder: (context) => HomePage()));
+                  // },
+                ),
+                Divider(
+                  //height: 10,
+                  thickness: 2,
+                  color: backgrounColor,
+                ),
+                rowStyle(
+                  "Idioma", null,
+                  // () {
+                  //   Navigator.push(context,
+                  //       MaterialPageRoute(builder: (context) => HomePage()));
+                  // },
+                ),
+                Divider(
+                  //height: 10,
+                  thickness: 2,
+                  color: backgrounColor,
+                ),
+                rowStyle(
+                  "Políica do app", null,
+                  // () {
+                  //   Navigator.push(context,
+                  //       MaterialPageRoute(builder: (context) => HomePage()));
+                  // },
+                ),
               ],
             ),
           ),
@@ -138,54 +186,223 @@ class _ConfigPageState extends State<ConfigPage> {
     );
   }
 
-  List<Widget> rowStyle(
-    String nome1,
-    int qtd,
-  ) {
-    List<Widget> rowList = new List<Widget>();
-    List<String> nomesLista = new List<String>();
+  // Container container2(
+  //   String name,
+  // ) {
+  //   List<Widget> listapika = new List<Widget>();
 
-    nomesLista = [];
-    Container row1() {
-      return Container(
-        height: 50,
-        padding: EdgeInsets.only(left: 10, right: 10, top: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            InkWell(
-              onTap: () {},
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    nome1,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: primaryColor,
-                    ),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    color: primaryColor,
-                    size: 20,
-                  ),
-                ],
+  //   // for (int i = 0; i < 5; i++) {
+  //   //   listapika.add(rowStyle(""));
+  //   // }
+  //   return Container(
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: <Widget>[
+  //         Padding(
+  //           padding: EdgeInsets.only(
+  //             left: 10,
+  //             top: 20,
+  //             bottom: 5,
+  //           ),
+  //           child: Text(
+  //             name,
+  //             style: TextStyle(
+  //               color: primaryColor,
+  //               fontSize: 15,
+  //               fontWeight: FontWeight.w600,
+  //             ),
+  //           ),
+  //         ),
+  //         Container(
+  //           //height: 400,
+  //           width: double.maxFinite,
+  //           margin: EdgeInsets.only(left: 10, right: 10),
+  //           decoration: BoxDecoration(
+  //               // borderRadius: BorderRadius.only(
+  //               //   bottomLeft: Radius.circular(bordas),
+  //               //   bottomRight: Radius.circular(bordas),
+  //               // ),
+  //               borderRadius: BorderRadius.circular(bordas),
+  //               color: Colors.white),
+  //           child: Column(
+  //             //ainAxisAlignment: MainAxisAlignment.start,
+  //             children: <Widget>[
+  //               rowStyle("Notificações"),
+  //               Divider(
+  //                 //height: 10,
+  //                 thickness: 2,
+  //                 color: backgrounColor,
+  //               ),
+  //               rowStyle("Notificações"),
+  //               Divider(
+  //                 //height: 10,
+  //                 thickness: 2,
+  //                 color: backgrounColor,
+  //               ),
+  //               rowStyle("Notificações"),
+  //               Divider(
+  //                 //height: 10,
+  //                 thickness: 2,
+  //                 color: backgrounColor,
+  //               ),
+  //               rowStyle("Notificações"),
+  //               Divider(
+  //                 //height: 10,
+  //                 thickness: 2,
+  //                 color: backgrounColor,
+  //               ),
+  //               rowStyle("Notificações"),
+  //               Divider(
+  //                 //height: 10,
+  //                 thickness: 2,
+  //                 color: backgrounColor,
+  //               ),
+  //               rowStyle("Notificações"),
+  //             ],
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+
+  Container container3(
+    String name,
+  ) {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(
+              left: 10,
+              top: 20,
+              bottom: 5,
+            ),
+            child: Text(
+              name,
+              style: TextStyle(
+                color: primaryColor,
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
               ),
             ),
-            Divider(
-              //height: 10,
-              thickness: 2,
-              color: backgrounColor,
+          ),
+          Container(
+            //height: 400,
+            width: double.maxFinite,
+            margin: EdgeInsets.only(left: 10, right: 10),
+            decoration: BoxDecoration(
+                // borderRadius: BorderRadius.only(
+                //   bottomLeft: Radius.circular(bordas),
+                //   bottomRight: Radius.circular(bordas),
+                // ),
+                borderRadius: BorderRadius.circular(bordas),
+                color: Colors.white),
+            child: Column(
+              //ainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                rowStyle(
+                  "Central de ajuda", null,
+                  // () {
+                  //   Navigator.push(context,
+                  //       MaterialPageRoute(builder: (context) => HomePage()));
+                  // },
+                ),
+                Divider(
+                  //height: 10,
+                  thickness: 2,
+                  color: backgrounColor,
+                ),
+                rowStyle(
+                  "Entre em contato", null,
+                  // () {
+                  //   Navigator.push(context,
+                  //       MaterialPageRoute(builder: (context) => HomePage()));
+                  // },
+                ),
+                Divider(
+                  //height: 10,
+                  thickness: 2,
+                  color: backgrounColor,
+                ),
+                rowStyle(
+                  "Sobre", null,
+                  // () {
+                  //   Navigator.push(context,
+                  //       MaterialPageRoute(builder: (context) => HomePage()));
+                  // },
+                ),
+                Divider(
+                  //height: 10,
+                  thickness: 2,
+                  color: backgrounColor,
+                ),
+                rowStyle(
+                  "Conhecer SNST", null,
+                  // () {
+                  //   Navigator.push(context,
+                  //       MaterialPageRoute(builder: (context) => HomePage()));
+                  // },
+                ),
+                Divider(
+                  //height: 10,
+                  thickness: 2,
+                  color: backgrounColor,
+                ),
+                rowStyle(
+                  "Excluir conta", null,
+                  // () {
+                  //   Navigator.push(context,
+                  //       MaterialPageRoute(builder: (context) => HomePage()));
+                  // },
+                ),
+                // Divider(
+                //   //height: 10,
+                //   thickness: 2,
+                //   color: backgrounColor,
+                // ),
+                // rowStyle("Notificações"),
+              ],
             ),
-          ],
-        ),
-      );
-    }
+          ),
+        ],
+      ),
+    );
+  }
 
-    for (int i = 0; i < qtd; i++) {
-      rowList.add(row1());
-    }
-    return rowList;
+  Container rowStyle(String nome1, Function navigator) {
+    return Container(
+      height: 40,
+      padding: EdgeInsets.only(
+        left: 10,
+        right: 10,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          InkWell(
+            onTap: navigator,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  nome1,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: primaryColor,
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: primaryColor,
+                  size: 20,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

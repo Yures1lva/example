@@ -200,6 +200,20 @@ Drawer BuildDrawer(BuildContext context, Color cortheme) {
                   ),
                   butaoPadroa(
                     context,
+                    "Pedidos",
+                    backgrounColor2,
+                    cortheme,
+                    Icon(
+                      Icons.delivery_dining,
+                      color: cortheme,
+                    ),
+                    () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    },
+                  ),
+                  butaoPadroa(
+                    context,
                     "Perfil",
                     backgrounColor2,
                     cortheme,

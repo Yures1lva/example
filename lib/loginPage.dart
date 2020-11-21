@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:exampleflutter/constants.dart';
 import 'package:exampleflutter/homePage.dart';
 
-import 'PageEmpresas.dart';
-
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();

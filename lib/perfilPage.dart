@@ -107,11 +107,13 @@ class _PerfilPageState extends State<PerfilPage> {
                         height: 40,
                       ),
                       Container(
+                        alignment: Alignment.topCenter,
                         padding: EdgeInsets.only(
                           left: 20,
                           right: 20,
                         ),
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
                           children: [
                             Text(
                               "Nome de Usuário",

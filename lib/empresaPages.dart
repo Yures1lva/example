@@ -1,12 +1,12 @@
 import 'package:exampleflutter/constants.dart';
 import 'package:flutter/material.dart';
 
-class PageEmpresas extends StatefulWidget {
+class EmpresaPage extends StatefulWidget {
   @override
-  _PageEmpresasState createState() => _PageEmpresasState();
+  _EmpresaPageState createState() => _EmpresaPageState();
 }
 
-class _PageEmpresasState extends State<PageEmpresas> {
+class _EmpresaPageState extends State<EmpresaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +19,7 @@ class _PageEmpresasState extends State<PageEmpresas> {
           color: iconColor,
         ),
       ),
+      body: Container(),
     );
   }
 }

@@ -12,21 +12,13 @@ class _PerfilPageState extends State<PerfilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: backgrounColor,
-        appBar: AppBar(
-          elevation: 0,
-          centerTitle: false,
-          title: Text(
-            "Voltar",
-            style: titulo1,
+        appBar: buildAppBar(
+          context,
+          "Perfil",
+          Icon(
+            Icons.person,
+            color: iconColor,
           ),
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(
-                  Icons.account_circle_outlined,
-                  color: iconColor,
-                ),
-                onPressed: null)
-          ],
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -114,6 +106,7 @@ class _PerfilPageState extends State<PerfilPage> {
                         ),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.baseline,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               "Nome de Usuário",

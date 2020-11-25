@@ -3,9 +3,9 @@ import 'package:exampleflutter/listadeempresas.dart';
 import 'package:flutter/material.dart';
 import 'package:exampleflutter/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:exampleflutter/PageEmpresas.dart';
+import 'package:exampleflutter/empresaPages.dart';
 
-import 'empresalist.dart';
+import 'estruturas.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: corfundo,
       drawer: BuildDrawer(context, primaryColor),
       appBar: AppBar(
-        backgroundColor: cor1,
+        backgroundColor: primaryColor,
         elevation: 0,
         centerTitle: false,
         title: Text(
@@ -71,14 +71,14 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Container(
           padding: paddingPadrao,
-          color: corfundo,
+          color: backgrounColor,
           child: Column(
             children: <Widget>[
               Container(
                 child: search_box(
                   "Buscar Empresa",
                   BoxDecoration(
-                    color: cor1,
+                    color: backgrounColor2,
                     borderRadius: BorderRadius.circular(5),
                   ),
                 ),
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: backgrounColor2,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(bordas),
                     bottomRight: Radius.circular(bordas),
@@ -133,7 +133,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: _current == index ? cor1 : cor2,
+                        color:
+                            _current == index ? primaryColor : backgrounColor,
                       ),
                     );
                   }),
@@ -143,8 +144,7 @@ class _HomePageState extends State<HomePage> {
               //..........fim do desing de promções..........................
 
               Container(
-                color: corfundo,
-                margin: EdgeInsets.only(top: 20),
+                color: backgrounColor,
                 child: Column(
                   children: <Widget>[
                     Divider(
@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PageEmpresas()));
+                                      builder: (context) => EmpresaPage()));
                             },
                           ),
                           CardEmpresa(
@@ -186,7 +186,7 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PageEmpresas()));
+                                      builder: (context) => EmpresaPage()));
                             },
                           ),
                           CardEmpresa(
@@ -197,7 +197,7 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PageEmpresas()));
+                                      builder: (context) => EmpresaPage()));
                             },
                           ),
                           Divider(
@@ -321,7 +321,7 @@ InkWell BottomText(BuildContext context, String nome, Function pressione) =>
         height: 30,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: backgrounColor2,
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(bordas),
             bottomLeft: Radius.circular(bordas),
@@ -332,11 +332,7 @@ InkWell BottomText(BuildContext context, String nome, Function pressione) =>
           children: [
             Text(
               nome,
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w400,
-                color: primaryColor,
-              ),
+              style: subtituloPrimaryColor,
             ),
             Icon(
               Icons.arrow_forward_ios,
@@ -352,13 +348,13 @@ InkWell BottomText(BuildContext context, String nome, Function pressione) =>
 List<Widget> ListContainer(int tamanho) {
   List<Widget> listaempresa = List();
 
-  Container StyleContainer(Color corContainer) {
+  Container StyleContainer() {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5),
       height: 150,
       width: double.maxFinite,
       decoration: BoxDecoration(
-        color: corContainer,
+        color: backgrounColor,
         borderRadius: BorderRadius.circular(bordas),
       ),
       child: Row(
@@ -374,8 +370,8 @@ List<Widget> ListContainer(int tamanho) {
             width: 150,
             child: Material(
               elevation: 0.0,
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
+              //color: backgrounColor,
+              borderRadius: BorderRadius.circular(bordas),
               clipBehavior: Clip.antiAliasWithSaveLayer,
               //type: MaterialType.transparency,
               child: Image(
@@ -393,69 +389,74 @@ List<Widget> ListContainer(int tamanho) {
             padding: EdgeInsets.only(left: 5),
             height: double.maxFinite,
             width: 150,
-            color: primaryColor,
+            // color: backgrounColor,
             //alignment: Alignment.centerRight,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Stack(
+              //crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  width: double.maxFinite,
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  child: Container(
+                    width: double.maxFinite,
+                    child: Text(
+                      "nome do produto",
+                      style: tituloPrimaryColor,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  top: 25,
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    //height: 50,
+                    width: 120,
+                    margin: EdgeInsets.all(0),
+                    child: Text(
+                      "Descrição bla aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      style: textonormalPrimaryColor,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 30,
+                  left: 0,
                   child: Text(
-                    "nome do produto",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
+                    "Nike",
+                    style: subtituloPrimaryColor,
                   ),
                 ),
-                Divider(
-                  height: 5,
-                  color: Colors.transparent,
-                ),
-                Text(
-                  "Descrição bla ",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    children: <Widget>[
+                      Text(
+                        "RS",
+                        style: tituloPrimaryColor,
+                      ),
+                      VerticalDivider(
+                        width: 5,
+                        color: Colors.transparent,
+                      ),
+                      Text(
+                        "35",
+                        style: tituloPrimaryColor,
+                      ),
+                      Text(
+                        ",90 ",
+                        style: subtituloPrimaryColor,
+                      ),
+                      Text(
+                        "ou 3x cartão",
+                        textAlign: TextAlign.end,
+                        style: textonormalPrimaryColor,
+                      ),
+                    ],
                   ),
-                ),
-                Divider(
-                  height: 10,
-                  color: Colors.transparent,
-                ),
-                Text(
-                  "Nike",
-                  style: TextStyle(color: Colors.white, fontSize: 15),
-                ),
-                Divider(
-                  height: 15,
-                  color: Colors.transparent,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "RS",
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                    VerticalDivider(
-                      width: 5,
-                      color: Colors.transparent,
-                    ),
-                    Text(
-                      "35",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    Text(
-                      ",90 ",
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
-                    Text(
-                      "ou 3x cartão",
-                      textAlign: TextAlign.end,
-                      style: TextStyle(color: Colors.white, fontSize: 10),
-                    ),
-                  ],
                 )
               ],
             ),
@@ -466,7 +467,7 @@ List<Widget> ListContainer(int tamanho) {
   }
 
   for (int i = 0; i < tamanho; i++) {
-    listaempresa.add(StyleContainer(cor1));
+    listaempresa.add(StyleContainer());
   }
   ;
 
@@ -474,18 +475,11 @@ List<Widget> ListContainer(int tamanho) {
 }
 
 Container Containerdesiner1(int tam) {
-  Color corMaior = Colors.white;
-
   return Container(
     width: double.maxFinite,
     padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
     decoration: BoxDecoration(
-      // borderRadius: BorderRadius.only(
-      //   bottomLeft: Radius.circular(bordas),
-      //   bottomRight: Radius.circular(bordas),
-      // ),
-      // borderRadius: BorderRadius.circular(bordas),
-      color: corMaior,
+      color: backgrounColor2,
     ),
     child: Column(
       children: ListContainer(tam),
@@ -499,7 +493,7 @@ Container WidgetName(String name) {
     height: 30,
     width: double.infinity,
     decoration: BoxDecoration(
-      color: Colors.white,
+      color: backgrounColor2,
       borderRadius: BorderRadius.only(
         topRight: Radius.circular(bordas),
         topLeft: Radius.circular(bordas),
@@ -507,61 +501,57 @@ Container WidgetName(String name) {
     ),
     child: Text(
       name,
-      style: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w600,
-        color: cor1,
-      ),
+      style: tituloPrimaryColor,
     ),
   );
 }
 
-Container buildContainer(
-  BuildContext context,
-  String indexTexto,
-  Icon indexIcon,
-) {
-  return Container(
-    margin: EdgeInsets.only(right: 10, left: 10, top: 5),
-    height: 60,
-    alignment: Alignment.centerLeft,
-    decoration: BoxDecoration(
-      color: corfundo,
-    ),
-    child: FlatButton(
-      color: backgrounColor2,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(bordas),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            indexIcon,
-            VerticalDivider(
-              width: 30,
-              color: Colors.transparent,
-            ),
-            Text(
-              indexTexto,
-              style: titulo2,
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),
-      ),
-      onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => Listadeempresas()));
-      },
-    ),
-  );
-}
+// Container buildContainer(
+//   BuildContext context,
+//   String indexTexto,
+//   Icon indexIcon,
+// ) {
+//   return Container(
+//     margin: EdgeInsets.only(right: 10, left: 10, top: 5),
+//     height: 60,
+//     alignment: Alignment.centerLeft,
+//     decoration: BoxDecoration(
+//       color: corfundo,
+//     ),
+//     child: FlatButton(
+//       color: backgrounColor2,
+//       child: Container(
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(bordas),
+//         ),
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           children: <Widget>[
+//             indexIcon,
+//             VerticalDivider(
+//               width: 30,
+//               color: Colors.transparent,
+//             ),
+//             Text(
+//               indexTexto,
+//               style: titulo2,
+//               textAlign: TextAlign.left,
+//             ),
+//           ],
+//         ),
+//       ),
+//       onPressed: () {
+//         Navigator.push(context,
+//             MaterialPageRoute(builder: (context) => Listadeempresas()));
+//       },
+//     ),
+//   );
+// }
 
 Container Containerdesiner2(String imag1, Function tap) {
   return Container(
     decoration: BoxDecoration(
-      color: Colors.white,
+      color: backgrounColor2,
       borderRadius: BorderRadius.only(
         bottomRight: Radius.circular(bordas),
         bottomLeft: Radius.circular(bordas),
@@ -573,7 +563,7 @@ Container Containerdesiner2(String imag1, Function tap) {
           onTap: tap,
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: backgrounColor2,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(bordas),
                 bottomLeft: Radius.circular(bordas),
@@ -589,8 +579,9 @@ Container Containerdesiner2(String imag1, Function tap) {
                     height: double.infinity,
                     width: 140,
                     padding: EdgeInsets.all(1),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
                     decoration: BoxDecoration(
-                      color: corfundo,
+                      color: backgrounColor2,
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Material(
@@ -605,147 +596,135 @@ Container Containerdesiner2(String imag1, Function tap) {
                     ),
                   ),
                 ),
-                VerticalDivider(
-                  color: Colors.transparent,
-                  width: 10,
-                ),
-                Container(
-                  height: double.infinity,
-                  width: 140,
-                  padding: EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Material(
-                    elevation: 0.5,
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    type: MaterialType.button,
-                    child: Image(
-                      image: AssetImage(imag1),
-                      fit: BoxFit.fill,
+                InkWell(
+                  child: Container(
+                    height: double.infinity,
+                    width: 140,
+                    padding: EdgeInsets.all(1),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: backgrounColor2,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Material(
+                      elevation: 0.5,
+                      color: Colors.white,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      type: MaterialType.button,
+                      child: Image(
+                        image: AssetImage(imag1),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
-                VerticalDivider(
-                  color: Colors.transparent,
-                  width: 10,
-                ),
-                Container(
-                  height: double.infinity,
-                  width: 140,
-                  padding: EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Material(
-                    elevation: 0.5,
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    type: MaterialType.button,
-                    child: Image(
-                      image: AssetImage(imag1),
-                      fit: BoxFit.fill,
+                InkWell(
+                  child: Container(
+                    height: double.infinity,
+                    width: 140,
+                    padding: EdgeInsets.all(1),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: backgrounColor2,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Material(
+                      elevation: 0.5,
+                      color: Colors.white,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      type: MaterialType.button,
+                      child: Image(
+                        image: AssetImage(imag1),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
-                VerticalDivider(
-                  color: Colors.transparent,
-                  width: 10,
-                ),
-                Container(
-                  height: double.infinity,
-                  width: 140,
-                  padding: EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Material(
-                    elevation: 0.5,
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    type: MaterialType.button,
-                    child: Image(
-                      image: AssetImage(imag1),
-                      fit: BoxFit.fill,
+                InkWell(
+                  child: Container(
+                    height: double.infinity,
+                    width: 140,
+                    padding: EdgeInsets.all(1),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: backgrounColor2,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Material(
+                      elevation: 0.5,
+                      color: Colors.white,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      type: MaterialType.button,
+                      child: Image(
+                        image: AssetImage(imag1),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
-                VerticalDivider(
-                  color: Colors.transparent,
-                  width: 10,
-                ),
-                Container(
-                  height: double.infinity,
-                  width: 140,
-                  padding: EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Material(
-                    elevation: 0.5,
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    type: MaterialType.button,
-                    child: Image(
-                      image: AssetImage(imag1),
-                      fit: BoxFit.fill,
+                InkWell(
+                  child: Container(
+                    height: double.infinity,
+                    width: 140,
+                    padding: EdgeInsets.all(1),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: backgrounColor2,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Material(
+                      elevation: 0.5,
+                      color: Colors.white,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      type: MaterialType.button,
+                      child: Image(
+                        image: AssetImage(imag1),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
-                VerticalDivider(
-                  color: Colors.transparent,
-                  width: 10,
-                ),
-                Container(
-                  height: double.infinity,
-                  width: 140,
-                  padding: EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Material(
-                    elevation: 0.5,
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    type: MaterialType.button,
-                    child: Image(
-                      image: AssetImage(imag1),
-                      fit: BoxFit.fill,
+                InkWell(
+                  child: Container(
+                    height: double.infinity,
+                    width: 140,
+                    padding: EdgeInsets.all(1),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: backgrounColor2,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Material(
+                      elevation: 0.5,
+                      color: Colors.white,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      type: MaterialType.button,
+                      child: Image(
+                        image: AssetImage(imag1),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
-                VerticalDivider(
-                  color: Colors.transparent,
-                  width: 10,
-                ),
-                Container(
-                  height: double.infinity,
-                  width: 140,
-                  padding: EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Material(
-                    elevation: 0.5,
-                    color: corfundo,
-                    borderRadius: BorderRadius.circular(5),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    type: MaterialType.button,
-                    child: Image(
-                      image: AssetImage(imag1),
-                      fit: BoxFit.fill,
+                InkWell(
+                  child: Container(
+                    height: double.infinity,
+                    width: 140,
+                    padding: EdgeInsets.all(1),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: backgrounColor2,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Material(
+                      elevation: 0.5,
+                      color: Colors.white,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      type: MaterialType.button,
+                      child: Image(
+                        image: AssetImage(imag1),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),

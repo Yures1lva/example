@@ -43,6 +43,10 @@ class _ConfigPageState extends State<ConfigPage> {
   Container container1(
     String name,
   ) {
+    var selctL;
+    var selctT;
+    List<String> _language = <String>["Português", "Inglês", "Espanhol"];
+    List<String> _tema = <String>["Escuro", "Claro", "Padrão do Sistema"];
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -211,49 +215,59 @@ class _ConfigPageState extends State<ConfigPage> {
                                 color: backgrounColor,
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: 10),
-                                padding: EdgeInsets.only(right: 20, left: 20),
-                                child: InkWell(
-                                  onTap: () {
-                                    PopupMenuButton(
-                                      child: Text("Tema"),
-                                      itemBuilder: (context) => [
-                                        CheckedPopupMenuItem(
-                                          checked: true,
-                                          child: Text("Claro"),
-                                        ),
-                                        CheckedPopupMenuItem(
-                                          child: Text("Escuro"),
-                                        ),
-                                        CheckedPopupMenuItem(
-                                          child: Text("Padrão do sistema"),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Positioned(
-                                        left: 0,
-                                        child: Text(
-                                          "Selecionar Tema",
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            color: primaryColor,
-                                          ),
-                                        ),
+                                margin: EdgeInsets.only(
+                                    bottom: 5, top: 5, left: 10, right: 10),
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                height: 50,
+                                alignment: Alignment.centerLeft,
+                                decoration: BoxDecoration(
+                                  color: backgrounColor,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(bordas),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text(
+                                      "Selecione o tema",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: primaryColor,
+                                        fontSize: 15,
                                       ),
-                                      Positioned(
-                                        right: 0,
-                                        child: Icon(
-                                          Icons.brightness_5_outlined,
+                                      textAlign: TextAlign.left,
+                                    ),
+                                    DropdownButton(
+                                      items: _tema
+                                          .map((value) => DropdownMenuItem(
+                                                child: Text(
+                                                  value,
+                                                  style: TextStyle(
+                                                    color: primaryColor,
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                                value: value,
+                                              ))
+                                          .toList(),
+                                      onChanged: (selectedTema) {
+                                        setState(() {
+                                          selctL = selectedTema;
+                                        });
+                                      },
+                                      value: selctT,
+                                      isExpanded: false,
+                                      isDense: false,
+                                      hint: Text(
+                                        "clique para selecionar",
+                                        style: TextStyle(
                                           color: primaryColor,
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    )
+                                  ],
                                 ),
                               ),
                             ],
@@ -307,7 +321,7 @@ class _ConfigPageState extends State<ConfigPage> {
                                 height: 50,
                                 width: double.maxFinite,
                                 child: Text(
-                                  "Tema",
+                                  "Proteção do App",
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: primaryColor,
@@ -338,7 +352,7 @@ class _ConfigPageState extends State<ConfigPage> {
                 rowStyle(
                   "Idioma",
                   () {
-                    bool isSwitched = true;
+                    // bool isSwitched = true;
                     showModalBottomSheet(
                       isScrollControlled: true,
                       shape: RoundedRectangleBorder(
@@ -349,47 +363,94 @@ class _ConfigPageState extends State<ConfigPage> {
                         //side: BorderSide(color: primaryColor),
                       ),
                       context: context,
-                      builder: (context) => SingleChildScrollView(
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.2,
-                          width: double.maxFinite,
-                          padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                alignment: Alignment.topCenter,
-                                height: 5,
-                                width: 80,
-                                margin: EdgeInsets.all(5),
-                                decoration: BoxDecoration(
-                                    color: primaryColor,
-                                    borderRadius: BorderRadius.circular(50)),
-                              ),
-                              Container(
-                                alignment: Alignment.center,
-                                //padding: EdgeInsets.only(left: 20),
-                                height: 50,
-                                width: double.maxFinite,
-                                child: Text(
-                                  "Idioma",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: primaryColor,
-                                  ),
+                      builder: (context) => Container(
+                        height: MediaQuery.of(context).size.height * 0.2,
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              alignment: Alignment.topCenter,
+                              height: 5,
+                              width: 80,
+                              margin: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: primaryColor,
+                                  borderRadius: BorderRadius.circular(50)),
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              //padding: EdgeInsets.only(left: 20),
+                              height: 50,
+                              width: double.maxFinite,
+                              child: Text(
+                                "Idioma",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: primaryColor,
                                 ),
                               ),
-                              Container(
-                                  margin: EdgeInsets.only(top: 10),
-                                  //padding: EdgeInsets.only(right: 20, left: 20),
-                                  child: rowPop(isSwitched, "Idioma")),
-                              // Divider(
-                              //   height: 10,
-                              //   thickness: 2,
-                              //   color: backgrounColor,
-                              // ),
-                            ],
-                          ),
+                            ),
+                            Divider(
+                              //height: 10,
+                              thickness: 2,
+                              color: backgrounColor,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  bottom: 5, top: 5, left: 10, right: 10),
+                              padding: EdgeInsets.only(left: 10, right: 10),
+                              height: 50,
+                              alignment: Alignment.centerLeft,
+                              decoration: BoxDecoration(
+                                color: backgrounColor,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(bordas),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text(
+                                    "Selecionar idioma",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: primaryColor,
+                                      fontSize: 15,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                  DropdownButton(
+                                    items: _language
+                                        .map((value) => DropdownMenuItem(
+                                              child: Text(
+                                                value,
+                                                style: TextStyle(
+                                                  color: primaryColor,
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                              value: value,
+                                            ))
+                                        .toList(),
+                                    onChanged: (selectedLanguage) {
+                                      setState(() {
+                                        selctL = selectedLanguage;
+                                      });
+                                    },
+                                    value: selctL,
+                                    isExpanded: false,
+                                    isDense: false,
+                                    hint: Text(
+                                      "clique para selecionar",
+                                      style: TextStyle(
+                                        color: primaryColor,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     );
@@ -827,10 +888,112 @@ class _ConfigPageState extends State<ConfigPage> {
                   thickness: 2,
                   color: backgrounColor,
                 ),
-                rowStyle(
-                  "Excluir conta",
-                  null,
-                ),
+                rowStyle("Excluir conta", () {
+                  showModalBottomSheet(
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                      ),
+                      //side: BorderSide(color: primaryColor),
+                    ),
+                    context: context,
+                    builder: (context) => SingleChildScrollView(
+                      child: Container(
+                        //height: MediaQuery.of(context).size.height * 0.2,
+                        width: double.maxFinite,
+                        padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              alignment: Alignment.topCenter,
+                              height: 5,
+                              width: 80,
+                              margin: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: primaryColor,
+                                  borderRadius: BorderRadius.circular(50)),
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              //padding: EdgeInsets.only(left: 20),
+                              height: 50,
+                              width: double.maxFinite,
+                              child: Text(
+                                "Quer realmente excluir sua conta?",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: primaryColor,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 10, bottom: 10),
+                              padding: EdgeInsets.only(right: 20, left: 20),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(bottom: 5, top: 5),
+                                    height: 50,
+                                    alignment: Alignment.centerLeft,
+                                    decoration: BoxDecoration(
+                                      color: backgrounColor,
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(bordas),
+                                      ),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: <Widget>[
+                                        VerticalDivider(
+                                          width: 2,
+                                          color: Colors.transparent,
+                                        ),
+                                        InkWell(
+                                          child: Text(
+                                            "Sim",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: primaryColor,
+                                              fontSize: 15,
+                                            ),
+                                            textAlign: TextAlign.left,
+                                          ),
+                                        ),
+                                        VerticalDivider(
+                                          thickness: 2,
+                                        ),
+                                        InkWell(
+                                          child: Text(
+                                            "Não",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: primaryColor,
+                                              fontSize: 15,
+                                            ),
+                                            textAlign: TextAlign.left,
+                                          ),
+                                        ),
+                                        VerticalDivider(
+                                          width: 2,
+                                          color: Colors.transparent,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }),
                 Divider(
                   height: 9,
                   color: Colors.transparent,

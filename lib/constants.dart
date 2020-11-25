@@ -10,11 +10,12 @@ double bordas = 5;
 
 //paleta de cores.......................
 const backgrounColor = Color(0xffe0e0e0);
+const backgrounColor2 = Colors.white;
+const backgrounColor3 = Colors.white10;
 const primaryColor = Color(0xff508ca4);
 const secondaryColor = Color(0xff0a8754);
 const cor4 = Color(0xffbfd7ea);
 const buttonColor = primaryColor;
-const backgrounColor2 = Colors.white54;
 const iconColor = Colors.white;
 const paddingPadrao = EdgeInsets.only(left: 10, right: 10),
 
@@ -31,15 +32,33 @@ const titulo2 = TextStyle(
   color: Colors.black,
 );
 
+const tituloPrimaryColor = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w600,
+  color: primaryColor,
+);
+
 const subtitulo = TextStyle(
   fontWeight: FontWeight.w600,
   color: Colors.black,
   fontSize: 15,
 );
 
+const subtituloPrimaryColor = TextStyle(
+  fontWeight: FontWeight.w600,
+  color: primaryColor,
+  fontSize: 15,
+);
+
 const textonormal = TextStyle(
   fontWeight: FontWeight.w500,
   color: Colors.white,
+  fontSize: 12,
+);
+
+const textonormalPrimaryColor = TextStyle(
+  fontWeight: FontWeight.w500,
+  color: primaryColor,
   fontSize: 12,
 );
 
@@ -95,16 +114,16 @@ Container search_box(String hintText, BoxDecoration decoracao) => Container(
       decoration: decoracao,
       child: TextField(
         onChanged: onChanged,
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: primaryColor),
         decoration: InputDecoration(
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
           icon: Icon(
             Icons.search,
-            color: iconColor,
+            color: primaryColor,
           ),
           hintText: hintText,
-          hintStyle: textonormal,
+          hintStyle: textonormalPrimaryColor,
         ),
       ),
     );

@@ -1,9 +1,9 @@
-import 'package:exampleflutter/empresalist.dart';
+import 'package:exampleflutter/estruturas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:exampleflutter/constants.dart';
 import 'package:exampleflutter/homePage.dart';
-import 'package:exampleflutter/PageEmpresas.dart';
+import 'package:exampleflutter/empresaPages.dart';
 
 class Listadeempresas extends StatefulWidget {
   const Listadeempresas({
@@ -156,7 +156,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
         empresalist[i].avaliacao,
         () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => PageEmpresas()));
+              context, MaterialPageRoute(builder: (context) => EmpresaPage()));
         },
       ));
     }

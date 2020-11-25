@@ -12,8 +12,8 @@ double bordas = 5;
 const backgrounColor = Color(0xffe0e0e0);
 const backgrounColor2 = Colors.white;
 const backgrounColor3 = Colors.white10;
-const primaryColor = Color(0xff508ca4);
-const secondaryColor = Color(0xff0a8754);
+const primaryColor = Color(0xff0a8754);
+const secondaryColor = Color(0xff508ca4);
 const cor4 = Color(0xffbfd7ea);
 const buttonColor = primaryColor;
 const iconColor = Colors.white;
@@ -70,8 +70,8 @@ const textonormal2 = TextStyle(
 
 //elevção de um Container.................................
 const elevation = BoxShadow(
-  offset: Offset(10, 5),
-  blurRadius: 57,
+  offset: Offset(1, 3),
+  blurRadius: 1,
   color: Colors.black12, // Black color with 12% opacity
 );
 
@@ -417,7 +417,7 @@ Container CardEmpresa(
                       padding: EdgeInsets.only(bottom: 10, top: 10),
                       margin: EdgeInsets.only(left: 10, right: 10),
                       height: 100,
-                      width: 120,
+                      width: 100,
                       child: Material(
                         elevation: 0.0,
                         color: Colors.white,

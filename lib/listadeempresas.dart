@@ -52,7 +52,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
                 child: search_box(
                   "Buscar Empresa ou Produto",
                   BoxDecoration(
-                    color: primaryColor, //.withOpacity(0.4),
+                    color: backgrounColor, //.withOpacity(0.4),
                     borderRadius: BorderRadius.circular(5),
                   ),
                 ),

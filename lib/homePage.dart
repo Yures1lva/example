@@ -84,33 +84,38 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               WidgetName("Promoções"),
-              //efeito carrossel
-              carouselSlider = CarouselSlider(
-                options: CarouselOptions(
-                  height: 300.0,
-                  //enableInfiniteScroll: true,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 5),
-                  autoPlayAnimationDuration: Duration(milliseconds: 1700),
-                  autoPlayCurve: Curves.easeInOut,
-                  // enlargeCenterPage: true,
-                  scrollDirection: Axis.horizontal,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
-                  },
-                ),
-                items: imgList.map((imgUrl) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Column(children: <Widget>[
-                        imageBuilder(imgUrl),
-                      ]);
+
+              Container(
+                color: backgrounColor2,
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    height: 300.0,
+                    //enableInfiniteScroll: true,
+                    autoPlay: true,
+                    autoPlayInterval: Duration(seconds: 5),
+                    autoPlayAnimationDuration: Duration(milliseconds: 1700),
+                    autoPlayCurve: Curves.easeInOut,
+                    // enlargeCenterPage: true,
+                    scrollDirection: Axis.horizontal,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _current = index;
+                      });
                     },
-                  );
-                }).toList(),
+                  ),
+                  items: imgList.map((imgUrl) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Column(children: <Widget>[
+                          imageBuilder(imgUrl),
+                        ]);
+                      },
+                    );
+                  }).toList(),
+                ),
               ),
+              //efeito carrossel
+              // carouselSlider =
               Container(
                 decoration: BoxDecoration(
                   color: backgrounColor2,
@@ -159,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                       // margin: EdgeInsets.all(4),
                       // decoration: BoxDecoration(
                       //   borderRadius: BorderRadius.circular(5),
-                      color: Colors.white,
+                      color: backgrounColor2,
                       //),
                       child: Column(
                         children: <Widget>[
@@ -221,11 +226,30 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                       color: Colors.transparent,
                     ),
-                    WidgetName("Tecnologia"),
-                    Containerdesiner1(3),
+                    WidgetName("Esporte"),
+                    Containerdesiner1(
+                      listadeProdutos[0].image,
+                      listadeProdutos[0].nome,
+                      listadeProdutos[0].descricao,
+                      listadeProdutos[0].loja,
+                      listadeProdutos[0].preco1,
+                      listadeProdutos[0].preco2,
+                      listadeProdutos[1].image,
+                      listadeProdutos[1].nome,
+                      listadeProdutos[1].descricao,
+                      listadeProdutos[1].loja,
+                      listadeProdutos[1].preco1,
+                      listadeProdutos[1].preco2,
+                      listadeProdutos[5].image,
+                      listadeProdutos[5].nome,
+                      listadeProdutos[5].descricao,
+                      listadeProdutos[5].loja,
+                      listadeProdutos[5].preco1,
+                      listadeProdutos[5].preco2,
+                    ),
                     BottomText(
                       context,
-                      "Ver todos de Tecnologia",
+                      "Ver todos de Esportes",
                       () {
                         Navigator.push(
                             context,
@@ -237,11 +261,30 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                       color: Colors.transparent,
                     ),
-                    WidgetName("Esporte"),
-                    Containerdesiner1(3),
+                    WidgetName("Variedades"),
+                    Containerdesiner1(
+                      listadeProdutos[3].image,
+                      listadeProdutos[3].nome,
+                      listadeProdutos[3].descricao,
+                      listadeProdutos[3].loja,
+                      listadeProdutos[3].preco1,
+                      listadeProdutos[3].preco2,
+                      listadeProdutos[4].image,
+                      listadeProdutos[4].nome,
+                      listadeProdutos[4].descricao,
+                      listadeProdutos[4].loja,
+                      listadeProdutos[4].preco1,
+                      listadeProdutos[4].preco2,
+                      listadeProdutos[1].image,
+                      listadeProdutos[1].nome,
+                      listadeProdutos[1].descricao,
+                      listadeProdutos[1].loja,
+                      listadeProdutos[1].preco1,
+                      listadeProdutos[1].preco2,
+                    ),
                     BottomText(
                       context,
-                      "Ver todos de Esportes",
+                      "Ver todos de Variedades",
                       () {
                         Navigator.push(
                             context,
@@ -345,10 +388,30 @@ InkWell BottomText(BuildContext context, String nome, Function pressione) =>
       onTap: pressione,
     );
 
-List<Widget> ListContainer(int tamanho) {
+List<Widget> ListContainer(
+  String image1,
+  String nomedoP1,
+  String descricao1,
+  String loja1,
+  String preco11,
+  String preco21,
+  String image2,
+  String nomedoP2,
+  String descricao2,
+  String loja2,
+  String preco12,
+  String preco22,
+  String image3,
+  String nomedoP3,
+  String descricao3,
+  String loja3,
+  String preco13,
+  String preco23,
+) {
   List<Widget> listaempresa = List();
 
-  Container StyleContainer() {
+  Container StyleContainer(String image, String nomedoP, String descricao,
+      String loja, String preco1, String preco2) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5),
       height: 150,
@@ -375,7 +438,7 @@ List<Widget> ListContainer(int tamanho) {
               clipBehavior: Clip.antiAliasWithSaveLayer,
               //type: MaterialType.transparency,
               child: Image(
-                image: AssetImage("images/promonike3.png"),
+                image: AssetImage(image),
                 fit: BoxFit.fill,
               ),
             ),
@@ -400,7 +463,7 @@ List<Widget> ListContainer(int tamanho) {
                   child: Container(
                     width: double.maxFinite,
                     child: Text(
-                      "nome do produto",
+                      nomedoP,
                       style: tituloPrimaryColor,
                     ),
                   ),
@@ -414,7 +477,7 @@ List<Widget> ListContainer(int tamanho) {
                     width: 120,
                     margin: EdgeInsets.all(0),
                     child: Text(
-                      "Descrição bla aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      descricao,
                       style: textonormalPrimaryColor,
                     ),
                   ),
@@ -423,7 +486,7 @@ List<Widget> ListContainer(int tamanho) {
                   bottom: 30,
                   left: 0,
                   child: Text(
-                    "Nike",
+                    loja,
                     style: subtituloPrimaryColor,
                   ),
                 ),
@@ -443,11 +506,11 @@ List<Widget> ListContainer(int tamanho) {
                         color: Colors.transparent,
                       ),
                       Text(
-                        "35",
+                        preco1,
                         style: tituloPrimaryColor,
                       ),
                       Text(
-                        ",90 ",
+                        "," + preco2,
                         style: subtituloPrimaryColor,
                       ),
                       Text(
@@ -466,15 +529,36 @@ List<Widget> ListContainer(int tamanho) {
     );
   }
 
-  for (int i = 0; i < tamanho; i++) {
-    listaempresa.add(StyleContainer());
-  }
-  ;
+  listaempresa.add(
+      StyleContainer(image1, nomedoP1, descricao1, loja1, preco11, preco21));
+  listaempresa.add(
+      StyleContainer(image2, nomedoP2, descricao2, loja2, preco12, preco22));
+  listaempresa.add(
+      StyleContainer(image3, nomedoP3, descricao3, loja3, preco13, preco23));
 
   return listaempresa;
 }
 
-Container Containerdesiner1(int tam) {
+Container Containerdesiner1(
+  String image1,
+  String nomedoP1,
+  String descri1,
+  String loja1,
+  String preco11,
+  String preco21,
+  String image2,
+  String nomedoP2,
+  String descri2,
+  String loja2,
+  String preco12,
+  String preco22,
+  String image3,
+  String nomedoP3,
+  String descri3,
+  String loja3,
+  String preco13,
+  String preco23,
+) {
   return Container(
     width: double.maxFinite,
     padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 5),
@@ -482,7 +566,26 @@ Container Containerdesiner1(int tam) {
       color: backgrounColor2,
     ),
     child: Column(
-      children: ListContainer(tam),
+      children: ListContainer(
+        image1,
+        nomedoP1,
+        descri1,
+        loja1,
+        preco11,
+        preco21,
+        image2,
+        nomedoP2,
+        descri2,
+        loja2,
+        preco12,
+        preco22,
+        image3,
+        nomedoP3,
+        descri3,
+        loja3,
+        preco13,
+        preco23,
+      ),
     ),
   );
 }
@@ -505,48 +608,6 @@ Container WidgetName(String name) {
     ),
   );
 }
-
-// Container buildContainer(
-//   BuildContext context,
-//   String indexTexto,
-//   Icon indexIcon,
-// ) {
-//   return Container(
-//     margin: EdgeInsets.only(right: 10, left: 10, top: 5),
-//     height: 60,
-//     alignment: Alignment.centerLeft,
-//     decoration: BoxDecoration(
-//       color: corfundo,
-//     ),
-//     child: FlatButton(
-//       color: backgrounColor2,
-//       child: Container(
-//         decoration: BoxDecoration(
-//           borderRadius: BorderRadius.circular(bordas),
-//         ),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: <Widget>[
-//             indexIcon,
-//             VerticalDivider(
-//               width: 30,
-//               color: Colors.transparent,
-//             ),
-//             Text(
-//               indexTexto,
-//               style: titulo2,
-//               textAlign: TextAlign.left,
-//             ),
-//           ],
-//         ),
-//       ),
-//       onPressed: () {
-//         Navigator.push(context,
-//             MaterialPageRoute(builder: (context) => Listadeempresas()));
-//       },
-//     ),
-//   );
-// }
 
 Container Containerdesiner2(String imag1, Function tap) {
   return Container(

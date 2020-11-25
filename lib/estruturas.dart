@@ -80,3 +80,79 @@ final List<Empresalist> empresalist = [
     categoriaempresa: "bar",
   ),
 ];
+
+class ListadeProdutos {
+  final String image;
+  final String nome;
+  final String categoria;
+  final String descricao;
+  final String loja;
+  final String preco1;
+  final String preco2;
+  ListadeProdutos(
+      {this.image,
+      this.nome,
+      this.categoria,
+      this.descricao,
+      this.loja,
+      this.preco1,
+      this.preco2});
+}
+
+final List<ListadeProdutos> listadeProdutos = [
+  ListadeProdutos(
+    image: "images/promonike1.png",
+    nome: "Camisa da seleção ",
+    categoria: "Roupas",
+    descricao: "camisa da seleção confortável da nike pai vey",
+    loja: "Nike",
+    preco1: "220",
+    preco2: "99",
+  ),
+  ListadeProdutos(
+    image: "images/promonike2.png",
+    nome: "chuteira nike confrotável",
+    categoria: "calçados",
+    descricao:
+        "chutreira pica confortável da nike pai vey, pra tirar onda surfista",
+    loja: "Nike",
+    preco1: "150",
+    preco2: "99",
+  ),
+  ListadeProdutos(
+    image: "images/promonike3.png",
+    nome: "Tenis adidas mlk",
+    categoria: "calçados",
+    descricao: "Sapato confortável da adidas ma com o simbolo da nike pai vey",
+    loja: "Nike",
+    preco1: "550",
+    preco2: "99",
+  ),
+  ListadeProdutos(
+    image: "images/promohavan1.png",
+    nome: "funcking arvore de natal",
+    categoria: "Natal",
+    descricao: "Arvore com o intuito de enfiar no cu de quem ta lendo",
+    loja: "Havan",
+    preco1: "20",
+    preco2: "99",
+  ),
+  ListadeProdutos(
+    image: "images/promohavan2.png",
+    nome: "funcking macroondas",
+    categoria: "Cozinha",
+    descricao: "Macroondas que bate na mãe",
+    loja: "Havan",
+    preco1: "20",
+    preco2: "99",
+  ),
+  ListadeProdutos(
+    image: "images/productnike1.png",
+    nome: "Tenis masculino",
+    categoria: "Esporte",
+    descricao: "Tenis Nike masculino para a prática de exercício",
+    loja: "Nnike",
+    preco1: "200",
+    preco2: "99",
+  ),
+];

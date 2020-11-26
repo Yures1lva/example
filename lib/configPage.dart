@@ -1,3 +1,4 @@
+import 'package:exampleflutter/loginPage.dart';
 import 'package:exampleflutter/perfilPage.dart';
 import 'package:flutter/material.dart';
 import 'package:exampleflutter/constants.dart';
@@ -954,6 +955,13 @@ class _ConfigPageState extends State<ConfigPage> {
                                           color: Colors.transparent,
                                         ),
                                         InkWell(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        LoginPage()));
+                                          },
                                           child: Text(
                                             "Sim",
                                             style: TextStyle(
@@ -968,6 +976,13 @@ class _ConfigPageState extends State<ConfigPage> {
                                           thickness: 2,
                                         ),
                                         InkWell(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ConfigPage()));
+                                          },
                                           child: Text(
                                             "Não",
                                             style: TextStyle(

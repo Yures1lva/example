@@ -32,10 +32,10 @@ class _PerfilPageState extends State<PerfilPage> {
                     right: 10,
                   ),
                   decoration: BoxDecoration(
-                    color: primaryColor,
+                    color: backgrounColor2,
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(10),
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
                     ),
                   ),
                   child: Column(
@@ -45,7 +45,7 @@ class _PerfilPageState extends State<PerfilPage> {
                         height: 200,
                         width: 200,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.circular(100),
                           image: DecorationImage(
                             image: AssetImage("images/perfil.jpg"),
@@ -57,37 +57,17 @@ class _PerfilPageState extends State<PerfilPage> {
                           children: <Widget>[
                             Container(
                               height: 20,
-                              width: double.maxFinite,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 7, vertical: 2.5
-                                  // vertical: symetricPad * 2,
-                                  ),
+                              width: 20,
                               decoration: BoxDecoration(
-                                color: primaryColor,
-                                // borderRadius: BorderRadius.circular(100),
+                                color: backgrounColor2,
+                                borderRadius: BorderRadius.circular(100),
                               ),
                               child: InkWell(
                                 onTap: () {},
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    VerticalDivider(
-                                      color: Colors.transparent,
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "Editar",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.edit_outlined,
-                                      size: 15,
-                                      color: Colors.white,
-                                    ),
-                                  ],
+                                child: Icon(
+                                  Icons.edit_outlined,
+                                  size: 15,
+                                  color: primaryColor,
                                 ),
                               ),
                             ),
@@ -111,7 +91,7 @@ class _PerfilPageState extends State<PerfilPage> {
                             Text(
                               "Nome de Usuário",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: primaryColor,
                                 fontSize: 25,
                               ),
                             ),
@@ -125,19 +105,10 @@ class _PerfilPageState extends State<PerfilPage> {
                             ),
                             InkWell(
                               onTap: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Text(
-                                    "Editar",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 15),
-                                  ),
-                                  Icon(
-                                    Icons.edit_outlined,
-                                    size: 15,
-                                    color: Colors.white,
-                                  ),
-                                ],
+                              child: Icon(
+                                Icons.edit_outlined,
+                                size: 15,
+                                color: primaryColor,
                               ),
                             ),
                           ],

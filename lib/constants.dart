@@ -5,6 +5,7 @@ import 'package:exampleflutter/perfilPage.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'homePage.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 double bordas = 5;
 
@@ -566,5 +567,228 @@ AppBar buildAppBar(BuildContext context, String nm, Icon ic) {
       style: titulo1,
     ),
     actions: <Widget>[IconButton(icon: ic, onPressed: null)],
+  );
+}
+
+class CarouselPage extends StatefulWidget {
+  @override
+  _CarouselPageState createState() => _CarouselPageState();
+}
+
+class _CarouselPageState extends State<CarouselPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+//container de produtos
+Container styleContainer(String image, String nomedoP, String descricao,
+    String loja, String preco1, String preco2) {
+  return Container(
+    margin: EdgeInsets.symmetric(vertical: 3),
+    height: 150,
+    width: double.maxFinite,
+    decoration: BoxDecoration(
+      color: backgrounColor2,
+      borderRadius: BorderRadius.circular(bordas),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.only(
+            bottom: 5,
+            top: 5,
+          ),
+          margin: EdgeInsets.only(left: 5),
+          height: 150,
+          width: 150,
+          child: Material(
+            elevation: 1.0,
+            //color: backgrounColor,
+            borderRadius: BorderRadius.circular(bordas),
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            //type: MaterialType.transparency,
+            child: Image(
+              image: AssetImage(image),
+              fit: BoxFit.fill,
+            ),
+          ),
+        ),
+        VerticalDivider(
+          width: 10,
+          color: Colors.transparent,
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 5, bottom: 5),
+          padding: EdgeInsets.only(left: 5),
+          height: double.maxFinite,
+          width: 150,
+          // color: backgrounColor,
+          //alignment: Alignment.centerRight,
+          child: Stack(
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Positioned(
+                top: 0,
+                left: 0,
+                child: Container(
+                  width: double.maxFinite,
+                  child: Text(
+                    nomedoP,
+                    style: tituloPrimaryColor,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 0,
+                top: 25,
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  //height: 50,
+                  width: 120,
+                  margin: EdgeInsets.all(0),
+                  child: Text(
+                    descricao,
+                    style: textonormal2,
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 30,
+                left: 0,
+                child: Text(
+                  loja,
+                  style: subtitulo,
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  children: <Widget>[
+                    Text(
+                      "RS",
+                      style: titulo2,
+                    ),
+                    VerticalDivider(
+                      width: 5,
+                      color: Colors.transparent,
+                    ),
+                    Text(
+                      preco1,
+                      style: titulo2,
+                    ),
+                    Text(
+                      "," + preco2,
+                      style: subtitulo,
+                    ),
+                    Text(
+                      "ou 3x cartão",
+                      textAlign: TextAlign.end,
+                      style: textonormal2,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+//carouselWidget
+Container carouselWidget(List listadeimagens, var ind, int count) {
+  return Container(
+    color: backgrounColor2,
+    child: CarouselSlider(
+      options: CarouselOptions(
+        height: 300.0,
+        //enableInfiniteScroll: true,
+        autoPlay: true,
+        autoPlayInterval: Duration(seconds: 5),
+        autoPlayAnimationDuration: Duration(milliseconds: 1700),
+        autoPlayCurve: Curves.easeInOut,
+        // enlargeCenterPage: true,
+        scrollDirection: Axis.horizontal,
+        onPageChanged: (ind, reason) {
+          //  setState(() {
+          //     count = ind;
+          //   });
+        },
+      ),
+      items: listadeimagens.map((imgUrl) {
+        return Builder(
+          builder: (BuildContext context) {
+            return Column(children: <Widget>[
+              Container(
+                height: 290,
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.only(left: 0, right: 0, top: 0),
+                margin: EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: backgrounColor2,
+                ),
+                child: Container(
+                  height: 290,
+                  width: double.maxFinite,
+                  // padding: EdgeInsets.only(top: 0, bottom: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: backgrounColor2,
+                  ),
+                  child: Material(
+                    borderRadius: BorderRadius.circular(5),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    //type: MaterialType.transparency,
+                    child: Image(
+                      image: AssetImage(imgUrl),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+              ),
+            ]);
+          },
+        );
+      }).toList(),
+    ),
+  );
+}
+
+Container carouselRow(List lista, int count) {
+  return Container(
+    decoration: BoxDecoration(
+      color: backgrounColor2,
+      borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(bordas),
+        bottomRight: Radius.circular(bordas),
+      ),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: map<Widget>(lista, (index, url) {
+        return Container(
+          width: 10.0,
+          height: 10.0,
+          margin: EdgeInsets.only(
+            top: 10,
+            left: 3,
+            right: 3,
+            bottom: 10,
+          ),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: count == index ? primaryColor : backgrounColor,
+          ),
+        );
+      }),
+    ),
   );
 }

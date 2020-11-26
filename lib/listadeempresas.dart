@@ -1,9 +1,9 @@
 import 'package:exampleflutter/estruturas.dart';
+import 'package:exampleflutter/produtosPages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:exampleflutter/constants.dart';
 import 'package:exampleflutter/homePage.dart';
-import 'package:exampleflutter/empresaPages.dart';
 
 class Listadeempresas extends StatefulWidget {
   const Listadeempresas({
@@ -53,7 +53,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
                   "Buscar Empresa ou Produto",
                   BoxDecoration(
                     color: backgrounColor, //.withOpacity(0.4),
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius: BorderRadius.circular(bordas),
                   ),
                 ),
               ),
@@ -156,7 +156,13 @@ class _ListadeempresasState extends State<Listadeempresas> {
         empresalist[i].avaliacao,
         () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => EmpresaPage()));
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProdutosPages(
+                empresalista: empresalist[i],
+              ),
+            ),
+          );
         },
       ));
     }

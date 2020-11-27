@@ -5,9 +5,16 @@ import 'package:flutter/material.dart';
 
 class ProdutosPages extends StatelessWidget {
   final Empresalist empresalista;
+  List imgLista = [
+    listadeProdutos[0].image,
+    listadeProdutos[1].image,
+    listadeProdutos[2].image,
+    listadeProdutos[3].image,
+    listadeProdutos[5].image,
+  ];
 
   ProdutosPages({this.empresalista});
-
+  int _current;
   @override
   Widget build(
     BuildContext context,
@@ -27,7 +34,7 @@ class ProdutosPages extends StatelessWidget {
           child: Column(
             children: [
               search_box(
-                "buscar produtos",
+                "Buscar Produtos",
                 BoxDecoration(
                   color: backgrounColor2,
                   borderRadius: BorderRadius.circular(bordas),
@@ -66,8 +73,143 @@ class ProdutosPages extends StatelessWidget {
                     bottomLeft: Radius.circular(bordas),
                   ),
                 ),
-              )
+              ),
+              Divider(
+                height: 10,
+                color: Colors.transparent,
+              ),
+              WidgetName("Promoções"),
+              carouselWidget(imgLista, index, _current),
+              Container(
+                alignment: Alignment.bottomRight,
+                padding: EdgeInsets.only(right: 10, top: 4, bottom: 8),
+                height: 30,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: backgrounColor2,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(bordas),
+                    bottomLeft: Radius.circular(bordas),
+                  ),
+                ),
+              ),
+              Divider(
+                height: 10,
+                color: Colors.transparent,
+              ),
+              WidgetName("Categoria 1"),
+              Container(
+                decoration: BoxDecoration(
+                  color: backgrounColor2,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(bordas),
+                    bottomLeft: Radius.circular(bordas),
+                  ),
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        color: backgrounColor2,
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(bordas),
+                          bottomLeft: Radius.circular(bordas),
+                        ),
+                      ),
+                      height: 160,
+                      padding: EdgeInsets.all(10),
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: backgrounColor2,
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(bordas),
+                          bottomLeft: Radius.circular(bordas),
+                        ),
+                      ),
+                      height: 160,
+                      padding: EdgeInsets.all(10),
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: backgrounColor2,
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(bordas),
+                          bottomLeft: Radius.circular(bordas),
+                        ),
+                      ),
+                      height: 160,
+                      padding: EdgeInsets.all(10),
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                          cardProduct(),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Divider(
+                height: 10,
+                color: Colors.transparent,
+              ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  InkWell cardProduct() {
+    return InkWell(
+      child: Container(
+        height: double.infinity,
+        width: 140,
+        padding: EdgeInsets.all(1),
+        margin: EdgeInsets.symmetric(horizontal: 5),
+        decoration: BoxDecoration(
+          color: backgrounColor2,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: Material(
+          elevation: 0.5,
+          color: Colors.white,
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          type: MaterialType.button,
+          child: Image(
+            image: AssetImage("images/productnike2.png"),
+            fit: BoxFit.fill,
           ),
         ),
       ),

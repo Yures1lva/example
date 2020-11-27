@@ -64,14 +64,13 @@ flutter:
        - images/mixicon.jpg
        - images/nikeicon.png
        - images/royalicon.png
-       - images/promonike1.png
-       - images/promonike2.png
-       - images/promonike3.png
-       - images/promohavan1.png
-       - images/promohavan2.png
        - images/perfil.jpg
-       - images/setadireitaicon.png
        - images/productnike1.png
+       - images/productnike2.png
+       - images/productnike3.png
+       - images/productnike4.png
+       - images/producthavan1.png
+       - images/producthavan2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

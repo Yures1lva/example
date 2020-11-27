@@ -30,11 +30,10 @@ List<T> map<T>(List list, Function handler) {
 int _current = 0;
 var index;
 List imgList = [
-  'images/promonike1.png',
-  'images/promonike2.png',
-  'images/promonike3.png',
-  'images/promohavan1.png',
-  'images/promohavan2.png',
+  'images/producthavan1.png',
+  'images/productnike3.png',
+  'images/producthavan2.png',
+  'images/productnike4.png',
 ];
 
 class _HomePageState extends State<HomePage> {
@@ -93,7 +92,48 @@ class _HomePageState extends State<HomePage> {
               ),
               WidgetName("Promoções"),
               carouselWidget(imgList, index, _current),
-              carouselRow(imgList),
+              Container(
+                alignment: Alignment.bottomRight,
+                padding: EdgeInsets.only(right: 10, top: 4, bottom: 8),
+                height: 30,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: backgrounColor2,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(bordas),
+                    bottomLeft: Radius.circular(bordas),
+                  ),
+                ),
+              ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     color: backgrounColor2,
+              //     borderRadius: BorderRadius.only(
+              //       bottomLeft: Radius.circular(bordas),
+              //       bottomRight: Radius.circular(bordas),
+              //     ),
+              //   ),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: map<Widget>(listadeProdutos, (index, url) {
+              //       return Container(
+              //         width: 10.0,
+              //         height: 10.0,
+              //         margin: EdgeInsets.only(
+              //           top: 10,
+              //           left: 3,
+              //           right: 3,
+              //           bottom: 10,
+              //         ),
+              //         decoration: BoxDecoration(
+              //           shape: BoxShape.circle,
+              //           color:
+              //               _current == index ? primaryColor : backgrounColor,
+              //         ),
+              //       );
+              //     }),
+              //   ),
+              // ),
 
               //..........fim do desing de promções..........................
 
@@ -257,7 +297,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     WidgetName("Favoritos"),
                     Containerdesiner2(
-                      'images/promonike2.png',
+                      'images/productnike2.png',
                       () {
                         Navigator.push(
                             context,
@@ -268,7 +308,7 @@ class _HomePageState extends State<HomePage> {
                     Divider(
                       color: Colors.transparent,
                       height: 20,
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -614,32 +654,5 @@ Container Containerdesiner2(String imag1, Function tap) {
 //fim do body
 
 Container carouselRow(List lista) {
-  return Container(
-    decoration: BoxDecoration(
-      color: backgrounColor2,
-      borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(bordas),
-        bottomRight: Radius.circular(bordas),
-      ),
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: map<Widget>(lista, (index, url) {
-        return Container(
-          width: 10.0,
-          height: 10.0,
-          margin: EdgeInsets.only(
-            top: 10,
-            left: 3,
-            right: 3,
-            bottom: 10,
-          ),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: _current == index ? primaryColor : backgrounColor,
-          ),
-        );
-      }),
-    ),
-  );
+  return Container();
 }

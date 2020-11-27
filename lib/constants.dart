@@ -634,7 +634,7 @@ Container styleContainer(String image, String nomedoP, String descricao,
                 top: 0,
                 left: 0,
                 child: Container(
-                  width: double.maxFinite,
+                  width: 150,
                   child: Text(
                     nomedoP,
                     style: tituloPrimaryColor,
@@ -643,11 +643,11 @@ Container styleContainer(String image, String nomedoP, String descricao,
               ),
               Positioned(
                 left: 0,
-                top: 25,
+                top: 38,
                 child: Container(
                   alignment: Alignment.centerLeft,
                   //height: 50,
-                  width: 120,
+                  width: 150,
                   margin: EdgeInsets.all(0),
                   child: Text(
                     descricao,
@@ -702,6 +702,18 @@ Container styleContainer(String image, String nomedoP, String descricao,
   );
 }
 
+class Carrousel extends StatefulWidget {
+  @override
+  _CarrouselState createState() => _CarrouselState();
+}
+
+class _CarrouselState extends State<Carrousel> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
 //carouselWidget
 Container carouselWidget(List listadeimagens, var ind, int count) {
   return Container(
@@ -716,11 +728,7 @@ Container carouselWidget(List listadeimagens, var ind, int count) {
         autoPlayCurve: Curves.easeInOut,
         // enlargeCenterPage: true,
         scrollDirection: Axis.horizontal,
-        onPageChanged: (ind, reason) {
-          //  setState(() {
-          //     count = ind;
-          //   });
-        },
+        onPageChanged: (ind, reason) {},
       ),
       items: listadeimagens.map((imgUrl) {
         return Builder(
@@ -758,37 +766,6 @@ Container carouselWidget(List listadeimagens, var ind, int count) {
           },
         );
       }).toList(),
-    ),
-  );
-}
-
-Container carouselRow(List lista, int count) {
-  return Container(
-    decoration: BoxDecoration(
-      color: backgrounColor2,
-      borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(bordas),
-        bottomRight: Radius.circular(bordas),
-      ),
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: map<Widget>(lista, (index, url) {
-        return Container(
-          width: 10.0,
-          height: 10.0,
-          margin: EdgeInsets.only(
-            top: 10,
-            left: 3,
-            right: 3,
-            bottom: 10,
-          ),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: count == index ? primaryColor : backgrounColor,
-          ),
-        );
-      }),
     ),
   );
 }

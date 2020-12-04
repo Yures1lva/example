@@ -136,6 +136,10 @@ class _ListadeempresasState extends State<Listadeempresas> {
                                 builder: (context) => Listadeempresas()));
                       },
                     ),
+                    Divider(
+                      color: Colors.transparent,
+                      height: 20,
+                    )
                   ],
                 ),
               ),

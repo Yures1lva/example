@@ -106,19 +106,19 @@ class ProdutosPages extends StatelessWidget {
                     listadeProdutos[1].preco1,
                     listadeProdutos[1].preco2,
                   ),
-                  Container(
-                    alignment: Alignment.bottomRight,
-                    padding: EdgeInsets.only(right: 10, top: 4, bottom: 8),
-                    height: 5,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: backgrounColor2,
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(bordas),
-                        bottomLeft: Radius.circular(bordas),
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   alignment: Alignment.bottomRight,
+                  //   padding: EdgeInsets.only(right: 10, top: 4, bottom: 8),
+                  //   height: 5,
+                  //   width: double.infinity,
+                  //   decoration: BoxDecoration(
+                  //     color: backgrounColor2,
+                  //     borderRadius: BorderRadius.only(
+                  //       bottomRight: Radius.circular(bordas),
+                  //       bottomLeft: Radius.circular(bordas),
+                  //     ),
+                  //   ),
+                  // ),
                   Divider(
                     height: 10,
                     color: Colors.transparent,

@@ -783,27 +783,91 @@ Container carouselWidget(List listadeimagens, var ind, int count) {
   );
 }
 
-InkWell cardProduct(String image, double width) {
+InkWell cardProduct(
+  String image,
+  double width,
+) {
+  const double height2 = 30;
   return InkWell(
-    child: Container(
-      width: width,
-      height: width,
-      padding: EdgeInsets.symmetric(horizontal: 2),
-      // margin: EdgeInsets.symmetric(horizontal: 5),
-      decoration: BoxDecoration(
-        color: backgrounColor2,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Material(
-        elevation: 0.5,
-        color: backgrounColor,
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        type: MaterialType.button,
-        child: Image(
-          image: AssetImage(image),
-          fit: BoxFit.fill,
+    child: Column(
+      children: <Widget>[
+        Container(
+          width: width,
+          height: width - height2,
+          padding: EdgeInsets.symmetric(horizontal: 2),
+          // margin: EdgeInsets.symmetric(horizontal: 5),
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Material(
+            elevation: 0.5,
+            color: Colors.transparent,
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            type: MaterialType.button,
+            child: Image(
+              image: AssetImage(image),
+              fit: BoxFit.fill,
+            ),
+          ),
         ),
-      ),
+        Container(
+            alignment: Alignment.topLeft,
+            margin: EdgeInsets.symmetric(horizontal: 2),
+            padding: EdgeInsets.only(left: 2),
+            decoration: BoxDecoration(
+                color: backgrounColor2,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(bordas),
+                  bottomRight: Radius.circular(bordas),
+                )),
+            height: height2,
+            width: width - 4,
+            child: Stack(
+              children: <Widget>[
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  child: Text(
+                    "nike pica dos pica ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color: primaryColor,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Text(
+                    "Price: RS 10 ",
+                    style: textonormal2,
+                  ),
+                )
+              ],
+            ))
+      ],
     ),
   );
 }
+// Container(
+//       width: width,
+//       height: width,
+//       padding: EdgeInsets.symmetric(horizontal: 2),
+//       // margin: EdgeInsets.symmetric(horizontal: 5),
+//       decoration: BoxDecoration(
+//         color: Colors.transparent,
+//         borderRadius: BorderRadius.circular(10),
+//       ),
+//       child: Material(
+//         elevation: 0.5,
+//         color: Colors.transparent,
+//         clipBehavior: Clip.antiAliasWithSaveLayer,
+//         type: MaterialType.button,
+//         child: Image(
+//           image: AssetImage(image),
+//           fit: BoxFit.fill,
+//         ),
+//       ),
+//     )

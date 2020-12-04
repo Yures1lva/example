@@ -127,8 +127,8 @@ class _ListadeempresasState extends State<Listadeempresas> {
                       height: 7,
                     ),
                     WidgetName("Favoritos"),
-                    Containerdesiner2(
-                      'images/promonike2.png',
+                    widgetFav(
+                      'images/productnike3.png',
                       () {
                         Navigator.push(
                             context,

@@ -28,191 +28,222 @@ class ProdutosPages extends StatelessWidget {
             Icons.shopping_cart_outlined,
             color: iconColor,
           )),
-      body: Container(
-        padding: paddingPadrao,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              search_box(
-                "Buscar Produtos",
-                BoxDecoration(
-                  color: backgrounColor2,
-                  borderRadius: BorderRadius.circular(bordas),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 100,
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                color: backgrounColor2,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
                 ),
               ),
-              WidgetName("Para você"),
-              Containerdesiner1(
-                listadeProdutos[3].image,
-                listadeProdutos[3].nome,
-                listadeProdutos[3].descricao,
-                listadeProdutos[3].loja,
-                listadeProdutos[3].preco1,
-                listadeProdutos[3].preco2,
-                listadeProdutos[4].image,
-                listadeProdutos[4].nome,
-                listadeProdutos[4].descricao,
-                listadeProdutos[4].loja,
-                listadeProdutos[4].preco1,
-                listadeProdutos[4].preco2,
-                listadeProdutos[1].image,
-                listadeProdutos[1].nome,
-                listadeProdutos[1].descricao,
-                listadeProdutos[1].loja,
-                listadeProdutos[1].preco1,
-                listadeProdutos[1].preco2,
-              ),
-              Container(
-                alignment: Alignment.bottomRight,
-                padding: EdgeInsets.only(right: 10, top: 4, bottom: 8),
-                height: 5,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: backgrounColor2,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(bordas),
-                    bottomLeft: Radius.circular(bordas),
-                  ),
-                ),
-              ),
-              Divider(
-                height: 10,
-                color: Colors.transparent,
-              ),
-              WidgetName("Promoções"),
-              carouselWidget(imgLista, index, _current),
-              Container(
-                alignment: Alignment.bottomRight,
-                padding: EdgeInsets.only(right: 10, top: 4, bottom: 8),
-                height: 30,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: backgrounColor2,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(bordas),
-                    bottomLeft: Radius.circular(bordas),
-                  ),
-                ),
-              ),
-              Divider(
-                height: 10,
-                color: Colors.transparent,
-              ),
-              WidgetName("Categoria 1"),
-              Container(
-                decoration: BoxDecoration(
-                  color: backgrounColor2,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(bordas),
-                    bottomLeft: Radius.circular(bordas),
-                  ),
-                ),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      decoration: BoxDecoration(
-                        color: backgrounColor2,
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(bordas),
-                          bottomLeft: Radius.circular(bordas),
-                        ),
-                      ),
-                      height: 160,
-                      padding: EdgeInsets.all(10),
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: <Widget>[
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                        ],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(bottom: 10, top: 10),
+                    margin: EdgeInsets.only(left: 10, right: 10),
+                    height: 100,
+                    width: 100,
+                    child: Material(
+                      elevation: 0.0,
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      //type: MaterialType.transparency,
+                      child: Image(
+                        image: AssetImage(empresalista.image),
+                        fit: BoxFit.fill,
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: backgrounColor2,
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(bordas),
-                          bottomLeft: Radius.circular(bordas),
-                        ),
-                      ),
-                      height: 160,
-                      padding: EdgeInsets.all(10),
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: <Widget>[
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                        ],
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    width: 250,
+                    child: Text(
+                      empresalista.description,
+                      style: tituloPrimaryColor,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: paddingPadrao,
+              child: Column(
+                children: <Widget>[
+                  search_box(
+                    "Buscar Produtos",
+                    BoxDecoration(
+                      color: backgrounColor2,
+                      borderRadius: BorderRadius.circular(bordas),
+                    ),
+                  ),
+                  WidgetName("Para você"),
+                  Containerdesiner1(
+                    listadeProdutos[3].image,
+                    listadeProdutos[3].nome,
+                    listadeProdutos[3].descricao,
+                    listadeProdutos[3].loja,
+                    listadeProdutos[3].preco1,
+                    listadeProdutos[3].preco2,
+                    listadeProdutos[4].image,
+                    listadeProdutos[4].nome,
+                    listadeProdutos[4].descricao,
+                    listadeProdutos[4].loja,
+                    listadeProdutos[4].preco1,
+                    listadeProdutos[4].preco2,
+                    listadeProdutos[1].image,
+                    listadeProdutos[1].nome,
+                    listadeProdutos[1].descricao,
+                    listadeProdutos[1].loja,
+                    listadeProdutos[1].preco1,
+                    listadeProdutos[1].preco2,
+                  ),
+                  Container(
+                    alignment: Alignment.bottomRight,
+                    padding: EdgeInsets.only(right: 10, top: 4, bottom: 8),
+                    height: 5,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: backgrounColor2,
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(bordas),
+                        bottomLeft: Radius.circular(bordas),
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: backgrounColor2,
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(bordas),
-                          bottomLeft: Radius.circular(bordas),
-                        ),
-                      ),
-                      height: 160,
-                      padding: EdgeInsets.all(10),
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: <Widget>[
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                          cardProduct(),
-                        ],
+                  ),
+                  Divider(
+                    height: 10,
+                    color: Colors.transparent,
+                  ),
+                  WidgetName("Promoções"),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, top: 7, bottom: 0),
+                    height: 10,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: backgrounColor2,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(bordas),
+                        topLeft: Radius.circular(bordas),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  carouselWidget(imgLista, index, _current),
+                  Container(
+                    alignment: Alignment.bottomRight,
+                    padding: EdgeInsets.only(right: 10, top: 4, bottom: 8),
+                    height: 30,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: backgrounColor2,
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(bordas),
+                        bottomLeft: Radius.circular(bordas),
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    height: 10,
+                    color: Colors.transparent,
+                  ),
+                  WidgetName("Categoria 1"),
+                  widgetCategoria(),
+                  Divider(
+                    height: 10,
+                    color: Colors.transparent,
+                  ),
+                  WidgetName("Categoria 2"),
+                  widgetCategoria(),
+                  Divider(
+                    height: 10,
+                    color: Colors.transparent,
+                  ),
+                ],
               ),
-              Divider(
-                height: 10,
-                color: Colors.transparent,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  InkWell cardProduct() {
-    return InkWell(
-      child: Container(
-        height: double.infinity,
-        width: 140,
-        padding: EdgeInsets.all(1),
-        margin: EdgeInsets.symmetric(horizontal: 5),
-        decoration: BoxDecoration(
-          color: backgrounColor2,
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: Material(
-          elevation: 0.5,
-          color: Colors.white,
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          type: MaterialType.button,
-          child: Image(
-            image: AssetImage("images/productnike2.png"),
-            fit: BoxFit.fill,
+  Column widgetCategoria() {
+    return Column(
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.only(bottom: 5),
+          decoration: BoxDecoration(
+            color: backgrounColor,
+          ),
+          height: 160,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+            ],
           ),
         ),
-      ),
+        Container(
+          decoration: BoxDecoration(
+            color: backgrounColor,
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(bordas),
+              bottomLeft: Radius.circular(bordas),
+            ),
+          ),
+          height: 160,
+          padding: EdgeInsets.only(bottom: 5),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+            ],
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: backgrounColor,
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(bordas),
+              bottomLeft: Radius.circular(bordas),
+            ),
+          ),
+          height: 160,
+          padding: EdgeInsets.only(bottom: 5),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(listadeProdutos[1].image, 140),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

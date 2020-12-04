@@ -35,6 +35,12 @@ List imgList = [
   'images/producthavan2.png',
   'images/productnike4.png',
 ];
+List names = [
+  "Fritadeira Air Fry Gourmet",
+  "Tenis Nike Airmax impact",
+  "Smart TV Led 65 4k",
+  "Tênis Nike Air Max 720"
+];
 
 class _HomePageState extends State<HomePage> {
   _HomePageState();
@@ -91,11 +97,22 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               WidgetName("Promoções"),
+              Container(
+                padding: EdgeInsets.only(left: 10, top: 7, bottom: 0),
+                height: 10,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: backgrounColor2,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(bordas),
+                    topLeft: Radius.circular(bordas),
+                  ),
+                ),
+              ),
               carouselWidget(imgList, index, _current),
               Container(
+                height: 5,
                 alignment: Alignment.bottomRight,
-                padding: EdgeInsets.only(right: 10, top: 4, bottom: 8),
-                height: 30,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: backgrounColor2,
@@ -149,11 +166,11 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       // height: 290,
                       width: double.maxFinite,
-                      padding: paddingPadrao,
+                      // padding: paddingPadrao,
                       // margin: EdgeInsets.all(4),
                       // decoration: BoxDecoration(
                       //   borderRadius: BorderRadius.circular(5),
-                      color: backgrounColor2,
+                      color: backgrounColor,
                       //),
                       child: Column(
                         children: <Widget>[
@@ -296,7 +313,7 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.transparent,
                     ),
                     WidgetName("Favoritos"),
-                    Containerdesiner2(
+                    widgetFav(
                       'images/productnike2.png',
                       () {
                         Navigator.push(
@@ -328,11 +345,11 @@ InkWell BottomText(BuildContext context, String nome, Function pressione) =>
     InkWell(
       child: Container(
         alignment: Alignment.bottomRight,
-        padding: EdgeInsets.only(right: 10, top: 4, bottom: 8),
+        padding: EdgeInsets.only(top: 4, bottom: 8),
         height: 30,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: backgrounColor2,
+          color: backgrounColor,
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(bordas),
             bottomLeft: Radius.circular(bordas),
@@ -410,11 +427,11 @@ Container Containerdesiner1(
 ) {
   return Container(
     decoration: BoxDecoration(
-      color: backgrounColor2,
+      color: backgrounColor,
     ),
     child: Container(
       width: double.maxFinite,
-      padding: EdgeInsets.only(left: 5, right: 5),
+      //padding: EdgeInsets.only(left: 5, right: 5),
       margin: EdgeInsets.all(1),
       decoration: BoxDecoration(
           color: backgrounColor, borderRadius: BorderRadius.circular(bordas)),
@@ -446,11 +463,13 @@ Container Containerdesiner1(
 
 Container WidgetName(String name) {
   return Container(
-    padding: EdgeInsets.only(left: 10, top: 7, bottom: 0),
+    padding: EdgeInsets.only(
+      top: 7,
+    ),
     height: 30,
     width: double.infinity,
     decoration: BoxDecoration(
-      color: backgrounColor2,
+      color: backgrounColor,
       borderRadius: BorderRadius.only(
         topRight: Radius.circular(bordas),
         topLeft: Radius.circular(bordas),
@@ -463,17 +482,26 @@ Container WidgetName(String name) {
   );
 }
 
-Container Containerdesiner2(String imag1, Function tap) {
+Container widgetFav(String imag1, Function tap) {
   return Container(
     decoration: BoxDecoration(
       color: backgrounColor2,
-      borderRadius: BorderRadius.only(
-        bottomRight: Radius.circular(bordas),
-        bottomLeft: Radius.circular(bordas),
-      ),
+      borderRadius: BorderRadius.circular(bordas),
     ),
     child: Column(
       children: <Widget>[
+        Container(
+          padding: EdgeInsets.only(left: 10, top: 7, bottom: 0),
+          height: 5,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: backgrounColor2,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(bordas),
+              topLeft: Radius.circular(bordas),
+            ),
+          ),
+        ),
         InkWell(
           onTap: tap,
           child: Container(
@@ -499,16 +527,7 @@ Container Containerdesiner2(String imag1, Function tap) {
                       color: backgrounColor2,
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Material(
-                      elevation: 0.5,
-                      color: Colors.white,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      type: MaterialType.button,
-                      child: Image(
-                        image: AssetImage(imag1),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                    child: cardProduct(imag1, 140),
                   ),
                 ),
                 InkWell(
@@ -521,16 +540,7 @@ Container Containerdesiner2(String imag1, Function tap) {
                       color: backgrounColor2,
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Material(
-                      elevation: 0.5,
-                      color: Colors.white,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      type: MaterialType.button,
-                      child: Image(
-                        image: AssetImage(imag1),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                    child: cardProduct(imag1, 140),
                   ),
                 ),
                 InkWell(
@@ -543,16 +553,7 @@ Container Containerdesiner2(String imag1, Function tap) {
                       color: backgrounColor2,
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Material(
-                      elevation: 0.5,
-                      color: Colors.white,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      type: MaterialType.button,
-                      child: Image(
-                        image: AssetImage(imag1),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                    child: cardProduct(imag1, 140),
                   ),
                 ),
                 InkWell(
@@ -565,16 +566,7 @@ Container Containerdesiner2(String imag1, Function tap) {
                       color: backgrounColor2,
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Material(
-                      elevation: 0.5,
-                      color: Colors.white,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      type: MaterialType.button,
-                      child: Image(
-                        image: AssetImage(imag1),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                    child: cardProduct(imag1, 140),
                   ),
                 ),
                 InkWell(
@@ -587,16 +579,7 @@ Container Containerdesiner2(String imag1, Function tap) {
                       color: backgrounColor2,
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Material(
-                      elevation: 0.5,
-                      color: Colors.white,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      type: MaterialType.button,
-                      child: Image(
-                        image: AssetImage(imag1),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                    child: cardProduct(imag1, 140),
                   ),
                 ),
                 InkWell(
@@ -609,16 +592,7 @@ Container Containerdesiner2(String imag1, Function tap) {
                       color: backgrounColor2,
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Material(
-                      elevation: 0.5,
-                      color: Colors.white,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      type: MaterialType.button,
-                      child: Image(
-                        image: AssetImage(imag1),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                    child: cardProduct(imag1, 140),
                   ),
                 ),
                 InkWell(
@@ -631,16 +605,7 @@ Container Containerdesiner2(String imag1, Function tap) {
                       color: backgrounColor2,
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Material(
-                      elevation: 0.5,
-                      color: Colors.white,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      type: MaterialType.button,
-                      child: Image(
-                        image: AssetImage(imag1),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                    child: cardProduct(imag1, 140),
                   ),
                 ),
               ],

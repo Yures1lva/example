@@ -735,37 +735,75 @@ Container carouselWidget(List listadeimagens, var ind, int count) {
           builder: (BuildContext context) {
             return Column(children: <Widget>[
               Container(
-                height: 290,
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.only(left: 0, right: 0, top: 0),
-                margin: EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: backgrounColor2,
-                ),
-                child: Container(
                   height: 290,
-                  width: double.maxFinite,
-                  // padding: EdgeInsets.only(top: 0, bottom: 20),
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(horizontal: 2),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: backgrounColor2,
                   ),
-                  child: Material(
-                    borderRadius: BorderRadius.circular(5),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    //type: MaterialType.transparency,
-                    child: Image(
-                      image: AssetImage(imgUrl),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
-              ),
+                  child: Column(
+                    children: <Widget>[
+                      cardProduct(imgUrl, 280),
+
+                      // Container(
+                      //   margin: EdgeInsets.symmetric(horizontal: 2),
+                      //   height: 40,
+                      //   alignment: Alignment.bottomRight,
+                      //   width: double.infinity,
+                      //   decoration: BoxDecoration(
+                      //     color: backgrounColor,
+                      //     borderRadius: BorderRadius.only(
+                      //       bottomRight: Radius.circular(bordas),
+                      //       bottomLeft: Radius.circular(bordas),
+                      //     ),
+                      //   ),
+                      //   child: Stack(
+                      //     children: <Widget>[
+                      //       Positioned(
+                      //           top: 2,
+                      //           left: 2,
+                      //           child: Container(
+                      //             width: 50,
+                      //             child: Text(
+                      //               "Arroz",
+                      //               style: subtitulo,
+                      //             ),
+                      //           ))
+                      //     ],
+                      //   ),
+                      // ),
+                    ],
+                  )),
             ]);
           },
         );
       }).toList(),
+    ),
+  );
+}
+
+InkWell cardProduct(String image, double width) {
+  return InkWell(
+    child: Container(
+      width: width,
+      height: width,
+      padding: EdgeInsets.symmetric(horizontal: 2),
+      // margin: EdgeInsets.symmetric(horizontal: 5),
+      decoration: BoxDecoration(
+        color: backgrounColor2,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Material(
+        elevation: 0.5,
+        color: backgrounColor,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        type: MaterialType.button,
+        child: Image(
+          image: AssetImage(image),
+          fit: BoxFit.fill,
+        ),
+      ),
     ),
   );
 }

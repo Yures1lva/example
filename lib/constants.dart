@@ -1,4 +1,4 @@
-import 'package:exampleflutter/FavoritePage.dart';
+import 'package:exampleflutter/favoritePage.dart';
 import 'package:exampleflutter/configPage.dart';
 import 'package:exampleflutter/loginPage.dart';
 import 'package:exampleflutter/perfilPage.dart';
@@ -166,15 +166,15 @@ Container butaoPadroa(BuildContext context, String name, Color corBotao,
   );
 }
 
-Drawer BuildDrawer(BuildContext context, Color cortheme) {
-  _launchURL() async {
-    const url = "https://flutter.dev";
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+Drawer buildDrawer(BuildContext context, Color cortheme) {
+  // _launchURL() async {
+  //   const url = "https://flutter.dev";
+  //   if (await canLaunch(url)) {
+  //     await launch(url);
+  //   } else {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
   return Drawer(
     child: SingleChildScrollView(
@@ -382,7 +382,7 @@ Drawer BuildDrawer(BuildContext context, Color cortheme) {
 }
 
 //card padrão de empresas
-Container CardEmpresa(
+Container cardEmpresa(
     String image, String descricao, double avaliacao, Function press) {
   return Container(
     height: 90,
@@ -468,7 +468,7 @@ Container CardEmpresa(
                     child: Column(
                       children: <Widget>[
                         Row(
-                          children: StarList(avaliacao),
+                          children: starList(avaliacao),
                         )
                       ],
                     ),
@@ -483,7 +483,7 @@ Container CardEmpresa(
   );
 }
 
-List<Widget> StarList(double estrela) {
+List<Widget> starList(double estrela) {
   List<Widget> listaDeEstrelas = new List();
 
   if (estrela == 1) {
@@ -547,7 +547,6 @@ List<Widget> StarList(double estrela) {
       return listaDeEstrelas;
     }
   }
-  ;
 }
 
 AppBar buildAppBar(BuildContext context, String nm, Icon ic) {
@@ -624,7 +623,7 @@ Container styleContainer(String image, String nomedoP, String descricao,
           margin: EdgeInsets.only(top: 5, bottom: 5),
           padding: EdgeInsets.only(left: 5),
           height: double.maxFinite,
-          width: 150,
+          width: 180, //MediaQuery.of(context).size.width * 0.2,
           // color: backgrounColor,
           //alignment: Alignment.centerRight,
           child: Stack(
@@ -634,7 +633,7 @@ Container styleContainer(String image, String nomedoP, String descricao,
                 top: 0,
                 left: 0,
                 child: Container(
-                  width: 150,
+                  width: 160,
                   child: Text(
                     nomedoP,
                     style: tituloPrimaryColor,
@@ -744,7 +743,8 @@ Container carouselWidget(List listadeimagens, var ind, int count) {
                   ),
                   child: Column(
                     children: <Widget>[
-                      cardProduct(imgUrl, 280),
+                      cardProduct(
+                          imgUrl, 280, "nike pica dos pica", "100", "99"),
 
                       // Container(
                       //   margin: EdgeInsets.symmetric(horizontal: 2),
@@ -786,6 +786,9 @@ Container carouselWidget(List listadeimagens, var ind, int count) {
 InkWell cardProduct(
   String image,
   double width,
+  String name,
+  String preco1,
+  String preco2,
 ) {
   const double height2 = 30;
   return InkWell(
@@ -798,10 +801,10 @@ InkWell cardProduct(
           // margin: EdgeInsets.symmetric(horizontal: 5),
           decoration: BoxDecoration(
             color: Colors.transparent,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(bordas),
           ),
           child: Material(
-            elevation: 0.5,
+            //elevation: 0.5,
             color: Colors.transparent,
             clipBehavior: Clip.antiAliasWithSaveLayer,
             type: MaterialType.button,
@@ -829,20 +832,30 @@ InkWell cardProduct(
                   top: 0,
                   left: 0,
                   child: Text(
-                    "nike pica dos pica ",
+                    name,
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       color: primaryColor,
-                      fontSize: 15,
+                      fontSize: 12,
                     ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  right: 15,
+                  child: Text(
+                    preco1,
+                    style: textonormal2,
                   ),
                 ),
                 Positioned(
                   bottom: 0,
                   right: 0,
                   child: Text(
-                    "Price: RS 10 ",
-                    style: textonormal2,
+                    "," + preco2,
+                    style: TextStyle(
+                      fontSize: 10,
+                    ),
                   ),
                 )
               ],
@@ -871,3 +884,110 @@ InkWell cardProduct(
 //         ),
 //       ),
 //     )
+
+Container widgetFav(
+  String imag1,
+  Function tap,
+  String name,
+  String preco1,
+  String preco2,
+) {
+  return Container(
+    decoration: BoxDecoration(
+      color: backgrounColor2,
+      borderRadius: BorderRadius.circular(bordas),
+    ),
+    child: Column(
+      children: <Widget>[
+        InkWell(
+          child: Container(
+            decoration: BoxDecoration(
+              color: backgrounColor,
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(bordas),
+                bottomLeft: Radius.circular(bordas),
+              ),
+            ),
+            height: 170,
+            padding: EdgeInsets.all(0),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                InkWell(
+                  onTap: tap,
+                  child: Container(
+                    height: double.infinity,
+                    width: 140,
+                    padding: EdgeInsets.all(0.5),
+                    margin: EdgeInsets.only(right: 5),
+                    decoration: BoxDecoration(
+                      color: backgrounColor,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: cardProduct(imag1, 140, name, preco1, preco2),
+                  ),
+                ),
+                InkWell(
+                  onTap: tap,
+                  child: Container(
+                    height: double.infinity,
+                    width: 140,
+                    padding: EdgeInsets.all(0.5),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: backgrounColor,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: cardProduct(imag1, 140, name, preco1, preco2),
+                  ),
+                ),
+                InkWell(
+                  onTap: tap,
+                  child: Container(
+                    height: double.infinity,
+                    width: 140,
+                    padding: EdgeInsets.all(0.5),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: backgrounColor,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: cardProduct(imag1, 140, name, preco1, preco2),
+                  ),
+                ),
+                InkWell(
+                  onTap: tap,
+                  child: Container(
+                    height: double.infinity,
+                    width: 140,
+                    padding: EdgeInsets.all(0.5),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: backgrounColor,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: cardProduct(imag1, 140, name, preco1, preco2),
+                  ),
+                ),
+                InkWell(
+                  onTap: tap,
+                  child: Container(
+                    height: double.infinity,
+                    width: 140,
+                    padding: EdgeInsets.all(0.5),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: backgrounColor,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: cardProduct(imag1, 140, name, preco1, preco2),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}

@@ -182,7 +182,7 @@ class _ConfigPageState extends State<ConfigPage> {
                       context: context,
                       builder: (context) => SingleChildScrollView(
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.2,
+                          height: MediaQuery.of(context).size.height * 0.5,
                           width: double.maxFinite,
                           padding: EdgeInsets.only(
                               bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -301,7 +301,7 @@ class _ConfigPageState extends State<ConfigPage> {
                       context: context,
                       builder: (context) => SingleChildScrollView(
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.2,
+                          height: MediaQuery.of(context).size.height * 0.5,
                           width: double.maxFinite,
                           padding: EdgeInsets.only(
                               bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -365,7 +365,7 @@ class _ConfigPageState extends State<ConfigPage> {
                       ),
                       context: context,
                       builder: (context) => Container(
-                        height: MediaQuery.of(context).size.height * 0.2,
+                        height: MediaQuery.of(context).size.height * 0.5,
                         child: Column(
                           children: <Widget>[
                             Container(
@@ -629,7 +629,6 @@ class _ConfigPageState extends State<ConfigPage> {
                 rowStyle(
                   "Central de ajuda",
                   () {
-                    bool isSwitched = true;
                     showModalBottomSheet(
                       isScrollControlled: true,
                       shape: RoundedRectangleBorder(
@@ -642,7 +641,7 @@ class _ConfigPageState extends State<ConfigPage> {
                       context: context,
                       builder: (context) => SingleChildScrollView(
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.2,
+                          height: MediaQuery.of(context).size.height * 0.5,
                           width: double.maxFinite,
                           padding: EdgeInsets.only(
                               bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -713,7 +712,7 @@ class _ConfigPageState extends State<ConfigPage> {
                 rowStyle(
                   "Entre em contato",
                   () {
-                    bool isSwitched = true;
+                    // bool isSwitched = true;
                     showModalBottomSheet(
                       isScrollControlled: true,
                       shape: RoundedRectangleBorder(
@@ -726,10 +725,10 @@ class _ConfigPageState extends State<ConfigPage> {
                       context: context,
                       builder: (context) => SingleChildScrollView(
                         child: Container(
-                          // height: MediaQuery.of(context).size.height * 0.2,
+                          //height: MediaQuery.of(context).size.height * 0.5,
                           width: double.maxFinite,
-                          padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
+                          // padding: EdgeInsets.only(
+                          //     bottom: MediaQuery.of(context).viewInsets.bottom),
                           child: Column(
                             children: <Widget>[
                               Container(

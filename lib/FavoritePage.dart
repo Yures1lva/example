@@ -11,23 +11,13 @@ class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // leadingWidth: 20,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "Favoritos",
-          style: TextStyle(color: Colors.white, fontSize: 30),
+      appBar: buildAppBar(
+        context,
+        "Favoritos",
+        Icon(
+          Icons.favorite,
+          color: iconColor,
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.favorite,
-              color: iconColor,
-            ),
-            onPressed: null,
-          ),
-        ],
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:exampleflutter/estruturas.dart';
 import 'package:exampleflutter/homePage.dart';
 import 'package:flutter/material.dart';
 
-class ProdutosPages extends StatelessWidget {
+class EmpresasPages extends StatelessWidget {
   final Empresalist empresalista;
   List imgLista = [
     listadeProdutos[0].image,
@@ -13,7 +13,7 @@ class ProdutosPages extends StatelessWidget {
     listadeProdutos[5].image,
   ];
 
-  ProdutosPages({this.empresalista});
+  EmpresasPages({this.empresalista});
   int _current;
   @override
   Widget build(
@@ -85,8 +85,8 @@ class ProdutosPages extends StatelessWidget {
                       borderRadius: BorderRadius.circular(bordas),
                     ),
                   ),
-                  WidgetName("Para você"),
-                  Containerdesiner1(
+                  widgetName("Para você"),
+                  containerdesiner1(
                     listadeProdutos[3].image,
                     listadeProdutos[3].nome,
                     listadeProdutos[3].descricao,
@@ -123,7 +123,7 @@ class ProdutosPages extends StatelessWidget {
                     height: 10,
                     color: Colors.transparent,
                   ),
-                  WidgetName("Promoções"),
+                  widgetName("Promoções"),
                   Container(
                     padding: EdgeInsets.only(left: 10, top: 7, bottom: 0),
                     height: 10,
@@ -154,13 +154,13 @@ class ProdutosPages extends StatelessWidget {
                     height: 10,
                     color: Colors.transparent,
                   ),
-                  WidgetName("Categoria 1"),
+                  widgetName("Categoria 1"),
                   widgetCategoria(),
                   Divider(
                     height: 10,
                     color: Colors.transparent,
                   ),
-                  WidgetName("Categoria 2"),
+                  widgetName("Categoria 2"),
                   widgetCategoria(),
                   Divider(
                     height: 10,
@@ -187,13 +187,55 @@ class ProdutosPages extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(
+                listadeProdutos[1].image,
+                140,
+                listadeProdutos[1].nome,
+                listadeProdutos[1].preco1,
+                listadeProdutos[1].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[2].image,
+                140,
+                listadeProdutos[2].nome,
+                listadeProdutos[2].preco1,
+                listadeProdutos[2].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[3].image,
+                140,
+                listadeProdutos[3].nome,
+                listadeProdutos[3].preco1,
+                listadeProdutos[3].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[4].image,
+                140,
+                listadeProdutos[4].nome,
+                listadeProdutos[4].preco1,
+                listadeProdutos[4].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[5].image,
+                140,
+                listadeProdutos[5].nome,
+                listadeProdutos[5].preco1,
+                listadeProdutos[5].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[0].image,
+                140,
+                listadeProdutos[0].nome,
+                listadeProdutos[0].preco1,
+                listadeProdutos[0].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[1].image,
+                140,
+                listadeProdutos[1].nome,
+                listadeProdutos[1].preco1,
+                listadeProdutos[1].preco2,
+              ),
             ],
           ),
         ),
@@ -210,13 +252,55 @@ class ProdutosPages extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(
+                listadeProdutos[1].image,
+                140,
+                listadeProdutos[1].nome,
+                listadeProdutos[1].preco1,
+                listadeProdutos[1].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[2].image,
+                140,
+                listadeProdutos[2].nome,
+                listadeProdutos[2].preco1,
+                listadeProdutos[2].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[3].image,
+                140,
+                listadeProdutos[3].nome,
+                listadeProdutos[2].preco1,
+                listadeProdutos[2].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[4].image,
+                140,
+                listadeProdutos[4].nome,
+                listadeProdutos[4].preco1,
+                listadeProdutos[4].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[5].image,
+                140,
+                listadeProdutos[5].nome,
+                listadeProdutos[5].preco1,
+                listadeProdutos[5].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[0].image,
+                140,
+                listadeProdutos[0].nome,
+                listadeProdutos[0].preco1,
+                listadeProdutos[0].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[1].image,
+                140,
+                listadeProdutos[1].nome,
+                listadeProdutos[1].preco1,
+                listadeProdutos[1].preco2,
+              ),
             ],
           ),
         ),
@@ -233,13 +317,55 @@ class ProdutosPages extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
-              cardProduct(listadeProdutos[1].image, 140),
+              cardProduct(
+                listadeProdutos[1].image,
+                140,
+                listadeProdutos[1].nome,
+                listadeProdutos[1].preco1,
+                listadeProdutos[1].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[2].image,
+                140,
+                listadeProdutos[2].nome,
+                listadeProdutos[1].preco1,
+                listadeProdutos[1].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[3].image,
+                140,
+                listadeProdutos[3].nome,
+                listadeProdutos[1].preco1,
+                listadeProdutos[1].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[4].image,
+                140,
+                listadeProdutos[4].nome,
+                listadeProdutos[1].preco1,
+                listadeProdutos[1].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[5].image,
+                140,
+                listadeProdutos[5].nome,
+                listadeProdutos[1].preco1,
+                listadeProdutos[1].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[0].image,
+                140,
+                listadeProdutos[0].nome,
+                listadeProdutos[1].preco1,
+                listadeProdutos[1].preco2,
+              ),
+              cardProduct(
+                listadeProdutos[1].image,
+                140,
+                listadeProdutos[1].nome,
+                listadeProdutos[1].preco1,
+                listadeProdutos[1].preco2,
+              ),
             ],
           ),
         ),

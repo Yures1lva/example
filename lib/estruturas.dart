@@ -114,7 +114,7 @@ final List<ListadeProdutos> listadeProdutos = [
     nome: "Tênis Nike Air Max 720",
     categoria: "calçados",
     descricao:
-        "O Air Max 720 foi projetado com a intenção de ser disruptivo e a colaboração com Jun Takahashi",
+        "Tenis Nike Air Max 720 masculino e feminino, veja a variação de cores",
     loja: "Nike",
     preco1: "499",
     preco2: "99",
@@ -144,7 +144,7 @@ final List<ListadeProdutos> listadeProdutos = [
     descricao:
         "Fritadeira Philco Air Fry Gourmet Black PFR15P tem capacidade para 4 litros",
     loja: "Havan",
-    preco1: "499",
+    preco1: "359",
     preco2: "99",
   ),
   ListadeProdutos(

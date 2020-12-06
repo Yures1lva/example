@@ -1,5 +1,5 @@
 import 'package:exampleflutter/estruturas.dart';
-import 'package:exampleflutter/produtosPages.dart';
+import 'package:exampleflutter/empresasPages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:exampleflutter/constants.dart';
@@ -25,7 +25,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
     // Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: BuildDrawer(context, secondaryColor),
+      drawer: buildDrawer(context, secondaryColor),
       appBar: AppBar(
         backgroundColor: secondaryColor,
         elevation: 0,
@@ -119,23 +119,20 @@ class _ListadeempresasState extends State<Listadeempresas> {
                     ),
                     Container(
                       child: Column(
-                        children: GerarContainer(),
+                        children: gerarContainer(),
                       ),
                     ),
                     Divider(
                       color: Colors.transparent,
                       height: 7,
                     ),
-                    WidgetName("Favoritos"),
-                    widgetFav(
-                      'images/productnike3.png',
-                      () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Listadeempresas()));
-                      },
-                    ),
+                    widgetName("Favoritos"),
+                    widgetFav('images/productnike3.png', () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EmpresasPages()));
+                    }, "picudo on", "100", "99"),
                     Divider(
                       color: Colors.transparent,
                       height: 20,
@@ -150,11 +147,11 @@ class _ListadeempresasState extends State<Listadeempresas> {
     );
   }
 
-  List<Widget> GerarContainer() {
+  List<Widget> gerarContainer() {
     // Size size = MediaQuery.of(context).size;
     List<Widget> listaDeEmpresas = new List();
     for (int i = 0; i < empresalist.length; i++) {
-      listaDeEmpresas.add(CardEmpresa(
+      listaDeEmpresas.add(cardEmpresa(
         empresalist[i].image,
         empresalist[i].description,
         empresalist[i].avaliacao,
@@ -162,7 +159,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ProdutosPages(
+              builder: (context) => EmpresasPages(
                 empresalista: empresalist[i],
               ),
             ),
@@ -170,7 +167,7 @@ class _ListadeempresasState extends State<Listadeempresas> {
         },
       ));
     }
-    ;
+
     return listaDeEmpresas;
   }
 }

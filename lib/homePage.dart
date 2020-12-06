@@ -1,6 +1,6 @@
 // import 'package:exampleflutter/PageEmpresas.dart';
 import 'package:exampleflutter/listadeempresas.dart';
-import 'package:exampleflutter/produtosPages.dart';
+import 'package:exampleflutter/empresasPages.dart';
 import 'package:flutter/material.dart';
 import 'package:exampleflutter/constants.dart';
 
@@ -45,7 +45,7 @@ List names = [
 class _HomePageState extends State<HomePage> {
   _HomePageState();
 
-  ProdutosPages listProduct;
+  EmpresasPages listProduct;
 
   //Size size = MediaQuery.of(context).size;
 
@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: corfundo,
-      drawer: BuildDrawer(context, primaryColor),
+      drawer: buildDrawer(context, primaryColor),
       appBar: AppBar(
         backgroundColor: primaryColor,
         elevation: 0,
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              WidgetName("Promoções"),
+              widgetName("Promoções"),
               Container(
                 padding: EdgeInsets.only(left: 10, top: 7, bottom: 0),
                 height: 10,
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                       color: Colors.transparent,
                     ),
-                    WidgetName("Empresas"),
+                    widgetName("Empresas"),
                     Container(
                       // height: 290,
                       width: double.maxFinite,
@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                             height: 5,
                             color: Colors.transparent,
                           ),
-                          CardEmpresa(
+                          cardEmpresa(
                             empresalist[0].image,
                             empresalist[0].description,
                             empresalist[0].avaliacao,
@@ -186,12 +186,12 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ProdutosPages(
+                                      builder: (context) => EmpresasPages(
                                             empresalista: empresalist[0],
                                           )));
                             },
                           ),
-                          CardEmpresa(
+                          cardEmpresa(
                             empresalist[1].image,
                             empresalist[1].description,
                             empresalist[1].avaliacao,
@@ -199,14 +199,14 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ProdutosPages(
+                                  builder: (context) => EmpresasPages(
                                     empresalista: empresalist[1],
                                   ),
                                 ),
                               );
                             },
                           ),
-                          CardEmpresa(
+                          cardEmpresa(
                             empresalist[2].image,
                             empresalist[2].description,
                             empresalist[2].avaliacao,
@@ -214,7 +214,7 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ProdutosPages(
+                                  builder: (context) => EmpresasPages(
                                     empresalista: empresalist[2],
                                   ),
                                 ),
@@ -228,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    BottomText(
+                    bottomText(
                       context,
                       "Ver todas as Empresas",
                       () {
@@ -242,8 +242,8 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                       color: Colors.transparent,
                     ),
-                    WidgetName("Esporte"),
-                    Containerdesiner1(
+                    widgetName("Esporte"),
+                    containerdesiner1(
                       listadeProdutos[0].image,
                       listadeProdutos[0].nome,
                       listadeProdutos[0].descricao,
@@ -263,7 +263,7 @@ class _HomePageState extends State<HomePage> {
                       listadeProdutos[5].preco1,
                       listadeProdutos[5].preco2,
                     ),
-                    BottomText(
+                    bottomText(
                       context,
                       "Ver todos de Esportes",
                       () {
@@ -277,8 +277,8 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                       color: Colors.transparent,
                     ),
-                    WidgetName("Variedades"),
-                    Containerdesiner1(
+                    widgetName("Variedades"),
+                    containerdesiner1(
                       listadeProdutos[3].image,
                       listadeProdutos[3].nome,
                       listadeProdutos[3].descricao,
@@ -298,7 +298,7 @@ class _HomePageState extends State<HomePage> {
                       listadeProdutos[1].preco1,
                       listadeProdutos[1].preco2,
                     ),
-                    BottomText(
+                    bottomText(
                       context,
                       "Ver todos de Variedades",
                       () {
@@ -312,16 +312,13 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                       color: Colors.transparent,
                     ),
-                    WidgetName("Favoritos"),
-                    widgetFav(
-                      'images/productnike2.png',
-                      () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Listadeempresas()));
-                      },
-                    ),
+                    widgetName("Favoritos"),
+                    widgetFav('images/productnike2.png', () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EmpresasPages()));
+                    }, "nike pica msm em", "100","99"),
                     Divider(
                       color: Colors.transparent,
                       height: 20,
@@ -341,7 +338,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 //texto em baixo
-InkWell BottomText(BuildContext context, String nome, Function pressione) =>
+InkWell bottomText(BuildContext context, String nome, Function pressione) =>
     InkWell(
       child: Container(
         alignment: Alignment.bottomRight,
@@ -373,7 +370,7 @@ InkWell BottomText(BuildContext context, String nome, Function pressione) =>
       onTap: pressione,
     );
 
-List<Widget> ListContainer(
+List<Widget> listContainer(
   String image1,
   String nomedoP1,
   String descricao1,
@@ -405,7 +402,7 @@ List<Widget> ListContainer(
   return listaempresa;
 }
 
-Container Containerdesiner1(
+Container containerdesiner1(
   String image1,
   String nomedoP1,
   String descri1,
@@ -436,7 +433,7 @@ Container Containerdesiner1(
       decoration: BoxDecoration(
           color: backgrounColor, borderRadius: BorderRadius.circular(bordas)),
       child: Column(
-        children: ListContainer(
+        children: listContainer(
           image1,
           nomedoP1,
           descri1,
@@ -461,7 +458,7 @@ Container Containerdesiner1(
   );
 }
 
-Container WidgetName(String name) {
+Container widgetName(String name) {
   return Container(
     padding: EdgeInsets.only(
       top: 7,
@@ -482,140 +479,6 @@ Container WidgetName(String name) {
   );
 }
 
-Container widgetFav(String imag1, Function tap) {
-  return Container(
-    decoration: BoxDecoration(
-      color: backgrounColor2,
-      borderRadius: BorderRadius.circular(bordas),
-    ),
-    child: Column(
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.only(left: 10, top: 7, bottom: 0),
-          height: 5,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: backgrounColor2,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(bordas),
-              topLeft: Radius.circular(bordas),
-            ),
-          ),
-        ),
-        InkWell(
-          onTap: tap,
-          child: Container(
-            decoration: BoxDecoration(
-              color: backgrounColor2,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(bordas),
-                bottomLeft: Radius.circular(bordas),
-              ),
-            ),
-            height: 160,
-            padding: EdgeInsets.all(10),
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                InkWell(
-                  child: Container(
-                    height: double.infinity,
-                    width: 140,
-                    padding: EdgeInsets.all(1),
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: backgrounColor2,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: cardProduct(imag1, 140),
-                  ),
-                ),
-                InkWell(
-                  child: Container(
-                    height: double.infinity,
-                    width: 140,
-                    padding: EdgeInsets.all(1),
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: backgrounColor2,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: cardProduct(imag1, 140),
-                  ),
-                ),
-                InkWell(
-                  child: Container(
-                    height: double.infinity,
-                    width: 140,
-                    padding: EdgeInsets.all(1),
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: backgrounColor2,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: cardProduct(imag1, 140),
-                  ),
-                ),
-                InkWell(
-                  child: Container(
-                    height: double.infinity,
-                    width: 140,
-                    padding: EdgeInsets.all(1),
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: backgrounColor2,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: cardProduct(imag1, 140),
-                  ),
-                ),
-                InkWell(
-                  child: Container(
-                    height: double.infinity,
-                    width: 140,
-                    padding: EdgeInsets.all(1),
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: backgrounColor2,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: cardProduct(imag1, 140),
-                  ),
-                ),
-                InkWell(
-                  child: Container(
-                    height: double.infinity,
-                    width: 140,
-                    padding: EdgeInsets.all(1),
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: backgrounColor2,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: cardProduct(imag1, 140),
-                  ),
-                ),
-                InkWell(
-                  child: Container(
-                    height: double.infinity,
-                    width: 140,
-                    padding: EdgeInsets.all(1),
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: backgrounColor2,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: cardProduct(imag1, 140),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
 //fim do body
 
 Container carouselRow(List lista) {
